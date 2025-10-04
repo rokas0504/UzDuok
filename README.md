@@ -1,69 +1,60 @@
-# Project setup
+# Projekto settupas
+Pastaba: Turit tureti suinstaliave dockeri ir atsisiunte docker app
 
-#### Setup project name. Run it once after forking repository
+#### Pirma pasiklonuojam
 ```bash
-make set_project_name project_name="enter_your_project_name"
+git clone "repisitorijos http linkas"
 ```
-note: instead of "enter_your_project_name" provide project name
-
-#### Setup local environment
-Will copy needed files and execute commands in order to launch docker containers
+## Backas
+### Einam i backo direktorija
 ```bash
-make setup_dev project_name="enter_your_project_name"
+cd UzDuok/backend/
 ```
-note: instead of "enter_your_project_name" provide project name
 
-## Commands
-
-Artisan commands can be executed from local machine by using sail path
-ex: to execute create model named test `php artisan make:model test` use sail path:
+### Nusikopinam failiukus
 ```bash
-./vendor/bin/sail artisan make:model test
+cp docker/local/docker-compose.yml . 
+cp .env.example .env
 ```
 
-Show all available make commands:
+### Susinstalinam
 ```bash
-make
+composer install
 ```
 
-## Alias
-
-To set alias for `./vendor/bin/sail`  
-In home directory edit/create `~/.zshrc` or `~/.bashrc` file and add this line:
-```
-alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-```
-note: alias will be `sail` you can change alias to be anything else just change `sail` variable before equal to your preferred alias  
-note2: for alias to work make sure to restart shell
-
-Example of artisan command using alias:
+### Paleidziam dockerio konteineri
 ```bash
-sail artisan migrate
+docker compose up -d
 ```
 
-## Postman
-
-### pre-request script
-In `Scripts` tab `Pre-request` section add script for XSRF-TOKEN:
-```javascript
-pm.sendRequest({
-    url: 'local.test/sanctum/csrf-cookie',
-    method: 'GET'
-}, function(error, response, {cookies}) {
-    pm.collectionVariables.set('csrf-token', cookies.get('XSRF-TOKEN'))
-
-    pm.request.addHeader({
-        key: "Origin",
-        value: "http://local.test:3000"
-    });
-
-    pm.request.addHeader({
-        key: "Referer",
-        value: "http://local.test:3000"
-    });
-})
+### Nusikopijuojam rakta ir pasileidziam migracijas bei seederius
+```bash
+./vendor/bin/sail artisan key:generate 
+./vendor/bin/sail artisan migrate --seed 
+```
+Pastaba: Jei artisan migrate --seed nesuveikia, tuomet reikia (BET TIK TUOMET JEI NESUVEIKIA):
+```bash
+docker docker exec -it UzDuokBackend-laravel sh
+php artisan migrate:fresh
+php artisan db:seed
+```
+# Frontas
+### Nusikopinam
+```bash
+cp .env.example .env
 ```
 
-Make sure to add header in postman `Headers` tab:  
-key: X-XSRF-TOKEN  
-value: {{csrf-token}}
+### Susuinstalinam
+```bash
+npm install
+```
+
+### Paleidziam dokerio konteineri
+```bash
+docker compose up -d
+```
+
+### Patikrinam are veikia:
+http://localhost:3000/
+http://localhost:8080/ (Patikrinti logina DB_DATABASE=UzDuokBackend DB_USERNAME=uzduok)
+http://localhost/
