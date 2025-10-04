@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                bitbucketStatusNotify(buildState: 'INPROGRESS', buildDescription: 'Starting pipeline')
+                checkout scm
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                nodejs('Node-22.12.0') {
+                    sh 'npm ci'
+                }
+            }
+        }
+        stage('TypeScript Type Check') {
+            steps {
+                nodejs('Node-22.12.0') {
+                    sh 'npx nuxi typecheck'
+                }
+            }
+        }
+        stage('ESLint Check') {
+            steps {
+                nodejs('Node-22.12.0') {
+                    sh 'npm run lint'
+                }
+            }
+        }
+        stage('Build test') {
+            steps {
+                script {
+                    sh '''
+                    docker build -t {{PROJECT_NAME}}-staging:test . -f ./docker/staging/Dockerfile
+                    docker image inspect {{PROJECT_NAME}}-staging:test > /dev/null 2>&1
+                    docker image rm {{PROJECT_NAME}}-staging:test
+                    '''
+                }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                if (currentBuild.result == 'FAILURE') {
+                    bitbucketStatusNotify(buildState: 'FAILED', buildDescription: 'Lint or Type Check Failed')
+                } else {
+                    bitbucketStatusNotify(buildState: 'SUCCESSFUL', buildDescription: 'Checks Passed')
+                }
+            }
+        }
+    }
+}

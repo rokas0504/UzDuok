@@ -1,0 +1,30 @@
+services:
+  frontend:
+    container_name: frontend
+    image: registry.digitalocean.com/starkodas/{{PROJECT_NAME}}-staging:frontend-latest
+    build: 
+      context: .
+      dockerfile: ./docker/staging/Dockerfile
+    networks:
+      - staging-network
+    environment:
+      NUXT_PUBLIC_SANCTUM_BASE_URL: "https://sub_domain.starkodas.lt"
+      NUXT_PUBLIC_SANCTUM_ORIGIN: "https://sub_domain.starkodas.lt"
+      NUXT_SITE_ENV: "staging"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`domain.com`)"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      - "traefik.http.routers.http-catchall.rule=Host(`domain.com`)"
+      - "traefik.http.routers.http-catchall.entrypoints=web"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    extra_hosts:
+      - "domain.com:host-gateway"
+
+networks:
+  staging-network:
+    external: true

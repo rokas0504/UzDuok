@@ -1,0 +1,16 @@
+services:
+  frontend:
+    container_name: {{PROJECT_NAME}}-frontend
+    build: 
+      context: .
+      dockerfile: ./docker/local/Dockerfile
+    ports: 
+      - "3000:3000"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - {{PROJECT_NAME}}-frontend
+networks:
+  {{PROJECT_NAME}}-frontend:
+    name: {{PROJECT_NAME}}-network
+    external: true

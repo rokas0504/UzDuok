@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                bitbucketStatusNotify(buildState: 'INPROGRESS', buildDescription: 'Starting pipeline')
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    sh '''
+                    docker build -t {{PROJECT_NAME}}-staging-backend:test . -f ./docker/staging/Dockerfile --target test
+                    docker image inspect {{PROJECT_NAME}}-staging-backend:test > /dev/null 2>&1
+                    '''
+                }
+            }
+        }
+        stage('Run tests') {
+            steps {
+                script {
+                    sh 'docker run {{PROJECT_NAME}}-staging-backend:test bash -c "php artisan key:generate; php artisan test"'
+                }
+            }
+        }
+        stage('Cleanup') {
+            steps {
+                script {
+                    sh 'docker image rm {{PROJECT_NAME}}-staging-backend:test -f'
+                }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                if (currentBuild.result == 'FAILURE') {
+                    bitbucketStatusNotify(buildState: 'FAILED', buildDescription: 'Build or tests failed')
+                } else {
+                    bitbucketStatusNotify(buildState: 'SUCCESSFUL', buildDescription: 'Checks Passed')
+                }
+            }
+        }
+    }
+}

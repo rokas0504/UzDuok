@@ -1,0 +1,57 @@
+services:
+    backend:
+        container_name: backend
+        image: registry.digitalocean.com/starkodas/{{PROJECT_NAME}}-production:backend-latest
+        restart: always
+        build:
+            context: .
+            dockerfile: ./docker/production/Dockerfile
+            target: production
+        volumes:
+            - ./storage/:/var/www/html/storage
+            - .env:/var/www/html/.env
+        networks:
+            - production-network
+        depends_on:
+            - mysql
+        environment:
+            PHP_OPCACHE_ENABLE: 1
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.backend.rule=Host(`domain.com`) && (PathPrefix(`/api`) || Path(`/sanctum/csrf-cookie`))"
+            - "traefik.http.routers.backend.tls=true"
+            - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
+            - "traefik.http.routers.backend.entrypoints=websecure"
+            - "traefik.http.services.backend.loadbalancer.server.port=8080"
+    mysql:
+        container_name: mysql
+        image: 'mysql/mysql-server:8.0'
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_ROOT_PASSWORD}'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+        volumes:
+            - db-data:/var/lib/mysql
+        networks:
+            - production-network
+    queue:
+        container_name: queue
+        image: registry.digitalocean.com/starkodas/{{PROJECT_NAME}}-production:backend-latest
+        restart: unless-stopped
+        volumes:
+            - ./storage/:/var/www/html/storage
+            - .env:/var/www/html/.env
+        networks:
+            - production-network
+        depends_on:
+            - mysql
+        command: php artisan queue:listen
+networks:
+    production-network:
+        external: true
+volumes:
+    db-data:
+        driver: local
