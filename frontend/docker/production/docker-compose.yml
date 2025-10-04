@@ -1,7 +1,7 @@
 services:
   frontend:
     container_name: frontend
-    image: registry.digitalocean.com/starkodas/{{PROJECT_NAME}}-production:frontend-latest
+    image: registry.digitalocean.com/starkodas/UzDuokFrontend-production:frontend-latest
     build: 
       context: .
       dockerfile: ./docker/production/Dockerfile

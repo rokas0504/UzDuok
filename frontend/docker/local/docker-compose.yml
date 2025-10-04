@@ -1,6 +1,6 @@
 services:
   frontend:
-    container_name: {{PROJECT_NAME}}-frontend
+    container_name: UzDuokFrontend-frontend
     build: 
       context: .
       dockerfile: ./docker/local/Dockerfile
@@ -9,8 +9,8 @@ services:
     volumes:
       - .:/var/www/html
     networks:
-      - {{PROJECT_NAME}}-frontend
+      - UzDuokFrontend-frontend
 networks:
-  {{PROJECT_NAME}}-frontend:
-    name: {{PROJECT_NAME}}-network
+  UzDuokFrontend-frontend:
+    name: UzDuokFrontend-network
     external: true
