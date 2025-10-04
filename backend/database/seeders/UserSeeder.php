@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'email' => 'dev@starkodas.lt',
-                'name' => 'Starkodas',
+                'email' => 'useris@gmail.com',
+                'name' => 'Useris',
                 'email_verified_at' => now(),
                 'password' => config('admin.main_admin_password'),
             ],
