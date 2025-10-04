@@ -1,6 +1,6 @@
 services:
     laravel:
-        container_name: {{PROJECT_NAME}}-laravel
+        container_name: UzDuokBackend-laravel
         hostname: local.test
         build:
             context: './vendor/laravel/sail/runtimes/8.4'
@@ -21,11 +21,11 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - {{PROJECT_NAME}}-backend
+            - UzDuokBackend-backend
         depends_on:
             - mysql
     mysql:
-        container_name: {{PROJECT_NAME}}-mysql
+        container_name: UzDuokBackend-mysql
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
@@ -37,9 +37,9 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
-            - '{{PROJECT_NAME}}-mysql:/var/lib/mysql'
+            - 'UzDuokBackend-mysql:/var/lib/mysql'
         networks:
-            - {{PROJECT_NAME}}-backend
+            - UzDuokBackend-backend
         healthcheck:
             test:
                 - CMD
@@ -49,33 +49,33 @@ services:
             retries: 3
             timeout: 5s
     phpmyadmin:
-        container_name: {{PROJECT_NAME}}-phpmyadmin
+        container_name: UzDuokBackend-phpmyadmin
         image: 'phpmyadmin:latest'
         ports:
             - "8080:80"
         networks:
-            - {{PROJECT_NAME}}-backend
+            - UzDuokBackend-backend
         environment:
             - PMA_HOST=mysql
             - PMA_VERBOSE=${DB_USERNAME}
     queue:
-        container_name: {{PROJECT_NAME}}-queue
+        container_name: UzDuokBackend-queue
         build:
             context: ./docker/local
             dockerfile: Dockerfile
         volumes:
             - '.:/var/www/html'
         networks:
-            - {{PROJECT_NAME}}-backend
+            - UzDuokBackend-backend
         depends_on:
             mysql:
                 condition: service_started
         environment:
             DB_HOST: mysql
 networks:
-    {{PROJECT_NAME}}-backend:
-        name: {{PROJECT_NAME}}-network
+    UzDuokBackend-backend:
+        name: UzDuokBackend-network
         external: true
 volumes:
-    {{PROJECT_NAME}}-mysql:
+    UzDuokBackend-mysql:
         driver: local

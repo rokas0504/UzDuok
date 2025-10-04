@@ -12,8 +12,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    docker build -t {{PROJECT_NAME}}-staging-backend:test . -f ./docker/staging/Dockerfile --target test
-                    docker image inspect {{PROJECT_NAME}}-staging-backend:test > /dev/null 2>&1
+                    docker build -t UzDuokBackend-staging-backend:test . -f ./docker/staging/Dockerfile --target test
+                    docker image inspect UzDuokBackend-staging-backend:test > /dev/null 2>&1
                     '''
                 }
             }
@@ -21,14 +21,14 @@ pipeline {
         stage('Run tests') {
             steps {
                 script {
-                    sh 'docker run {{PROJECT_NAME}}-staging-backend:test bash -c "php artisan key:generate; php artisan test"'
+                    sh 'docker run UzDuokBackend-staging-backend:test bash -c "php artisan key:generate; php artisan test"'
                 }
             }
         }
         stage('Cleanup') {
             steps {
                 script {
-                    sh 'docker image rm {{PROJECT_NAME}}-staging-backend:test -f'
+                    sh 'docker image rm UzDuokBackend-staging-backend:test -f'
                 }
             }
         }

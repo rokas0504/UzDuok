@@ -1,7 +1,7 @@
 services:
     backend:
         container_name: backend
-        image: registry.digitalocean.com/starkodas/{{PROJECT_NAME}}-staging:backend-latest
+        image: registry.digitalocean.com/starkodas/UzDuokBackend-staging:backend-latest
         restart: always
         build:
             context: .
@@ -39,7 +39,7 @@ services:
             - staging-network
     queue:
         container_name: queue
-        image: registry.digitalocean.com/starkodas/{{PROJECT_NAME}}-staging:backend-latest
+        image: registry.digitalocean.com/starkodas/UzDuokBackend-staging:backend-latest
         restart: unless-stopped
         volumes:
             - ./storage/:/var/www/html/storage
