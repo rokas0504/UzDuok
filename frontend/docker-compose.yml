@@ -1,0 +1,16 @@
+services:
+  frontend:
+    container_name: UzDuokFrontend-frontend
+    build: 
+      context: .
+      dockerfile: ./docker/local/Dockerfile
+    ports: 
+      - "3000:3000"
+    volumes:
+      - .:/var/www/html
+    networks:
+      - UzDuokFrontend-frontend
+networks:
+  UzDuokFrontend-frontend:
+    name: UzDuokBackend-network
+    external: true

@@ -24,4 +24,3 @@ logs
 !.env.example
 
 /publish/
-/docker-compose.yml
