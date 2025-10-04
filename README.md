@@ -39,6 +39,10 @@ php artisan migrate:fresh
 php artisan db:seed
 ```
 # Frontas
+### Nuo root folderio keliaujame i fronto direktorija
+```bash
+cd UzDuok/frontend/
+```
 ### Nusikopinam
 ```bash
 cp .env.example .env
