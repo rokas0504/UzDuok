@@ -1,5 +1,5 @@
 <template>
   <p class="text-emerald-600">
-    Index page
+    Index page change
   </p>
 </template>
