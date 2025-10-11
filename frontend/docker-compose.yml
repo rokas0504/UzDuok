@@ -1,13 +1,18 @@
 services:
   frontend:
     container_name: UzDuokFrontend-frontend
-    build: 
+    build:
       context: .
       dockerfile: ./docker/local/Dockerfile
-    ports: 
+    ports:
       - "3000:3000"
+      - "24678:24678"  # Vite HMR port
     volumes:
       - .:/var/www/html
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - VITE_HMR_HOST=localhost
     networks:
       - UzDuokFrontend-frontend
 networks:
