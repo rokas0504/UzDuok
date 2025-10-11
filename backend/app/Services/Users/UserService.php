@@ -6,6 +6,7 @@ use App\Models\Users\User;
 use App\Repositories\Users\UserRepository;
 use App\Services\Service;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class UserService extends Service
@@ -74,7 +75,7 @@ class UserService extends Service
      */
     public function logout(User $user): void
     {
-        auth()->logout();
+        auth()->guard('web')->logout();
 
         // Invalidate the session
         request()->session()->invalidate();

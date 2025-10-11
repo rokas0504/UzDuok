@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Services\Users\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -56,11 +57,21 @@ class AuthController extends Controller
      */
     public function logout(Request $request): JsonResponse
     {
-        $this->userService->logout($request->user());
+        $user = $request->user();
+        try {
+            $this->userService->logout($user);
 
-        return response()->json([
-            'message' => 'Logout successful',
-        ]);
+            return response()->json([
+                'message' => 'Logout successful',
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Logout failed', [
+                'user_id' => $user?->id,
+                'error' => $e->getMessage(),
+            ]);
+
+            throw $e;
+        }
     }
 
     /**
