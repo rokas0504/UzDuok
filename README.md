@@ -12,9 +12,15 @@ cd UzDuok/backend/
 ```
 
 ### Nusikopinam failiukus
+Mac/linux komandos:
 ```bash
 cp docker/local/docker-compose.yml . 
 cp .env.example .env
+```
+Windows komandos:
+```bash
+Copy-Item docker/local/docker-compose.yml . -Force
+Copy-Item .env.example .env -Force
 ```
 
 ### Susinstalinam
@@ -24,17 +30,14 @@ composer install
 
 ### Paleidziam dockerio konteineri
 ```bash
+docker network create UzDuokBackend-network
 docker compose up -d
 ```
 
 ### Nusikopijuojam rakta ir pasileidziam migracijas bei seederius
 ```bash
-./vendor/bin/sail artisan key:generate 
-./vendor/bin/sail artisan migrate --seed 
-```
-Pastaba: Jei artisan migrate --seed nesuveikia, tuomet reikia (BET TIK TUOMET JEI NESUVEIKIA):
-```bash
 docker docker exec -it UzDuokBackend-laravel sh
+php artisan key:generate
 php artisan migrate:fresh
 php artisan db:seed
 ```
@@ -46,6 +49,10 @@ cd UzDuok/frontend/
 ### Nusikopinam
 ```bash
 cp .env.example .env
+```
+Windows komandos:
+```bash
+Copy-Item .env.example .env -Force
 ```
 
 ### Susuinstalinam
