@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum TaskStatus: string
 {
-    case PENDING = 'pending';
-    case IN_PROGRESS = 'in_progress';
+    case PENDING = 'pending'; //Pagrindinis, vaikas mato uzduoti, kad jam reikia atlikti
+    case IN_PROGRESS = 'in_progress'; //Vaikas paaprovina, tevas gali atsaukti/paaprovinti/grazinti
     case COMPLETED = 'completed';
     case CANCELLED = 'cancelled';
 
