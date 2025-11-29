@@ -1,7 +1,7 @@
 p<?php
 
 return [
-    'pending' => 'Kuriama',
+    'pending' => 'Tikrinama',
     'in_progress' => 'Aktyvi',
     'completed' => 'Atlikta',
     'cancelled' => 'Ašaukta',

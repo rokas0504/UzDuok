@@ -22,7 +22,14 @@ class TaskController extends Controller
     public function index(Request $request): JsonResponse
     {
         $user = $request->user();
-        $tasks = $this->taskService->getTasksByUserId($user->id);
+        $user->load('role');
+
+        // Parents see all tasks, children only see tasks assigned to them
+        if ($user->isParent()) {
+            $tasks = $this->taskService->getList();
+        } else {
+            $tasks = $this->taskService->getTasksByUserId($user->id);
+        }
 
         return response()->json([
             'tasks' => $tasks,
@@ -35,7 +42,6 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request): JsonResponse
     {
         $data = $request->validated();
-        $data['user_id'] = $request->user()->id;
 
         $task = $this->taskService->store($data);
 
@@ -71,8 +77,18 @@ class TaskController extends Controller
     /**
      * Remove the specified task.
      */
-    public function destroy(Task $task): JsonResponse
+    public function destroy(Request $request, Task $task): JsonResponse
     {
+        $user = $request->user();
+        $user->load('role');
+
+        // Only parents can delete tasks
+        if (!$user->isParent()) {
+            return response()->json([
+                'message' => 'Only parents can delete tasks',
+            ], 403);
+        }
+
         $this->taskService->destroy($task);
 
         return response()->json([

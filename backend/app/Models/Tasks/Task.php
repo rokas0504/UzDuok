@@ -23,6 +23,8 @@ class Task extends Model
         'status',
         'price',
         'is_repeated',
+        'start_date',
+        'end_date',
         'user_id',
     ];
 
@@ -37,6 +39,8 @@ class Task extends Model
             'status' => TaskStatus::class,
             'price' => 'decimal:2',
             'is_repeated' => 'boolean',
+            'start_date' => 'date',
+            'end_date' => 'date',
         ];
     }
 

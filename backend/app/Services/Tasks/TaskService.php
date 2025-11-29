@@ -15,8 +15,10 @@ use Illuminate\Database\Eloquent\Model;
 class TaskService extends Service
 {
     public function __construct(
-        protected Repository $repository
-    ) {}
+        private readonly TaskRepository $taskRepository
+    ) {
+        $this->repository = $taskRepository;
+    }
 
     /**
      * Create a new task for a user.
@@ -26,7 +28,7 @@ class TaskService extends Service
      */
     public function store(array $data): Model
     {
-        $data['status'] = TaskStatus::PENDING->value;
+        $data['status'] = TaskStatus::IN_PROGRESS->value;
 
         return $this->repository->store($data);
     }

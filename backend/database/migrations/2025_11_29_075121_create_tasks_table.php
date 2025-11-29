@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('status');
             $table->decimal('price', 10, 2);
             $table->boolean('is_repeated')->default(false);
+            $table->date('start_date');
+            $table->date('end_date');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

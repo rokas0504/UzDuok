@@ -5,6 +5,7 @@ namespace App\Services\Users;
 use App\Models\Users\User;
 use App\Repositories\Users\UserRepository;
 use App\Services\Service;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
@@ -82,5 +83,15 @@ class UserService extends Service
 
         // Regenerate the CSRF token
         request()->session()->regenerateToken();
+    }
+
+    /**
+     * Get all child users.
+     *
+     * @return Collection
+     */
+    public function getChildUsers(): collection
+    {
+        return $this->userRepository->getChildUsers();
     }
 }
