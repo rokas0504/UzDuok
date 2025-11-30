@@ -45,4 +45,18 @@ class UserRepository extends Repository
     {
         return Role::where('slug', $slug)->firstOrFail();
     }
+
+    /**
+     * Get all users with the 'child' role.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getChildUsers()
+    {
+        $childRole = $this->findRoleBySlug('child');
+
+        return $this->model::query()
+            ->where('role_id', $childRole->id)
+            ->get();
+    }
 }

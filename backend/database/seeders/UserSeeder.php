@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
     {
         // Get parent role
         $parentRole = Role::where('slug', 'parent')->first();
+        $childRole = Role::where('slug', 'child')->first();
 
         $users = [
             [
@@ -23,6 +24,13 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => config('admin.main_admin_password'),
                 'role_id' => $parentRole->id,
+            ],
+            [
+                'email' => 'child@gmail.com',
+                'name' => 'Child',
+                'email_verified_at' => now(),
+                'password' => config('admin.main_admin_password'),
+                'role_id' => $childRole->id,
             ],
         ];
 

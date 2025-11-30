@@ -24,7 +24,9 @@ export const useAuth = () => {
       if (!rawUser || typeof rawUser !== 'object') {
         return null
       }
-      return rawUser as User
+      // Extract nested user object if it exists (API returns { user: { ... } })
+      const userData = (rawUser as any).user || rawUser
+      return userData as User
     } catch (error: any) {
       console.error('Error getting user:', error)
       return null

@@ -1,38 +1,137 @@
-<template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">
-        UzDuok
-      </h1>
-
-      <div class="bg-white shadow rounded-lg p-6 max-w-md mx-auto mt-8">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
-          Naudotojo informacija
-        </h2>
-        <div class="space-y-3 text-left">
-          <div>
-            <!--  TODO  Informacija neatsivaizduoja, sutvarkyti         -->
-            <span class="font-medium text-gray-600">Vardas:</span>
-            <span class="ml-2 text-gray-900">{{ user?.name }}</span>
-          </div>
-          <div>
-            <span class="font-medium text-gray-600">El. paštas:</span>
-            <span class="ml-2 text-gray-900">{{ user?.email }}</span>
-          </div>
-          <div>
-            <span class="font-medium text-gray-600">Rolė:</span>
-            <span class="ml-2 text-gray-900 capitalize">{{ user?.role }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
+import type { Task } from '~/types/task'
+
 definePageMeta({
   middleware: ['auth'],
 })
 
 const { user } = useAuth()
+
+const tasks = ref<Task[]>([])
+const loading = ref(false)
+const error = ref<string | null>(null)
+
+async function fetchTasks() {
+  loading.value = true
+  error.value = null
+  try {
+    const response = await useFetchTasks()
+    tasks.value = response.tasks
+  } catch (err: any) {
+    error.value = err.data?.message || 'Nepavyko užkrauti užduočių'
+    console.error('Error fetching tasks:', err)
+  } finally {
+    loading.value = false
+  }
+}
+
+// Fetch tasks on mount
+onMounted(() => {
+  fetchTasks()
+})
 </script>
+
+<template>
+  <div class="page-container">
+    <div class="page-header">
+      <h1 class="page-title">Užduotys</h1>
+      <div class="user-info">
+        <span class="user-name">{{ user?.name }}</span>
+        <span class="user-role">{{ user?.role }}</span>
+      </div>
+    </div>
+
+    <div v-if="loading" class="loading-state">
+      Kraunama...
+    </div>
+
+    <div v-else-if="error" class="error-state">
+      {{ error }}
+    </div>
+
+    <CalendarWeekCalendar
+      v-else
+      :tasks="tasks"
+      @refresh="fetchTasks"
+    />
+  </div>
+</template>
+
+<style scoped>
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 0;
+}
+
+.page-header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+}
+
+.user-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  text-transform: capitalize;
+}
+
+.loading-state,
+.error-state {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.loading-state {
+  color: #6b7280;
+  font-size: 1.125rem;
+}
+
+.error-state {
+  color: #ef4444;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .user-info {
+    align-items: flex-start;
+  }
+}
+</style>
