@@ -27,7 +27,33 @@ const formData = ref<TaskFormData>({
   start_date: props.task?.start_date || props.initialDate || new Date().toISOString().split('T')[0],
   end_date: props.task?.end_date || props.initialDate || new Date().toISOString().split('T')[0],
   user_id: props.task?.user_id || 0,
+  selected_weekdays: [],
+  weeks_count: 1,
 })
+
+// Lithuanian weekday names (Monday = 0, Sunday = 6)
+const weekdays = [
+  { value: 0, label: 'Pirmadienis' },
+  { value: 1, label: 'Antradienis' },
+  { value: 2, label: 'Trečiadienis' },
+  { value: 3, label: 'Ketvirtadienis' },
+  { value: 4, label: 'Penktadienis' },
+  { value: 5, label: 'Šeštadienis' },
+  { value: 6, label: 'Sekmadienis' },
+]
+
+function toggleWeekday(day: number) {
+  const index = formData.value.selected_weekdays?.indexOf(day) ?? -1
+  if (index === -1) {
+    formData.value.selected_weekdays = [...(formData.value.selected_weekdays || []), day]
+  } else {
+    formData.value.selected_weekdays = formData.value.selected_weekdays?.filter(d => d !== day) || []
+  }
+}
+
+function isWeekdaySelected(day: number): boolean {
+  return formData.value.selected_weekdays?.includes(day) ?? false
+}
 
 const loading = ref(false)
 const error = ref<string | null>(null)
@@ -265,10 +291,45 @@ const showApproveDecline = computed(() => {
               v-model="formData.is_repeated"
               type="checkbox"
               class="form-checkbox"
-              :disabled="isViewOnly"
+              :disabled="isViewOnly || isEditing"
             />
             <span> Pasikartojanti užduotis</span>
           </label>
+        </div>
+
+        <!-- Periodic Task Options (shown when is_repeated is checked) -->
+        <div v-if="formData.is_repeated && !isEditing && !isViewOnly" class="periodic-options">
+          <!-- Weekday Selection -->
+          <div class="form-group">
+            <label>Pasirinkite savaitės dienas</label>
+            <div class="weekday-grid">
+              <button
+                v-for="day in weekdays"
+                :key="day.value"
+                type="button"
+                class="weekday-button"
+                :class="{ 'weekday-selected': isWeekdaySelected(day.value) }"
+                @click="toggleWeekday(day.value)"
+              >
+                {{ day.label }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Weeks Count -->
+          <div class="form-group">
+            <label for="weeks_count">Kiek savaičių kartoti?</label>
+            <input
+              id="weeks_count"
+              v-model.number="formData.weeks_count"
+              type="number"
+              min="1"
+              max="52"
+              required
+              class="form-input"
+              placeholder="1"
+            />
+          </div>
         </div>
 
         <!-- Error message -->
@@ -555,6 +616,44 @@ textarea.form-input {
 .button-danger:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Periodic task options */
+.periodic-options {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.weekday-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.weekday-button {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.weekday-button:hover {
+  border-color: #667eea;
+  background: #f5f3ff;
+}
+
+.weekday-button.weekday-selected {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
 @media (max-width: 640px) {

@@ -29,6 +29,10 @@ class StoreTaskRequest extends FormRequest
             'start_date' => ['required', 'date'],
             'end_date' => ['required', 'date', 'after_or_equal:start_date'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
+            // Periodic task fields
+            'selected_weekdays' => ['nullable', 'array'],
+            'selected_weekdays.*' => ['integer', 'min:0', 'max:6'],
+            'weeks_count' => ['nullable', 'integer', 'min:1', 'max:52'],
         ];
     }
 
