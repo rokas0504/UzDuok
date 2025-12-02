@@ -1,4 +1,4 @@
-import type { TaskFormData, TasksResponse, TaskResponse, TaskStatus } from '~/types/task'
+import type { TaskFormData, TasksResponse, TaskResponse, TaskStatus, PeriodicTaskResponse } from '~/types/task'
 
 export const useFetchTasks = () => {
   const { $api } = useNuxtApp()
@@ -9,7 +9,7 @@ export const useFetchTasks = () => {
 
 export const useCreateTask = (body: TaskFormData) => {
   const { $api } = useNuxtApp()
-  return $api<TaskResponse>('/api/tasks', {
+  return $api<TaskResponse | PeriodicTaskResponse>('/api/tasks', {
     method: 'POST',
     body,
   })

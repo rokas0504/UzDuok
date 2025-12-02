@@ -39,16 +39,24 @@ class TaskController extends Controller
 
     /**
      * Store a newly created task.
+     * For periodic tasks, creates multiple tasks based on selected weekdays and weeks.
      */
     public function store(StoreTaskRequest $request): JsonResponse
     {
         $data = $request->validated();
 
-        $task = $this->taskService->store($data);
+        $result = $this->taskService->createTask($data);
+
+        // Check if multiple tasks were created (periodic task)
+        if (is_array($result)) {
+            return response()->json([
+                'message' => 'Periodic tasks created successfully',
+                'count' => count($result),
+            ], 201);
+        }
 
         return response()->json([
             'message' => 'Task created successfully',
-            'task' => $task,
         ], 201);
     }
 

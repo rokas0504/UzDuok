@@ -6,6 +6,7 @@ definePageMeta({
 })
 
 const { user } = useAuth()
+const { isParent } = useUserRole()
 
 const tasks = ref<Task[]>([])
 const loading = ref(false)
@@ -34,7 +35,15 @@ onMounted(() => {
 <template>
   <div class="page-container">
     <div class="page-header">
-      <h1 class="page-title">Užduotys</h1>
+      <div class="header-left">
+        <h1 class="page-title">Užduotys</h1>
+        <NuxtLink v-if="isParent" to="/statistics" class="stats-link">
+          Žiūrėti pagal vaikus
+        </NuxtLink>
+        <NuxtLink v-if="isParent" to="/statistics-table" class="stats-link">
+          Statistika
+        </NuxtLink>
+      </div>
       <div class="user-info">
         <span class="user-name">{{ user?.name }}</span>
         <span class="user-role">{{ user?.role }}</span>
@@ -73,11 +82,32 @@ onMounted(() => {
   align-items: center;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
   margin: 0;
+}
+
+.stats-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+}
+
+.stats-link:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .user-info {

@@ -23,6 +23,9 @@ export interface TaskFormData {
   start_date: string
   end_date: string
   user_id: number
+  // Periodic task fields
+  selected_weekdays?: number[] // 0 = Monday, 6 = Sunday
+  weeks_count?: number
 }
 
 export interface TasksResponse {
@@ -31,5 +34,11 @@ export interface TasksResponse {
 
 export interface TaskResponse {
   task: Task
+  message?: string
+}
+
+export interface PeriodicTaskResponse {
+  tasks: Task[]
+  count: number
   message?: string
 }
