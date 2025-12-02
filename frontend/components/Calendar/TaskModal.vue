@@ -31,6 +31,20 @@ const formData = ref<TaskFormData>({
   weeks_count: 1,
 })
 
+// Sync end_date with start_date when is_repeated is checked
+watch(() => formData.value.is_repeated, (isRepeated) => {
+  if (isRepeated) {
+    formData.value.end_date = formData.value.start_date
+  }
+})
+
+// Also sync end_date when start_date changes while is_repeated is true
+watch(() => formData.value.start_date, (newStartDate) => {
+  if (formData.value.is_repeated) {
+    formData.value.end_date = newStartDate
+  }
+})
+
 // Lithuanian weekday names (Monday = 0, Sunday = 6)
 const weekdays = [
   { value: 0, label: 'Pirmadienis' },
@@ -255,8 +269,8 @@ const showApproveDecline = computed(() => {
           </select>
         </div>
 
-        <!-- Dates (hidden when is_repeated is checked) -->
-        <div v-if="!formData.is_repeated" class="form-row">
+        <!-- Dates -->
+        <div class="form-row">
           <div class="form-group">
             <label for="start_date">Pradžios data</label>
             <input
@@ -278,8 +292,9 @@ const showApproveDecline = computed(() => {
               type="date"
               required
               class="form-input"
-              :disabled="isViewOnly"
+              :disabled="isViewOnly || formData.is_repeated"
               :readonly="isViewOnly"
+              :class="{ 'input-disabled': formData.is_repeated }"
             />
           </div>
         </div>
@@ -495,6 +510,13 @@ const showApproveDecline = computed(() => {
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-input.input-disabled,
+.form-input:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
 }
 
 textarea.form-input {
