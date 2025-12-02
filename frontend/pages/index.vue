@@ -38,7 +38,10 @@ onMounted(() => {
       <div class="header-left">
         <h1 class="page-title">Užduotys</h1>
         <NuxtLink v-if="isParent" to="/statistics" class="stats-link">
-          📊 Statistika
+          Žiūrėti pagal vaikus
+        </NuxtLink>
+        <NuxtLink v-if="isParent" to="/statistics-table" class="stats-link">
+          Statistika
         </NuxtLink>
       </div>
       <div class="user-info">

@@ -51,14 +51,12 @@ class TaskController extends Controller
         if (is_array($result)) {
             return response()->json([
                 'message' => 'Periodic tasks created successfully',
-                'tasks' => $result,
                 'count' => count($result),
             ], 201);
         }
 
         return response()->json([
             'message' => 'Task created successfully',
-            'task' => $result,
         ], 201);
     }
 

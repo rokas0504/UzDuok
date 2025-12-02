@@ -255,8 +255,8 @@ const showApproveDecline = computed(() => {
           </select>
         </div>
 
-        <!-- Dates -->
-        <div class="form-row">
+        <!-- Dates (hidden when is_repeated is checked) -->
+        <div v-if="!formData.is_repeated" class="form-row">
           <div class="form-group">
             <label for="start_date">Pradžios data</label>
             <input

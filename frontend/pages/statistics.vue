@@ -144,7 +144,7 @@ onMounted(() => {
 <template>
   <div class="page-container">
     <div class="page-header">
-      <h1 class="page-title">Vaikų statistika</h1>
+      <h1 class="page-title">Užduotys pagal vaikus</h1>
       <NuxtLink to="/" class="back-link">
         ← Grįžti į užduotis
       </NuxtLink>
