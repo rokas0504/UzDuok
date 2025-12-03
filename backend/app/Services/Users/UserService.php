@@ -38,7 +38,7 @@ class UserService extends Service
         $user->load('role');
 
         // Log the user in via session
-        auth()->login($user);
+        //auth()->login($user);
 
         return $user;
     }

@@ -23,7 +23,7 @@
                 Atsijungti
               </button>
             </template>
-            <template v-else>
+            <!-- <template v-else>
               <NuxtLink
                 to="/login"
                 class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
@@ -36,7 +36,7 @@
               >
                 Registruotis
               </NuxtLink>
-            </template>
+            </template> -->
           </div>
         </div>
       </div>

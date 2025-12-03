@@ -21,6 +21,12 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request): JsonResponse
     {
+        // Only parents can register new users
+        if (!$request->user()->isParent()) {
+            return response()->json([
+                'message' => 'Unauthorized. Only parents can register new users.',
+                ], 403);
+        }
         $user = $this->userService->register($request->validated());
 
         return response()->json([

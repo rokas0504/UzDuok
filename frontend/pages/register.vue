@@ -3,17 +3,28 @@
     <div class="max-w-md w-full space-y-8">
       <div>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Sukurti paskyrą
+          Sukurti paskyrą šeimos nariui
         </h2>
-        <p class="mt-2 text-center text-sm text-gray-600">
+        <!-- <p class="mt-2 text-center text-sm text-gray-600">
           Arba
           <NuxtLink to="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
             Prisijungti
           </NuxtLink>
-        </p>
+        </p> -->
       </div>
 
       <form class="mt-8 space-y-6" @submit.prevent="handleRegister">
+        <!-- Success message -->
+        <div v-if="successMessage" class="rounded-md bg-green-50 p-4">
+          <div class="flex">
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-green-800">
+                {{ successMessage }}
+              </h3>
+            </div>
+          </div>
+        </div>
+
         <div v-if="errorMessage" class="rounded-md bg-red-50 p-4">
           <div class="flex">
             <div class="ml-3">
@@ -117,8 +128,11 @@
             class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span v-if="loading">Kuriama paskyra...</span>
-            <span v-else>Registruotis</span>
+            <span v-else>Registruoti šeimos narį</span>
           </button>
+          <NuxtLink to="/" class="back-link">
+            ← Grįžti į užduotis
+          </NuxtLink>
         </div>
       </form>
     </div>
@@ -127,10 +141,11 @@
 
 <script setup lang="ts">
 definePageMeta({
-  middleware: ['guest'],
+  middleware: ['auth'],
 })
 
 const { register } = useAuth()
+const route = useRoute() // added this
 
 const form = ref({
   name: '',
@@ -142,17 +157,35 @@ const form = ref({
 
 const errors = ref<Record<string, string>>({})
 const errorMessage = ref('')
+const successMessage = ref('') // added this
 const loading = ref(false)
 
 const handleRegister = async () => {
   loading.value = true
   errors.value = {}
   errorMessage.value = ''
+  successMessage.value = ''
 
   try {
     await register(form.value)
-    // After successful registration, user is automatically logged in and redirected
-    await navigateTo('/')
+
+    // show success message
+    successMessage.value = 'Paskyra sėkmingai sukurta.'
+
+    // po trumpų kelių sekundžių grąžinti atgal:
+    setTimeout(() => {
+      const redirect = (route.query.redirect || route.query.from) as string | undefined
+
+      if (redirect) {
+        navigateTo(redirect)
+      }
+      else if (typeof window !== 'undefined' && window.history.length > 1) {
+        window.history.back()
+      }
+      else {
+        navigateTo('/')
+      }
+    }, 3000)
   }
   catch (error: any) {
     if (error.response?.data?.errors) {
