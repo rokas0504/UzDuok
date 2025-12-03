@@ -130,9 +130,9 @@
             <span v-if="loading">Kuriama paskyra...</span>
             <span v-else>Registruoti šeimos narį</span>
           </button>
-          <button to="/" class="back-link">
+          <NuxtLink to="/" class="back-link">
             ← Grįžti į užduotis
-          </button>
+          </NuxtLink>
         </div>
       </form>
     </div>
@@ -141,7 +141,7 @@
 
 <script setup lang="ts">
 definePageMeta({
-  middleware: ['guest'],
+  middleware: ['auth'],
 })
 
 const { register } = useAuth()
@@ -185,7 +185,7 @@ const handleRegister = async () => {
       else {
         navigateTo('/')
       }
-    }, 1500)
+    }, 3000)
   }
   catch (error: any) {
     if (error.response?.data?.errors) {
