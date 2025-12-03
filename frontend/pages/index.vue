@@ -43,6 +43,9 @@ onMounted(() => {
         <NuxtLink v-if="isParent" to="/statistics-table" class="stats-link">
           Statistika
         </NuxtLink>
+        <NuxtLink v-if="isParent" :to="`/register?redirect=${$route.fullPath}`" class="stats-link">
+          Registruoti narį
+        </NuxtLink>
       </div>
       <div class="user-info">
         <span class="user-name">{{ user?.name }}</span>
