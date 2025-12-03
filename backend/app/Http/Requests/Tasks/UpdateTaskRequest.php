@@ -28,6 +28,7 @@ class UpdateTaskRequest extends FormRequest
             'is_repeated' => ['sometimes', 'required', 'boolean'],
             'start_date' => ['sometimes', 'required', 'date'],
             'end_date' => ['sometimes', 'required', 'date', 'after_or_equal:start_date'],
+            'user_id' => ['sometimes', 'required', 'integer', 'exists:users,id'],
         ];
     }
 }
