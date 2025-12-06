@@ -3,9 +3,11 @@
 namespace App\Models\Users;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Points\PointTransaction;
 use App\Models\Roles\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -25,6 +27,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'points',
     ];
 
     /**
@@ -47,6 +50,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'points' => 'decimal:2',
         ];
     }
 
@@ -80,5 +84,13 @@ class User extends Authenticatable
     public function isChild(): bool
     {
         return $this->hasRole('child');
+    }
+
+    /**
+     * Get the point transactions for the user.
+     */
+    public function pointTransactions(): HasMany
+    {
+        return $this->hasMany(PointTransaction::class);
     }
 }

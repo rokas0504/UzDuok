@@ -46,6 +46,12 @@ onMounted(() => {
         <NuxtLink v-if="isParent" to="/register" class="stats-link">
           Registruoti narį
         </NuxtLink>
+        <NuxtLink v-if="isParent" to="/shop-manage" class="stats-link">
+          Tvarkyti parduotuvę
+        </NuxtLink>
+        <NuxtLink v-else to="/shop" class="stats-link">
+          Parduotuvė
+        </NuxtLink>
       </div>
       <div class="user-info">
         <span class="user-name">{{ user?.name }}</span>
