@@ -1,0 +1,282 @@
+================================================================================
+                    KODO KOKYBĖS METRIKOS - PRADINĖS REIKŠMĖS
+                              UzDuok Projektas
+                              2025-12-07 (PRIEŠ)
+================================================================================
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│                          BACKEND (PHP/Laravel)                            │
+└──────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════
+1. PHPMETRICS - COMPLEXITY & QUALITY METRICS
+═══════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────┬──────────────────────────────┐
+│ Metrika                                  │ Reikšmė                      │
+├─────────────────────────────────────────┼──────────────────────────────┤
+│ Lines of Code (LOC)                      │ 1329                         │
+│ Logical Lines of Code                    │ 792                          │
+│ Comment Lines of Code                    │ 537                          │
+│ Average Volume                           │ 172.25                       │
+│ Average Comment Weight                   │ 40.84                        │
+├─────────────────────────────────────────┼──────────────────────────────┤
+│ Classes                                  │ 29                           │
+│ Interfaces                               │ 0                            │
+│ Methods                                  │ 119                          │
+│ Methods per Class (avg)                  │ 4.1                          │
+│ Logical LOC per Class (avg)              │ 27                           │
+│ Logical LOC per Method (avg)             │ 7                            │
+├─────────────────────────────────────────┼──────────────────────────────┤
+│ Avg Cyclomatic Complexity per Class      │ 2.28                         │
+│ Avg Weighted Method Count per Class      │ 5.38                         │
+│ Avg Relative System Complexity           │ 51.32                        │
+│ Avg Difficulty                           │ 3.13                         │
+├─────────────────────────────────────────┼──────────────────────────────┤
+│ Avg Afferent Coupling                    │ 1.38                         │
+│ Avg Efferent Coupling                    │ 3.31                         │
+│ Avg Instability                          │ 0.69                         │
+│ Depth of Inheritance Tree                │ 1.8                          │
+│ Lack of Cohesion of Methods (LCOM)       │ 2.41                         │
+├─────────────────────────────────────────┼──────────────────────────────┤
+│ Avg Bugs per Class                       │ 0.06                         │
+│ Avg Defects per Class (Kan)             │ 0.22                         │
+├─────────────────────────────────────────┼──────────────────────────────┤
+│ Violations - Critical                    │ 0                            │
+│ Violations - Error                       │ 1                            │
+│ Violations - Warning                     │ 4                            │
+│ Violations - Information                 │ 0                            │
+└─────────────────────────────────────────┴──────────────────────────────┘
+
+Šaltinis: ./vendor/bin/phpmetrics --report-cli app
+HTML Reportas: phpmetrics-report/index.html
+
+
+═══════════════════════════════════════════════════════════════════════════
+2. PHPMD - CODE SMELLS DETECTION
+═══════════════════════════════════════════════════════════════════════════
+
+APTIKTA CODE SMELLS: 7
+
+┌───┬────────────────────────────────┬───────┬────────────────────────┬──────────────────────────────────┐
+│ # │ Failas                          │ Linija│ Code Smell             │ Aprašymas                        │
+├───┼────────────────────────────────┼───────┼────────────────────────┼──────────────────────────────────┤
+│ 1 │ AuthController.php              │   88  │ ShortMethodName        │ Metodas me() per trumpas (<3)    │
+│ 2 │ Controller.php                  │   64  │ ShortMethodName        │ Metodas ok() per trumpas (<3)    │
+│ 3 │ Repository.php                  │   12  │ TooManyPublicMethods   │ 11 public metodų (norma ≤10)     │
+│ 4 │ PointService.php                │   87  │ MissingImport          │ Naudoja \Exception be use        │
+│ 5 │ PointService.php                │   91  │ MissingImport          │ Naudoja \Exception be use        │
+│ 6 │ TaskService.php                 │  134  │ UnusedLocalVariable    │ Nenaudojamas $oldStatus          │
+│ 7 │ UserService.php                 │   77  │ UnusedFormalParameter  │ Nenaudojamas $user parametras    │
+└───┴────────────────────────────────┴───────┴────────────────────────┴──────────────────────────────────┘
+
+Šaltinis: ./vendor/bin/phpmd app text phpmd.xml
+Rezultatai: phpmd-initial.txt
+
+
+═══════════════════════════════════════════════════════════════════════════
+3. PHPSTAN - STATIC ANALYSIS
+═══════════════════════════════════════════════════════════════════════════
+
+APTIKTA KLAIDŲ: 58
+
+Pagrindinės problemos:
+  • Missing property type definitions
+  • Unspecified generic types (BelongsTo, HasMany, Collection)
+  • Access to undefined properties
+  • Missing iterable value types in arrays
+  • Return type mismatches
+
+Pavyzdžiai:
+  - Enums/TaskStatus.php:17 - Missing iterable value type
+  - AuthController.php:35-39 - Access to undefined properties (5x)
+  - Repository.php:15-137 - Missing generic types (15x)
+  - Models/Users/User.php:60-92 - Missing generic types (3x)
+
+Šaltinis: ./vendor/bin/phpstan analyse --memory-limit=512M
+Rezultatai: phpstan-initial.txt
+
+
+═══════════════════════════════════════════════════════════════════════════
+4. CODE COVERAGE
+═══════════════════════════════════════════════════════════════════════════
+
+COVERAGE: 0% (testai dar nesukurti)
+
+Šaltinis: ./vendor/bin/phpunit --coverage-text
+
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│                        FRONTEND (Vue.js/TypeScript)                       │
+└──────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════
+1. ESLINT - CODE QUALITY & STYLE
+═══════════════════════════════════════════════════════════════════════════
+
+TOTAL PROBLEMS: 341 (142 errors, 199 warnings)
+AUTOFIXABLE: 259 problems (111 errors, 148 warnings)
+
+┌─────────────────────────────────────────────────────────────────────┬──────┐
+│ Error Type                                                           │ Cnt  │
+├─────────────────────────────────────────────────────────────────────┼──────┤
+│ vue/singleline-html-element-content-newline                          │  38  │
+│ @typescript-eslint/no-explicit-any                                   │  21  │
+│ @stylistic/brace-style                                               │  18  │
+│ @stylistic/eol-last                                                  │   7  │
+│ @typescript-eslint/no-unused-vars                                    │   5  │
+│ @stylistic/no-trailing-spaces                                        │   4  │
+│ no-useless-catch                                                     │   2  │
+│ @stylistic/comma-dangle                                              │   1  │
+│ (kiti)                                                               │  46  │
+└─────────────────────────────────────────────────────────────────────┴──────┘
+
+┌─────────────────────────────────────────────────────────────────────┬──────┐
+│ Warning Type                                                         │ Cnt  │
+├─────────────────────────────────────────────────────────────────────┼──────┤
+│ vue/max-attributes-per-line                                          │ 148  │
+│ vue/html-self-closing                                                │  28  │
+│ vue/attributes-order                                                 │  25  │
+│ (kiti)                                                               │  -2  │
+└─────────────────────────────────────────────────────────────────────┴──────┘
+
+Probleminiai failai:
+  1. components/Calendar/TaskModal.vue        - 44 errors, 165 warnings
+  2. pages/statistics-table.vue               - 35 errors, 171 warnings
+  3. pages/shop-manage.vue                    - 18 errors, 43 warnings
+  4. components/Calendar/WeekCalendar.vue     - 13 errors, 20 warnings
+  5. useAuth.ts                               - 15 errors, 0 warnings
+
+Šaltinis: npx eslint . --ext .vue,.ts,.js
+Rezultatai: frontend/eslint-initial.txt
+
+
+================================================================================
+                              IDENTIFIKUOTOS PROBLEMOS
+================================================================================
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ BACKEND - PROBLEMINIAI METODAI/KLASĖS                                    │
+└──────────────────────────────────────────────────────────────────────────┘
+
+1. TaskService::updateStatus() (lines 132-155)
+   Problemos:
+   • Aukštas CC (multiple if statements)
+   • Unused variable: $oldStatus
+   • Pažeidžia SRP (status + points logic)
+   • Tight coupling su PointService
+
+   Metrika PRIEŠ: CC ≈ 4, LOC = 24
+
+2. PointService::purchaseShopItem() (lines 81-123)
+   Problemos:
+   • Long method (43 linijos)
+   • Multiple responsibilities (validation + points + purchase + transaction)
+   • Missing imports (\Exception)
+   • Low cohesion
+
+   Metrika PRIEŠ: CC ≈ 3, LOC = 43
+
+3. TaskService::createPeriodicTasks() (lines 64-100)
+   Problemos:
+   • Nested loops (for + foreach)
+   • Long method (37 linijos)
+   • Multiple responsibilities
+
+   Metrika PRIEŠ: CC ≈ 5, LOC = 37
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│ FRONTEND - PROBLEMINIAI FAILAI                                           │
+└──────────────────────────────────────────────────────────────────────────┘
+
+1. useAuth.ts (composables/useAuth.ts)
+   Problemos:
+   • 6x any tipai (lines: 7, 28, 30, 67, 82, 94)
+   • 2x useless try-catch (lines 38-42, 47-75)
+   • 1x unused variable: config (line 48)
+   • Low type safety
+
+   Metrika PRIEŠ: any tipų = 6, LOC = 114
+
+2. TaskModal.vue (components/Calendar/TaskModal.vue)
+   Problemos:
+   • 6x any tipai
+   • Didelis komponentas (704 linijos)
+   • Daug formatavimo problemų (209 issues)
+   • Trūksta EOL
+
+   Metrika PRIEŠ: any tipų = 6, LOC = 704
+
+
+================================================================================
+                            PERTVARKYMO PLANAS
+================================================================================
+
+Backend:
+  ☐ Pertvarkyti TaskService::updateStatus() → išskaidyti į metodus
+  ☐ Pertvarkyti PointService::purchaseShopItem() → pridėti validation metodą
+  ☐ Pataisyti 8 code smells (PHPMD)
+  ☐ Sukurti unit testus (coverage ≥80%)
+
+Frontend:
+  ☐ Pertvarkyti useAuth.ts → pašalinti any tipus
+  ☐ Pataisyti formatavimo problemas
+  ☐ Pašalinti unused variables
+  ☐ Pridėti EOL failo pabaigose
+
+
+================================================================================
+                               FAILŲ LOKACIJOS
+================================================================================
+
+Backend Rezultatai:
+  • phpstan-initial.txt              ✓ Išsaugotas
+  • phpmd-initial.txt                ✓ Išsaugotas
+  • phpmetrics-initial.txt           ✓ Išsaugotas
+  • phpmetrics-report/               ✓ HTML reportai sugeneruoti
+    - index.html                     (Dashboard)
+    - complexity.html                (Cyclomatic Complexity)
+    - coupling.html                  (Coupling analizė)
+    - all.html                       (Visos klasės)
+
+Frontend Rezultatai:
+  • eslint-initial.txt               ✓ Išsaugotas (frontend/)
+
+Dokumentacija:
+  • KODO_KOKYBES_ANALIZE.md         ✓ Pagrindinis dokumentas
+  • METRIKU_GAVIMO_INSTRUKCIJA.md   ✓ Instrukcija
+  • METRIKOS_SUMMARY.txt             ✓ Šis failas
+
+
+================================================================================
+                         GREITOSIOS PERŽIŪROS KOMANDOS
+================================================================================
+
+# Atidaryti PHPMetrics HTML reportą:
+open backend/phpmetrics-report/index.html
+
+# Peržiūrėti PHPStan klaidas:
+cat backend/phpstan-initial.txt | grep "Line" | head -20
+
+# Peržiūrėti PHPMD code smells:
+cat backend/phpmd-initial.txt | grep "app/"
+
+# Peržiūrėti ESLint summary:
+cat frontend/eslint-initial.txt | tail -5
+
+# Suskaičiuoti ESLint errors:
+cat frontend/eslint-initial.txt | grep "error" | wc -l
+
+# Suskaičiuoti ESLint warnings:
+cat frontend/eslint-initial.txt | grep "warning" | wc -l
+
+
+================================================================================
+                                   PABAIGA
+================================================================================
+
+Sugeneruota: 2025-12-07
+Projektas: UzDuok (Backend + Frontend)
+Statusas: PRADINĖ ANALIZĖ ATLIKTA ✓
+
+Kitas žingsnis: Sukurti unit testus ir pradėti refactoring

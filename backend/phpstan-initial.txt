@@ -1,0 +1,719 @@
+Note: Using configuration file /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/phpstan.neon.
+  0/29 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%[1G[2K 20/29 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░]  68%[1G[2K 29/29 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Enums/TaskStatus.php                                                   
+ ------ ----------------------------------------------------------------------- 
+  17     Method App\Enums\TaskStatus::values() return type has no value type    
+         specified in iterable type array.                                      
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Enums/TaskStatus.php:17                                         
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Http/Controllers/Auth/AuthController.php                               
+ ------ ----------------------------------------------------------------------- 
+  35     Access to an undefined property App\Models\Users\User::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:35                     
+  36     Access to an undefined property App\Models\Users\User::$name.          
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:36                     
+  37     Access to an undefined property App\Models\Users\User::$email.         
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:37                     
+  38     Access to an undefined property App\Models\Users\User::$role.          
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:38                     
+  39     Access to an undefined property App\Models\Users\User::$points.        
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:39                     
+  54     Access to an undefined property App\Models\Users\User::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:54                     
+  55     Access to an undefined property App\Models\Users\User::$name.          
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:55                     
+  56     Access to an undefined property App\Models\Users\User::$email.         
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:56                     
+  57     Access to an undefined property App\Models\Users\User::$role.          
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:57                     
+  58     Access to an undefined property App\Models\Users\User::$points.        
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Auth/AuthController.php:58                     
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Http/Controllers/Controller.php                                        
+ ------ ----------------------------------------------------------------------- 
+  44     Method App\Http\Controllers\Controller::unprocessableEntity() has      
+         parameter $message with no value type specified in iterable type       
+         array.                                                                 
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Http/Controllers/Controller.php:44                              
+  64     Method App\Http\Controllers\Controller::ok() has parameter             
+         $dataToReturn with no value type specified in iterable type array.     
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Http/Controllers/Controller.php:64                              
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Http/Controllers/Tasks/TaskController.php                              
+ ------ ----------------------------------------------------------------------- 
+  117    Access to an undefined property Illuminate\Http\Request::$status.      
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Tasks/TaskController.php:117                   
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Http/Controllers/Users/UserController.php                              
+ ------ ----------------------------------------------------------------------- 
+  23     Parameter #1 $callback of method                                       
+         Illuminate\Database\Eloquent\Collection<(int|string),Illuminate\Datab  
+         ase\Eloquent\Model>::map() contains unresolvable type.                 
+         🪪  argument.unresolvableType                                          
+         at app/Http/Controllers/Users/UserController.php:23                    
+  23     Return type of call to method                                          
+         Illuminate\Database\Eloquent\Collection<(int|string),Illuminate\Datab  
+         ase\Eloquent\Model>::map() contains unresolvable type.                 
+         🪪  method.unresolvableReturnType                                      
+         at app/Http/Controllers/Users/UserController.php:23                    
+  24     Access to an undefined property                                        
+         Illuminate\Database\Eloquent\Model::$id.                               
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Users/UserController.php:24                    
+  25     Access to an undefined property                                        
+         Illuminate\Database\Eloquent\Model::$name.                             
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Users/UserController.php:25                    
+  26     Access to an undefined property                                        
+         Illuminate\Database\Eloquent\Model::$email.                            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Http/Controllers/Users/UserController.php:26                    
+ ------ ----------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   Models/Points/PointTransaction.php                                   
+ ------ --------------------------------------------------------------------- 
+  45     Method App\Models\Points\PointTransaction::user() return type with   
+         generic class Illuminate\Database\Eloquent\Relations\BelongsTo does  
+         not specify its types: TRelatedModel, TDeclaringModel                
+         🪪  missingType.generics                                             
+         at app/Models/Points/PointTransaction.php:45                         
+  53     Method App\Models\Points\PointTransaction::task() return type with   
+         generic class Illuminate\Database\Eloquent\Relations\BelongsTo does  
+         not specify its types: TRelatedModel, TDeclaringModel                
+         🪪  missingType.generics                                             
+         at app/Models/Points/PointTransaction.php:53                         
+  61     Method App\Models\Points\PointTransaction::shopItem() return type    
+         with generic class Illuminate\Database\Eloquent\Relations\BelongsTo  
+         does not specify its types: TRelatedModel, TDeclaringModel           
+         🪪  missingType.generics                                             
+         at app/Models/Points/PointTransaction.php:61                         
+ ------ --------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   Models/Roles/Role.php                                                 
+ ------ ---------------------------------------------------------------------- 
+  25     Method App\Models\Roles\Role::users() return type with generic class  
+         Illuminate\Database\Eloquent\Relations\HasMany does not specify its   
+         types: TRelatedModel, TDeclaringModel                                 
+         🪪  missingType.generics                                              
+         at app/Models/Roles/Role.php:25                                       
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   Models/Shop/Purchase.php                                              
+ ------ ---------------------------------------------------------------------- 
+  39     Method App\Models\Shop\Purchase::user() return type with generic      
+         class Illuminate\Database\Eloquent\Relations\BelongsTo does not       
+         specify its types: TRelatedModel, TDeclaringModel                     
+         🪪  missingType.generics                                              
+         at app/Models/Shop/Purchase.php:39                                    
+  47     Method App\Models\Shop\Purchase::shopItem() return type with generic  
+         class Illuminate\Database\Eloquent\Relations\BelongsTo does not       
+         specify its types: TRelatedModel, TDeclaringModel                     
+         🪪  missingType.generics                                              
+         at app/Models/Shop/Purchase.php:47                                    
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Models/Shop/ShopItem.php                                               
+ ------ ----------------------------------------------------------------------- 
+  42     Method App\Models\Shop\ShopItem::creator() return type with generic    
+         class Illuminate\Database\Eloquent\Relations\BelongsTo does not        
+         specify its types: TRelatedModel, TDeclaringModel                      
+         🪪  missingType.generics                                               
+         at app/Models/Shop/ShopItem.php:42                                     
+  50     Method App\Models\Shop\ShopItem::purchases() return type with generic  
+         class Illuminate\Database\Eloquent\Relations\HasMany does not specify  
+         its types: TRelatedModel, TDeclaringModel                              
+         🪪  missingType.generics                                               
+         at app/Models/Shop/ShopItem.php:50                                     
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Models/Tasks/Task.php                                                  
+ ------ ----------------------------------------------------------------------- 
+  13     Class App\Models\Tasks\Task uses generic trait                         
+         Illuminate\Database\Eloquent\Factories\HasFactory but does not         
+         specify its types: TFactory                                            
+         🪪  missingType.generics                                               
+         at app/Models/Tasks/Task.php:13                                        
+  50     Method App\Models\Tasks\Task::user() return type with generic class    
+         Illuminate\Database\Eloquent\Relations\BelongsTo does not specify its  
+         types: TRelatedModel, TDeclaringModel                                  
+         🪪  missingType.generics                                               
+         at app/Models/Tasks/Task.php:50                                        
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Models/Users/User.php                                                  
+ ------ ----------------------------------------------------------------------- 
+  60     Method App\Models\Users\User::role() return type with generic class    
+         Illuminate\Database\Eloquent\Relations\BelongsTo does not specify its  
+         types: TRelatedModel, TDeclaringModel                                  
+         🪪  missingType.generics                                               
+         at app/Models/Users/User.php:60                                        
+  70     Access to an undefined property App\Models\Users\User::$role.          
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Models/Users/User.php:70                                        
+  92     Method App\Models\Users\User::pointTransactions() return type with     
+         generic class Illuminate\Database\Eloquent\Relations\HasMany does not  
+         specify its types: TRelatedModel, TDeclaringModel                      
+         🪪  missingType.generics                                               
+         at app/Models/Users/User.php:92                                        
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Repositories/Repository.php                                            
+ ------ ----------------------------------------------------------------------- 
+  15     Property App\Repositories\Repository::$query with generic class        
+         Illuminate\Database\Eloquent\Builder does not specify its types:       
+         TModel                                                                 
+         🪪  missingType.generics                                               
+         at app/Repositories/Repository.php:15                                  
+  29     Method App\Repositories\Repository::store() has parameter $data with   
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:29                                  
+  50     Method App\Repositories\Repository::update() has parameter $data with  
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:50                                  
+  61     Method App\Repositories\Repository::updateOrCreate() has parameter     
+         $attributes with no value type specified in iterable type array.       
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:61                                  
+  61     Method App\Repositories\Repository::updateOrCreate() has parameter     
+         $values with no value type specified in iterable type array.           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:61                                  
+  70     Method App\Repositories\Repository::item() has parameter $where with   
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:70                                  
+  79     Method App\Repositories\Repository::items() has parameter $where with  
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:79                                  
+  79     Method App\Repositories\Repository::items() return type with generic   
+         class Illuminate\Database\Eloquent\Collection does not specify its     
+         types: TKey, TModel                                                    
+         🪪  missingType.generics                                               
+         at app/Repositories/Repository.php:79                                  
+  88     Method App\Repositories\Repository::itemsWithWhereIn() has parameter   
+         $whereIn with no value type specified in iterable type array.          
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:88                                  
+  88     Method App\Repositories\Repository::itemsWithWhereIn() return type     
+         with generic class Illuminate\Database\Eloquent\Collection does not    
+         specify its types: TKey, TModel                                        
+         🪪  missingType.generics                                               
+         at app/Repositories/Repository.php:88                                  
+  102    Method App\Repositories\Repository::list() return type with generic    
+         class Illuminate\Database\Eloquent\Collection does not specify its     
+         types: TKey, TModel                                                    
+         🪪  missingType.generics                                               
+         at app/Repositories/Repository.php:102                                 
+  111    Method App\Repositories\Repository::listPaginated() has parameter      
+         $where with no value type specified in iterable type array.            
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Repository.php:111                                 
+  111    Method App\Repositories\Repository::listPaginated() return type with   
+         generic class Illuminate\Pagination\LengthAwarePaginator does not      
+         specify its types: TKey, TValue                                        
+         🪪  missingType.generics                                               
+         at app/Repositories/Repository.php:111                                 
+  135    Method App\Repositories\Repository::selectOptions() return type with   
+         generic class Illuminate\Database\Eloquent\Collection does not         
+         specify its types: TKey, TModel                                        
+         🪪  missingType.generics                                               
+         at app/Repositories/Repository.php:135                                 
+  137    Method App\Repositories\Repository::selectOptions() should return      
+         Illuminate\Database\Eloquent\Collection but returns                    
+         Illuminate\Support\Collection<int, stdClass>.                          
+         🪪  return.type                                                        
+         at app/Repositories/Repository.php:137                                 
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   Repositories/Shop/ShopItemRepository.php                              
+ ------ ---------------------------------------------------------------------- 
+  21     Method App\Repositories\Shop\ShopItemRepository::getAllWithCreator()  
+         return type with generic class                                        
+         Illuminate\Database\Eloquent\Collection does not specify its types:   
+         TKey, TModel                                                          
+         🪪  missingType.generics                                              
+         at app/Repositories/Shop/ShopItemRepository.php:21                    
+  25     Method App\Repositories\Shop\ShopItemRepository::getAllWithCreator()  
+         should return Illuminate\Database\Eloquent\Collection but returns     
+         Illuminate\Support\Collection<int, stdClass>.                         
+         🪪  return.type                                                       
+         at app/Repositories/Shop/ShopItemRepository.php:25                    
+ ------ ---------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   Repositories/Tasks/TaskRepository.php                                
+ ------ --------------------------------------------------------------------- 
+  22     Method App\Repositories\Tasks\TaskRepository::getTasksByUserId()     
+         return type with generic class                                       
+         Illuminate\Database\Eloquent\Collection does not specify its types:  
+         TKey, TModel                                                         
+         🪪  missingType.generics                                             
+         at app/Repositories/Tasks/TaskRepository.php:22                      
+  26     Method App\Repositories\Tasks\TaskRepository::getTasksByUserId()     
+         should return Illuminate\Database\Eloquent\Collection but returns    
+         Illuminate\Support\Collection<int, stdClass>.                        
+         🪪  return.type                                                      
+         at app/Repositories/Tasks/TaskRepository.php:26                      
+  39     Method App\Repositories\Tasks\TaskRepository::getTasksByStatus()     
+         return type with generic class                                       
+         Illuminate\Database\Eloquent\Collection does not specify its types:  
+         TKey, TModel                                                         
+         🪪  missingType.generics                                             
+         at app/Repositories/Tasks/TaskRepository.php:39                      
+  43     Method App\Repositories\Tasks\TaskRepository::getTasksByStatus()     
+         should return Illuminate\Database\Eloquent\Collection but returns    
+         Illuminate\Support\Collection<int, stdClass>.                        
+         🪪  return.type                                                      
+         at app/Repositories/Tasks/TaskRepository.php:43                      
+ ------ --------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Repositories/Users/UserRepository.php                                  
+ ------ ----------------------------------------------------------------------- 
+  22     Method App\Repositories\Users\UserRepository::createUser() has         
+         parameter $data with no value type specified in iterable type array.   
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Repositories/Users/UserRepository.php:22                        
+  24     Method App\Repositories\Users\UserRepository::createUser() should      
+         return App\Models\Users\User but returns                               
+         Illuminate\Database\Eloquent\Model.                                    
+         🪪  return.type                                                        
+         at app/Repositories/Users/UserRepository.php:24                        
+  35     Method App\Repositories\Users\UserRepository::findByEmail() should     
+         return App\Models\Users\User|null but returns                          
+         Illuminate\Database\Eloquent\Model|null.                               
+         🪪  return.type                                                        
+         at app/Repositories/Users/UserRepository.php:35                        
+  46     Call to an undefined static method App\Models\Roles\Role::where().     
+         🪪  staticMethod.notFound                                              
+         at app/Repositories/Users/UserRepository.php:46                        
+  54     Method App\Repositories\Users\UserRepository::getChildUsers() return   
+         type with generic class Illuminate\Database\Eloquent\Collection does   
+         not specify its types: TKey, TModel                                    
+         🪪  missingType.generics                                               
+         at app/Repositories/Users/UserRepository.php:54                        
+  59     Access to an undefined property App\Models\Roles\Role::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Repositories/Users/UserRepository.php:59                        
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Services/Points/PointService.php                                       
+ ------ ----------------------------------------------------------------------- 
+  26     Access to an undefined property App\Models\Users\User::$points.        
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:26                             
+  27     Access to an undefined property App\Models\Tasks\Task::$price.         
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:27                             
+  32     Call to an undefined static method                                     
+         App\Models\Points\PointTransaction::create().                          
+         🪪  staticMethod.notFound                                              
+         at app/Services/Points/PointService.php:32                             
+  33     Access to an undefined property App\Models\Users\User::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:33                             
+  34     Access to an undefined property App\Models\Tasks\Task::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:34                             
+  54     Access to an undefined property App\Models\Users\User::$points.        
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:54                             
+  55     Access to an undefined property App\Models\Tasks\Task::$price.         
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:55                             
+  60     Call to an undefined static method                                     
+         App\Models\Points\PointTransaction::create().                          
+         🪪  staticMethod.notFound                                              
+         at app/Services/Points/PointService.php:60                             
+  61     Access to an undefined property App\Models\Users\User::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:61                             
+  62     Access to an undefined property App\Models\Tasks\Task::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:62                             
+  84     Access to an undefined property App\Models\Shop\ShopItem::$price.      
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:84                             
+  86     Access to an undefined property App\Models\Users\User::$points.        
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:86                             
+  90     Access to an undefined property App\Models\Shop\ShopItem::$quantity.   
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:90                             
+  100    Call to protected method decrement() of class                          
+         Illuminate\Database\Eloquent\Model.                                    
+         🪪  method.protected                                                   
+         at app/Services/Points/PointService.php:100                            
+  102    Call to an undefined static method                                     
+         App\Models\Shop\Purchase::create().                                    
+         🪪  staticMethod.notFound                                              
+         at app/Services/Points/PointService.php:102                            
+  103    Access to an undefined property App\Models\Users\User::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:103                            
+  104    Access to an undefined property App\Models\Shop\ShopItem::$id.         
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:104                            
+  109    Call to an undefined static method                                     
+         App\Models\Points\PointTransaction::create().                          
+         🪪  staticMethod.notFound                                              
+         at app/Services/Points/PointService.php:109                            
+  110    Access to an undefined property App\Models\Users\User::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:110                            
+  111    Access to an undefined property App\Models\Shop\ShopItem::$id.         
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Points/PointService.php:111                            
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Services/Service.php                                                   
+ ------ ----------------------------------------------------------------------- 
+  20     Method App\Services\Service::store() has parameter $data with no       
+         value type specified in iterable type array.                           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Service.php:20                                         
+  30     Method App\Services\Service::update() has parameter $data with no      
+         value type specified in iterable type array.                           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Service.php:30                                         
+  48     Method App\Services\Service::items() has parameter $where with no      
+         value type specified in iterable type array.                           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Service.php:48                                         
+  48     Method App\Services\Service::items() return type with generic class    
+         Illuminate\Database\Eloquent\Collection does not specify its types:    
+         TKey, TModel                                                           
+         🪪  missingType.generics                                               
+         at app/Services/Service.php:48                                         
+  56     Method App\Services\Service::getList() return type with generic class  
+         Illuminate\Database\Eloquent\Collection does not specify its types:    
+         TKey, TModel                                                           
+         🪪  missingType.generics                                               
+         at app/Services/Service.php:56                                         
+  65     Method App\Services\Service::getPaginatedList() has parameter $where   
+         with no value type specified in iterable type array.                   
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Service.php:65                                         
+  65     Method App\Services\Service::getPaginatedList() return type with       
+         generic class Illuminate\Pagination\LengthAwarePaginator does not      
+         specify its types: TKey, TValue                                        
+         🪪  missingType.generics                                               
+         at app/Services/Service.php:65                                         
+  88     Method App\Services\Service::getSelectOptions() return type with       
+         generic class Illuminate\Database\Eloquent\Collection does not         
+         specify its types: TKey, TModel                                        
+         🪪  missingType.generics                                               
+         at app/Services/Service.php:88                                         
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Services/Shop/ShopService.php                                          
+ ------ ----------------------------------------------------------------------- 
+  24     Method App\Services\Shop\ShopService::getAllItems() return type with   
+         generic class Illuminate\Database\Eloquent\Collection does not         
+         specify its types: TKey, TModel                                        
+         🪪  missingType.generics                                               
+         at app/Services/Shop/ShopService.php:24                                
+  32     Method App\Services\Shop\ShopService::createItem() has parameter       
+         $data with no value type specified in iterable type array.             
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Shop/ShopService.php:32                                
+  35     Method App\Services\Shop\ShopService::createItem() should return       
+         App\Models\Shop\ShopItem but returns                                   
+         Illuminate\Database\Eloquent\Model|null.                               
+         🪪  return.type                                                        
+         at app/Services/Shop/ShopService.php:35                                
+  41     Method App\Services\Shop\ShopService::updateItem() has parameter       
+         $data with no value type specified in iterable type array.             
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Shop/ShopService.php:41                                
+  59     Method App\Services\Shop\ShopService::purchaseItem() return type has   
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Shop/ShopService.php:59                                
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Services/Tasks/TaskService.php                                         
+ ------ ----------------------------------------------------------------------- 
+  20     Property App\Services\Tasks\TaskService::$taskRepository is never      
+         read, only written.                                                    
+         🪪  property.onlyWritten                                               
+         💡  See:                                                               
+         https://phpstan.org/developing-extensions/always-read-written-propert  
+         ies                                                                    
+         at app/Services/Tasks/TaskService.php:20                               
+  32     Method App\Services\Tasks\TaskService::store() has parameter $data     
+         with no value type specified in iterable type array.                   
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Tasks/TaskService.php:32                               
+  48     Method App\Services\Tasks\TaskService::createTask() has parameter      
+         $data with no value type specified in iterable type array.             
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Tasks/TaskService.php:48                               
+  48     Method App\Services\Tasks\TaskService::createTask() return type has    
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Tasks/TaskService.php:48                               
+  64     Method App\Services\Tasks\TaskService::createPeriodicTasks() has       
+         parameter $data with no value type specified in iterable type array.   
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Tasks/TaskService.php:64                               
+  64     Method App\Services\Tasks\TaskService::createPeriodicTasks() return    
+         type has no value type specified in iterable type array.               
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Tasks/TaskService.php:64                               
+  108    Method App\Services\Tasks\TaskService::getTasksByUserId() return type  
+         with generic class Illuminate\Database\Eloquent\Collection does not    
+         specify its types: TKey, TModel                                        
+         🪪  missingType.generics                                               
+         at app/Services/Tasks/TaskService.php:108                              
+  110    Call to an undefined method                                            
+         App\Repositories\Repository::getTasksByUserId().                       
+         🪪  method.notFound                                                    
+         at app/Services/Tasks/TaskService.php:110                              
+  120    Method App\Services\Tasks\TaskService::getTasksByStatus() return type  
+         with generic class Illuminate\Database\Eloquent\Collection does not    
+         specify its types: TKey, TModel                                        
+         🪪  missingType.generics                                               
+         at app/Services/Tasks/TaskService.php:120                              
+  122    Call to an undefined method                                            
+         App\Repositories\Repository::getTasksByStatus().                       
+         🪪  method.notFound                                                    
+         at app/Services/Tasks/TaskService.php:122                              
+  134    Access to an undefined property App\Models\Tasks\Task::$status.        
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Tasks/TaskService.php:134                              
+  135    Call to an undefined method                                            
+         App\Repositories\Repository::updateStatus().                           
+         🪪  method.notFound                                                    
+         at app/Services/Tasks/TaskService.php:135                              
+  139    Access to an undefined property App\Models\Tasks\Task::$status.        
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Tasks/TaskService.php:139                              
+  142    Access to an undefined property App\Models\Tasks\Task::$user.          
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Tasks/TaskService.php:142                              
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Services/Users/UserService.php                                         
+ ------ ----------------------------------------------------------------------- 
+  27     Method App\Services\Users\UserService::register() has parameter $data  
+         with no value type specified in iterable type array.                   
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Users/UserService.php:27                               
+  35     Access to an undefined property App\Models\Roles\Role::$id.            
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Users/UserService.php:35                               
+  53     Method App\Services\Users\UserService::login() has parameter           
+         $credentials with no value type specified in iterable type array.      
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at app/Services/Users/UserService.php:53                               
+  57     Access to an undefined property App\Models\Users\User::$password.      
+         🪪  property.notFound                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-und  
+         efined-property                                                        
+         at app/Services/Users/UserService.php:57                               
+  66     Call to an undefined method                                            
+         Illuminate\Contracts\Auth\Factory::login().                            
+         🪪  method.notFound                                                    
+         at app/Services/Users/UserService.php:66                               
+  79     Call to an undefined method                                            
+         Illuminate\Contracts\Auth\Guard::logout().                             
+         🪪  method.notFound                                                    
+         at app/Services/Users/UserService.php:79                               
+  93     Method App\Services\Users\UserService::getChildUsers() return type     
+         with generic class Illuminate\Database\Eloquent\Collection does not    
+         specify its types: TKey, TModel                                        
+         🪪  missingType.generics                                               
+         at app/Services/Users/UserService.php:93                               
+ ------ ----------------------------------------------------------------------- 
+
+ [ERROR] Found 113 errors                                                       
+
