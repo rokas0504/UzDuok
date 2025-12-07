@@ -19,7 +19,7 @@ const form = ref<ShopItemFormData>({
   description: '',
   price: 0,
   quantity: 1,
-  icon: '',
+  icon: 'gift',
 })
 
 async function fetchShopItems() {
@@ -29,7 +29,7 @@ async function fetchShopItems() {
     const response = await useFetchShopItems()
     shopItems.value = response.shop_items
   } catch (err: any) {
-    error.value = err.data?.message || 'Failed to load shop items'
+    error.value = err.data?.message || 'Nepavyko įkelti prekių'
     console.error('Error fetching shop items:', err)
   } finally {
     loading.value = false
@@ -46,19 +46,19 @@ async function handleSubmit() {
     resetForm()
     await fetchShopItems()
   } catch (err: any) {
-    error.value = err.data?.message || 'Failed to save shop item'
+    error.value = err.data?.message || 'Nepavyko išsaugoti prekės'
     console.error('Error saving shop item:', err)
   }
 }
 
 async function deleteItem(id: number) {
-  if (!confirm('Are you sure you want to delete this item?')) return
+  if (!confirm('Ar tikrai norite ištrinti šią prekę?')) return
 
   try {
     await useDeleteShopItem(id)
     await fetchShopItems()
   } catch (err: any) {
-    error.value = err.data?.message || 'Failed to delete shop item'
+    error.value = err.data?.message || 'Nepavyko ištrinti prekės'
     console.error('Error deleting shop item:', err)
   }
 }
@@ -70,7 +70,7 @@ function editItem(item: ShopItem) {
     description: item.description || '',
     price: parseFloat(item.price),
     quantity: item.quantity,
-    icon: item.icon || '',
+    icon: item.icon || 'gift',
   }
   showForm.value = true
 }
@@ -81,7 +81,7 @@ function resetForm() {
     description: '',
     price: 0,
     quantity: 1,
-    icon: '',
+    icon: 'gift',
   }
   editingItem.value = null
   showForm.value = false
@@ -96,9 +96,9 @@ onMounted(() => {
   <div class="page-container">
     <div class="page-header">
       <div class="header-left">
-        <h1 class="page-title">Manage Shop</h1>
-        <NuxtLink to="/" class="stats-link">Back to Tasks</NuxtLink>
-        <NuxtLink to="/shop" class="stats-link">View Shop (Child View)</NuxtLink>
+        <h1 class="page-title">Valdyti parduotuvę</h1>
+        <NuxtLink to="/" class="stats-link">Grįžti į užduotis</NuxtLink>
+        <NuxtLink to="/shop" class="stats-link">Peržiūrėti parduotuvę</NuxtLink>
       </div>
       <div class="user-info">
         <span class="user-name">{{ user?.name }}</span>
@@ -108,68 +108,67 @@ onMounted(() => {
 
     <div class="content-container">
       <div v-if="!isParent" class="error-message">
-        Only parents can manage the shop
+        Tik tėvai gali valdyti parduotuvę
       </div>
 
       <div v-else>
         <button @click="showForm = !showForm" class="btn btn-primary">
-          {{ showForm ? 'Cancel' : 'Add New Item' }}
+          {{ showForm ? 'Atšaukti' : 'Pridėti naują prekę' }}
         </button>
 
         <div v-if="showForm" class="form-container">
-          <h2>{{ editingItem ? 'Edit' : 'Add' }} Shop Item</h2>
+          <h2>{{ editingItem ? 'Redaguoti' : 'Pridėti' }} prekę</h2>
           <form @submit.prevent="handleSubmit">
             <div class="form-group">
-              <label>Title</label>
+              <label>Pavadinimas</label>
               <input v-model="form.title" required type="text" />
             </div>
 
             <div class="form-group">
-              <label>Description</label>
+              <label>Aprašymas</label>
               <textarea v-model="form.description" rows="3"></textarea>
             </div>
 
             <div class="form-group">
-              <label>Price (points)</label>
+              <label>Kaina (taškai)</label>
               <input v-model.number="form.price" required type="number" min="0" step="0.01" />
             </div>
 
             <div class="form-group">
-              <label>Quantity</label>
+              <label>Kiekis</label>
               <input v-model.number="form.quantity" required type="number" min="0" />
             </div>
 
-            <div class="form-group">
-              <label>Icon (optional)</label>
-              <input v-model="form.icon" type="text" placeholder="Icon name or emoji" />
-            </div>
+            <ShopIconPicker v-model="form.icon" />
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-success">Save</button>
-              <button type="button" @click="resetForm" class="btn btn-secondary">Cancel</button>
+              <button type="submit" class="btn btn-success">Išsaugoti</button>
+              <button type="button" @click="resetForm" class="btn btn-secondary">Atšaukti</button>
             </div>
           </form>
         </div>
 
         <div v-if="error" class="error-message">{{ error }}</div>
 
-        <div v-if="loading" class="loading-state">Loading...</div>
+        <div v-if="loading" class="loading-state">Kraunama...</div>
 
         <div v-else class="items-list">
           <div v-for="item in shopItems" :key="item.id" class="shop-item-card">
+            <div class="item-icon-display">
+              <ShopIcon :name="item.icon || 'gift'" />
+            </div>
             <div class="item-header">
               <h3>{{ item.title }}</h3>
-              <span class="item-price">{{ item.price }} points</span>
+              <span class="item-price">{{ item.price }} tšk</span>
             </div>
-            <p class="item-description">{{ item.description || 'No description' }}</p>
+            <p class="item-description">{{ item.description || 'Nėra aprašymo' }}</p>
             <div class="item-footer">
-              <span>Quantity: {{ item.quantity }}</span>
-              <span v-if="item.icon">Icon: {{ item.icon }}</span>
-              <span v-if="item.creator">Created by: {{ item.creator.name }}</span>
+              <span>Kiekis: {{ item.quantity }}</span>
+              <span v-if="item.creator">Sukūrė: {{ item.creator.name }}</span>
             </div>
             <div class="item-actions">
-              <button @click="editItem(item)" class="btn btn-small btn-primary">Edit</button>
-              <button @click="deleteItem(item.id)" class="btn btn-small btn-danger">Delete</button>
+              <button @click="editItem(item)" class="btn btn-small btn-primary">Redaguoti</button>
+              <button @click="deleteItem(item.id)" class="btn btn-small btn-danger">Ištrinti</button>
             </div>
           </div>
         </div>
@@ -405,5 +404,10 @@ onMounted(() => {
 .item-actions {
   display: flex;
   gap: 0.5rem;
+}
+
+.item-icon-display {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 </style>

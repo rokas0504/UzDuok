@@ -19,7 +19,7 @@ export interface ShopItemFormData {
   description?: string
   price: number
   quantity: number
-  icon?: string
+  icon: string
 }
 
 export interface Purchase {

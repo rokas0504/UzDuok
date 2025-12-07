@@ -20,7 +20,7 @@ async function fetchShopItems() {
     const response = await useFetchShopItems()
     shopItems.value = response.shop_items
   } catch (err: any) {
-    error.value = err.data?.message || 'Failed to load shop items'
+    error.value = err.data?.message || 'Nepavyko įkelti prekių'
     console.error('Error fetching shop items:', err)
   } finally {
     loading.value = false
@@ -32,16 +32,16 @@ async function buyItem(item: ShopItem) {
   const itemPrice = parseFloat(item.price)
 
   if (userPoints < itemPrice) {
-    alert(`Insufficient points! You have ${userPoints} points, but this item costs ${itemPrice} points.`)
+    alert(`Nepakanka taškų! Turite ${userPoints} taškų, o ši prekė kainuoja ${itemPrice} taškų.`)
     return
   }
 
   if (item.quantity <= 0) {
-    alert('This item is out of stock!')
+    alert('Ši prekė išparduota!')
     return
   }
 
-  if (!confirm(`Buy "${item.title}" for ${item.price} points?`)) return
+  if (!confirm(`Pirkti "${item.title}" už ${item.price} taškų?`)) return
 
   purchaseLoading.value = item.id
   try {
@@ -56,7 +56,7 @@ async function buyItem(item: ShopItem) {
     // Refresh shop items to get updated quantities
     await fetchShopItems()
   } catch (err: any) {
-    error.value = err.data?.message || 'Failed to purchase item'
+    error.value = err.data?.message || 'Nepavyko nupirkti prekės'
     alert(error.value)
     console.error('Error purchasing item:', err)
   } finally {
@@ -79,25 +79,25 @@ onMounted(() => {
   <div class="page-container">
     <div class="page-header">
       <div class="header-left">
-        <h1 class="page-title">Shop</h1>
-        <NuxtLink to="/" class="stats-link">Back to Tasks</NuxtLink>
-        <NuxtLink v-if="isParent" to="/shop-manage" class="stats-link">Manage Shop</NuxtLink>
+        <h1 class="page-title">Parduotuvė</h1>
+        <NuxtLink to="/" class="stats-link">Grįžti į užduotis</NuxtLink>
+        <NuxtLink v-if="isParent" to="/shop-manage" class="stats-link">Valdyti parduotuvę</NuxtLink>
       </div>
       <div class="user-info">
         <span class="user-name">{{ user?.name }}</span>
-        <span class="user-points">Points: {{ user?.points || 0 }}</span>
+        <span class="user-points">Taškai: {{ user?.points || 0 }}</span>
       </div>
     </div>
 
     <div class="content-container">
       <div v-if="error" class="error-message">{{ error }}</div>
 
-      <div v-if="loading" class="loading-state">Loading...</div>
+      <div v-if="loading" class="loading-state">Kraunama...</div>
 
       <div v-else-if="shopItems.length === 0" class="empty-state">
-        <p>No items in the shop yet!</p>
+        <p>Parduotuvėje dar nėra prekių!</p>
         <NuxtLink v-if="isParent" to="/shop-manage" class="btn btn-primary">
-          Add Items to Shop
+          Pridėti prekių
         </NuxtLink>
       </div>
 
@@ -108,20 +108,20 @@ onMounted(() => {
           class="shop-item-card"
           :class="{ 'out-of-stock': item.quantity <= 0, 'cannot-afford': !canAfford(item) }"
         >
-          <div class="item-icon" v-if="item.icon">
-            {{ item.icon }}
+          <div class="item-icon">
+            <ShopIcon :name="item.icon || 'gift'" />
           </div>
 
           <div class="item-header">
             <h3>{{ item.title }}</h3>
-            <span class="item-price">{{ item.price }} pts</span>
+            <span class="item-price">{{ item.price }} tšk</span>
           </div>
 
-          <p class="item-description">{{ item.description || 'No description' }}</p>
+          <p class="item-description">{{ item.description || 'Nėra aprašymo' }}</p>
 
           <div class="item-footer">
             <span class="item-quantity" :class="{ 'low-stock': item.quantity <= 5 && item.quantity > 0 }">
-              {{ item.quantity > 0 ? `${item.quantity} available` : 'Out of stock' }}
+              {{ item.quantity > 0 ? `Likutis: ${item.quantity}` : 'Išparduota' }}
             </span>
           </div>
 
@@ -134,10 +134,10 @@ onMounted(() => {
               'btn-loading': purchaseLoading === item.id
             }"
           >
-            <span v-if="purchaseLoading === item.id">Purchasing...</span>
-            <span v-else-if="item.quantity <= 0">Out of Stock</span>
-            <span v-else-if="!canAfford(item)">Not Enough Points</span>
-            <span v-else>Buy Now</span>
+            <span v-if="purchaseLoading === item.id">Perkama...</span>
+            <span v-else-if="item.quantity <= 0">Išparduota</span>
+            <span v-else-if="!canAfford(item)">Nepakanka taškų</span>
+            <span v-else>Pirkti</span>
           </button>
         </div>
       </div>
