@@ -8,6 +8,7 @@ use App\Enums\TaskStatus;
 use App\Models\Tasks\Task;
 use App\Repositories\Repository;
 use App\Repositories\Tasks\TaskRepository;
+use App\Services\Points\PointService;
 use App\Services\Service;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,7 +17,8 @@ use Illuminate\Database\Eloquent\Model;
 class TaskService extends Service
 {
     public function __construct(
-        private readonly TaskRepository $taskRepository
+        private readonly TaskRepository $taskRepository,
+        private readonly PointService $pointService
     ) {
         $this->repository = $taskRepository;
     }
@@ -129,6 +131,26 @@ class TaskService extends Service
      */
     public function updateStatus(Task $task, string $status): bool
     {
-        return $this->repository->updateStatus($task, $status);
+        $oldStatus = $task->status;
+        $result = $this->repository->updateStatus($task, $status);
+
+        if ($result) {
+            $task->refresh();
+            $newStatus = $task->status;
+
+            $task->load(['user.role']);
+            $user = $task->user;
+
+            if ($user && $user->isChild()) {
+                if ($newStatus === TaskStatus::COMPLETED) {
+                    $this->pointService->addPointsForTaskCompletion($user, $task);
+                }
+                elseif ($newStatus === TaskStatus::CANCELLED) {
+                    $this->pointService->subtractPointsForTaskCancellation($user, $task);
+                }
+            }
+        }
+
+        return $result;
     }
 }
