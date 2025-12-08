@@ -131,26 +131,35 @@ class TaskService extends Service
      */
     public function updateStatus(Task $task, string $status): bool
     {
-        $oldStatus = $task->status;
         $result = $this->repository->updateStatus($task, $status);
 
         if ($result) {
             $task->refresh();
-            $newStatus = $task->status;
-
-            $task->load(['user.role']);
-            $user = $task->user;
-
-            if ($user && $user->isChild()) {
-                if ($newStatus === TaskStatus::COMPLETED) {
-                    $this->pointService->addPointsForTaskCompletion($user, $task);
-                }
-                elseif ($newStatus === TaskStatus::CANCELLED) {
-                    $this->pointService->subtractPointsForTaskCancellation($user, $task);
-                }
-            }
+            $this->handlePointsForStatusChange($task);
         }
 
         return $result;
+    }
+
+    /**
+     * Handle points adjustment based on task status change.
+     *
+     * @param Task $task
+     * @return void
+     */
+    private function handlePointsForStatusChange(Task $task): void
+    {
+        $task->load(['user.role']);
+        $user = $task->user;
+
+        if (!$user || !$user->isChild()) {
+            return;
+        }
+
+        match ($task->status) {
+            TaskStatus::COMPLETED->value => $this->pointService->addPointsForTaskCompletion($user, $task),
+            TaskStatus::CANCELLED->value => $this->pointService->subtractPointsForTaskCancellation($user, $task),
+            default => null,
+        };
     }
 }

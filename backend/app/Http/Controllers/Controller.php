@@ -61,7 +61,7 @@ abstract class Controller extends BaseController
      * @param string|array $dataToReturn
      * @return JsonResponse
      */
-    protected function ok(string|array $dataToReturn = array()): JsonResponse
+    protected function successResponse(string|array $dataToReturn = array()): JsonResponse
     {
         $success = [
             'success' => true

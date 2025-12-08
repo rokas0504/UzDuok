@@ -85,7 +85,7 @@ class AuthController extends Controller
     /**
      * Get the authenticated user's profile.
      */
-    public function me(Request $request): JsonResponse
+    public function getCurrentUser(Request $request): JsonResponse
     {
         $user = $request->user();
 

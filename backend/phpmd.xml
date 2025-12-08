@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ruleset name="UzDuok PHPMD Ruleset">
+    <description>PHPMD rules for code quality analysis</description>
+
+    <!-- Clean Code Rules -->
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="StaticAccess"/>
+        <exclude name="ElseExpression"/>
+    </rule>
+
+    <!-- Code Size Rules -->
+    <rule ref="rulesets/codesize.xml"/>
+
+    <!-- Controversial Rules -->
+    <rule ref="rulesets/controversial.xml"/>
+
+    <!-- Design Rules -->
+    <rule ref="rulesets/design.xml"/>
+
+    <!-- Naming Rules -->
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
+    </rule>
+
+    <!-- Unused Code Rules -->
+    <rule ref="rulesets/unusedcode.xml"/>
+</ruleset>

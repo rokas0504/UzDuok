@@ -1,0 +1,385 @@
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/components/Calendar/TaskModal.vue
+   88:17   error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+  111:17   error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+  128:17   error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+  144:17   error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+  161:17   error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+  182:17   error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+  196:30   warning  '@click.self' should be on a new line                                             vue/max-attributes-per-line
+  200:38   warning  '@click' should be on a new line                                                  vue/max-attributes-per-line
+  201:51   warning  'width' should be on a new line                                                   vue/max-attributes-per-line
+  201:62   warning  'height' should be on a new line                                                  vue/max-attributes-per-line
+  201:74   warning  'viewBox' should be on a new line                                                 vue/max-attributes-per-line
+  201:94   warning  'fill' should be on a new line                                                    vue/max-attributes-per-line
+  201:106  warning  'stroke' should be on a new line                                                  vue/max-attributes-per-line
+  201:128  warning  'stroke-width' should be on a new line                                            vue/max-attributes-per-line
+  202:27   warning  'y1' should be on a new line                                                      vue/max-attributes-per-line
+  202:34   warning  'x2' should be on a new line                                                      vue/max-attributes-per-line
+  202:41   warning  'y2' should be on a new line                                                      vue/max-attributes-per-line
+  202:49   warning  Require self-closing on SVG elements (<line>)                                     vue/html-self-closing
+  203:26   warning  'y1' should be on a new line                                                      vue/max-attributes-per-line
+  203:33   warning  'x2' should be on a new line                                                      vue/max-attributes-per-line
+  203:41   warning  'y2' should be on a new line                                                      vue/max-attributes-per-line
+  203:49   warning  Require self-closing on SVG elements (<line>)                                     vue/html-self-closing
+  208:44   warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  208:44   warning  Attribute "class" should go before "@submit.prevent"                              vue/attributes-order
+  221:11   warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  235:12   warning  Require self-closing on HTML elements (<textarea>)                                vue/html-self-closing
+  252:11   warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  256:45   warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  265:31   warning  'disabled' should be on a new line                                                vue/max-attributes-per-line
+  265:40   error    Expected 1 line break after opening tag (`<option>`), but no line breaks found    vue/singleline-html-element-content-newline
+  265:57   error    Expected 1 line break before closing tag (`</option>`), but no line breaks found  vue/singleline-html-element-content-newline
+  266:47   warning  ':key' should be on a new line                                                    vue/max-attributes-per-line
+  266:63   warning  ':value' should be on a new line                                                  vue/max-attributes-per-line
+  284:13   warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  298:13   warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  310:13   warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  316:71   warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  346:13   warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  351:27   warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  362:13   warning  Attribute ":disabled" should go before "@click"                                   vue/attributes-order
+  363:13   warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  372:15   warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  392:15   warning  Attribute ":disabled" should go before "@click"                                   vue/attributes-order
+  393:15   warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  403:15   warning  Attribute ":disabled" should go before "@click"                                   vue/attributes-order
+  404:15   warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  412:15   warning  Attribute ":disabled" should go before "@click"                                   vue/attributes-order
+  413:15   warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  704:9    error    Newline required at end of file but not found                                     @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/components/Calendar/WeekCalendar.vue
+   12:19   error    'isChild' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  120:1    error    Expected blank line before this block                                               vue/padding-line-between-blocks
+  124:37   warning  'class' should be on a new line                                                     vue/max-attributes-per-line
+  124:37   warning  Attribute "class" should go before "@click"                                         vue/attributes-order
+  125:49   warning  'width' should be on a new line                                                     vue/max-attributes-per-line
+  125:60   warning  'height' should be on a new line                                                    vue/max-attributes-per-line
+  125:72   warning  'viewBox' should be on a new line                                                   vue/max-attributes-per-line
+  125:92   warning  'fill' should be on a new line                                                      vue/max-attributes-per-line
+  125:104  warning  'stroke' should be on a new line                                                    vue/max-attributes-per-line
+  125:126  warning  'stroke-width' should be on a new line                                              vue/max-attributes-per-line
+  126:46   warning  Require self-closing on SVG elements (<polyline>)                                   vue/html-self-closing
+  129:30   error    Expected 1 line break after opening tag (`<h2>`), but no line breaks found          vue/singleline-html-element-content-newline
+  129:45   error    Expected 1 line break before closing tag (`</h2>`), but no line breaks found        vue/singleline-html-element-content-newline
+  130:33   warning  'class' should be on a new line                                                     vue/max-attributes-per-line
+  130:33   warning  Attribute "class" should go before "@click"                                         vue/attributes-order
+  131:49   warning  'width' should be on a new line                                                     vue/max-attributes-per-line
+  131:60   warning  'height' should be on a new line                                                    vue/max-attributes-per-line
+  131:72   warning  'viewBox' should be on a new line                                                   vue/max-attributes-per-line
+  131:92   warning  'fill' should be on a new line                                                      vue/max-attributes-per-line
+  131:104  warning  'stroke' should be on a new line                                                    vue/max-attributes-per-line
+  131:126  warning  'stroke-width' should be on a new line                                              vue/max-attributes-per-line
+  132:45   warning  Require self-closing on SVG elements (<polyline>)                                   vue/html-self-closing
+  147:33   error    Expected 1 line break after opening tag (`<div>`), but no line breaks found         vue/singleline-html-element-content-newline
+  147:50   error    Expected 1 line break before closing tag (`</div>`), but no line breaks found       vue/singleline-html-element-content-newline
+  148:35   error    Expected 1 line break after opening tag (`<div>`), but no line breaks found         vue/singleline-html-element-content-newline
+  148:54   error    Expected 1 line break before closing tag (`</div>`), but no line breaks found       vue/singleline-html-element-content-newline
+  160:37   error    Expected 1 line break after opening tag (`<div>`), but no line breaks found         vue/singleline-html-element-content-newline
+  160:53   error    Expected 1 line break before closing tag (`</div>`), but no line breaks found       vue/singleline-html-element-content-newline
+  161:37   error    Expected 1 line break after opening tag (`<div>`), but no line breaks found         vue/singleline-html-element-content-newline
+  161:66   error    Expected 1 line break before closing tag (`</div>`), but no line breaks found       vue/singleline-html-element-content-newline
+  376:9    error    Newline required at end of file but not found                                       @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/composables/useAuth.ts
+   7:19  error  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+  13:26  error  Statement inside of curly braces should be on next line                                                        @stylistic/brace-style
+  13:68  error  Closing curly brace should be on the same line as opening curly brace or on the line after the previous block  @stylistic/brace-style
+  14:29  error  Statement inside of curly braces should be on next line                                                        @stylistic/brace-style
+  14:71  error  Closing curly brace should be on the same line as opening curly brace or on the line after the previous block  @stylistic/brace-style
+  15:27  error  Statement inside of curly braces should be on next line                                                        @stylistic/brace-style
+  15:69  error  Closing curly brace should be on the same line as opening curly brace or on the line after the previous block  @stylistic/brace-style
+  28:36  error  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+  30:21  error  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+  38:5   error  Unnecessary try/catch wrapper                                                                                  no-useless-catch
+  47:5   error  Unnecessary try/catch wrapper                                                                                  no-useless-catch
+  48:13  error  'config' is assigned a value but never used. Allowed unused vars must match /^_/u                              @typescript-eslint/no-unused-vars
+  67:30  error  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+  82:21  error  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+  94:21  error  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/composables/useShop.ts
+  39:2  error  Newline required at end of file but not found  @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/composables/useTasks.ts
+  39:2  error  Newline required at end of file but not found  @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/composables/useUserRole.ts
+  13:2  error  Newline required at end of file but not found  @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/composables/useUsers.ts
+  12:2  error  Newline required at end of file but not found  @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/layouts/default.vue
+   8:32  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  21:17  warning  Attribute "class" should go before "@click"                                   vue/attributes-order
+  80:3   error    Closing curly brace does not appear on the same line as the subsequent block  @stylistic/brace-style
+  81:17  error    Unexpected any. Specify a different type                                      @typescript-eslint/no-explicit-any
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/middleware/auth.ts
+  1:49  error  'to' is defined but never used. Allowed unused args must match /^_/u    @typescript-eslint/no-unused-vars
+  1:53  error  'from' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/middleware/guest.ts
+  1:49  error  'to' is defined but never used. Allowed unused args must match /^_/u    @typescript-eslint/no-unused-vars
+  1:53  error  'from' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/pages/index.vue
+  21:17  error    Unexpected any. Specify a different type                                      @typescript-eslint/no-explicit-any
+  39:32  error    Expected 1 line break after opening tag (`<h1>`), but no line breaks found    vue/singleline-html-element-content-newline
+  39:40  error    Expected 1 line break before closing tag (`</h1>`), but no line breaks found  vue/singleline-html-element-content-newline
+  40:35  warning  'to' should be on a new line                                                  vue/max-attributes-per-line
+  40:52  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  43:35  warning  'to' should be on a new line                                                  vue/max-attributes-per-line
+  43:58  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  46:35  warning  'to' should be on a new line                                                  vue/max-attributes-per-line
+  46:50  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  49:35  warning  'to' should be on a new line                                                  vue/max-attributes-per-line
+  49:53  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  52:26  warning  'to' should be on a new line                                                  vue/max-attributes-per-line
+  52:37  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  62:25  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  66:28  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/pages/login.vue
+   16:36  warning  '@submit.prevent' should be on a new line                                     vue/max-attributes-per-line
+   17:34  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+   29:32  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+   40:36  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+   45:35  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+   56:39  warning  'class' should be on a new line                                               vue/max-attributes-per-line
+  100:3   error    Closing curly brace does not appear on the same line as the subsequent block  @stylistic/brace-style
+  101:17  error    Unexpected any. Specify a different type                                      @typescript-eslint/no-explicit-any
+  104:5   error    Closing curly brace does not appear on the same line as the subsequent block  @stylistic/brace-style
+  107:5   error    Closing curly brace does not appear on the same line as the subsequent block  @stylistic/brace-style
+  111:3   error    Closing curly brace does not appear on the same line as the subsequent block  @stylistic/brace-style
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/pages/register.vue
+   16:36  warning  '@submit.prevent' should be on a new line                                         vue/max-attributes-per-line
+   18:36  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   28:34  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   40:31  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   51:35  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   57:32  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   68:36  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   74:31  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   82:32  error    Expected 1 line break after opening tag (`<option>`), but no line breaks found    vue/singleline-html-element-content-newline
+   82:45  error    Expected 1 line break before closing tag (`</option>`), but no line breaks found  vue/singleline-html-element-content-newline
+   83:38  error    Expected 1 line break after opening tag (`<option>`), but no line breaks found    vue/singleline-html-element-content-newline
+   83:44  error    Expected 1 line break before closing tag (`</option>`), but no line breaks found  vue/singleline-html-element-content-newline
+   84:37  error    Expected 1 line break after opening tag (`<option>`), but no line breaks found    vue/singleline-html-element-content-newline
+   84:42  error    Expected 1 line break before closing tag (`</option>`), but no line breaks found  vue/singleline-html-element-content-newline
+   86:35  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+   92:35  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  102:39  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  108:48  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  118:52  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  133:28  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  181:7   error    Closing curly brace does not appear on the same line as the subsequent block      @stylistic/brace-style
+  184:7   error    Closing curly brace does not appear on the same line as the subsequent block      @stylistic/brace-style
+  189:3   error    Closing curly brace does not appear on the same line as the subsequent block      @stylistic/brace-style
+  190:17  error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+  199:5   error    Closing curly brace does not appear on the same line as the subsequent block      @stylistic/brace-style
+  202:5   error    Closing curly brace does not appear on the same line as the subsequent block      @stylistic/brace-style
+  206:3   error    Closing curly brace does not appear on the same line as the subsequent block      @stylistic/brace-style
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/pages/shop-manage.vue
+   31:17  error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+   48:17  error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+   60:17  error    Unexpected any. Specify a different type                                          @typescript-eslint/no-explicit-any
+   99:32  error    Expected 1 line break after opening tag (`<h1>`), but no line breaks found        vue/singleline-html-element-content-newline
+   99:43  error    Expected 1 line break before closing tag (`</h1>`), but no line breaks found      vue/singleline-html-element-content-newline
+  100:26  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  101:30  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  110:29  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  115:47  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  115:47  warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  119:30  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  124:43  warning  'required' should be on a new line                                                vue/max-attributes-per-line
+  124:52  warning  'type' should be on a new line                                                    vue/max-attributes-per-line
+  124:64  warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  129:52  warning  'rows' should be on a new line                                                    vue/max-attributes-per-line
+  129:61  warning  Require self-closing on HTML elements (<textarea>)                                vue/html-self-closing
+  134:50  warning  'required' should be on a new line                                                vue/max-attributes-per-line
+  134:59  warning  'type' should be on a new line                                                    vue/max-attributes-per-line
+  134:73  warning  'min' should be on a new line                                                     vue/max-attributes-per-line
+  134:81  warning  'step' should be on a new line                                                    vue/max-attributes-per-line
+  134:93  warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  139:53  warning  'required' should be on a new line                                                vue/max-attributes-per-line
+  139:62  warning  'type' should be on a new line                                                    vue/max-attributes-per-line
+  139:76  warning  'min' should be on a new line                                                     vue/max-attributes-per-line
+  139:84  warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  144:42  warning  'type' should be on a new line                                                    vue/max-attributes-per-line
+  144:54  warning  'placeholder' should be on a new line                                             vue/max-attributes-per-line
+  144:87  warning  Disallow self-closing on HTML void elements (<input/>)                            vue/html-self-closing
+  148:37  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  148:61  error    Expected 1 line break after opening tag (`<button>`), but no line breaks found    vue/singleline-html-element-content-newline
+  148:65  error    Expected 1 line break before closing tag (`</button>`), but no line breaks found  vue/singleline-html-element-content-newline
+  149:37  warning  '@click' should be on a new line                                                  vue/max-attributes-per-line
+  149:56  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  149:56  warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  149:82  error    Expected 1 line break after opening tag (`<button>`), but no line breaks found    vue/singleline-html-element-content-newline
+  149:88  error    Expected 1 line break before closing tag (`</button>`), but no line breaks found  vue/singleline-html-element-content-newline
+  154:27  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  154:49  error    Expected 1 line break after opening tag (`<div>`), but no line breaks found       vue/singleline-html-element-content-newline
+  154:60  error    Expected 1 line break before closing tag (`</div>`), but no line breaks found     vue/singleline-html-element-content-newline
+  156:29  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  156:51  error    Expected 1 line break after opening tag (`<div>`), but no line breaks found       vue/singleline-html-element-content-newline
+  156:61  error    Expected 1 line break before closing tag (`</div>`), but no line breaks found     vue/singleline-html-element-content-newline
+  158:21  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  159:42  warning  ':key' should be on a new line                                                    vue/max-attributes-per-line
+  159:57  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  164:41  error    Expected 1 line break after opening tag (`<p>`), but no line breaks found         vue/singleline-html-element-content-newline
+  164:83  error    Expected 1 line break before closing tag (`</p>`), but no line breaks found       vue/singleline-html-element-content-newline
+  171:47  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  171:47  warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  171:81  error    Expected 1 line break after opening tag (`<button>`), but no line breaks found    vue/singleline-html-element-content-newline
+  171:85  error    Expected 1 line break before closing tag (`</button>`), but no line breaks found  vue/singleline-html-element-content-newline
+  172:52  warning  'class' should be on a new line                                                   vue/max-attributes-per-line
+  172:52  warning  Attribute "class" should go before "@click"                                       vue/attributes-order
+  172:85  error    Expected 1 line break after opening tag (`<button>`), but no line breaks found    vue/singleline-html-element-content-newline
+  172:91  error    Expected 1 line break before closing tag (`</button>`), but no line breaks found  vue/singleline-html-element-content-newline
+  409:9   error    Newline required at end of file but not found                                     @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/pages/shop.vue
+   22:17  error    Unexpected any. Specify a different type                                       @typescript-eslint/no-explicit-any
+   58:17  error    Unexpected any. Specify a different type                                       @typescript-eslint/no-explicit-any
+   82:32  error    Expected 1 line break after opening tag (`<h1>`), but no line breaks found     vue/singleline-html-element-content-newline
+   82:36  error    Expected 1 line break before closing tag (`</h1>`), but no line breaks found   vue/singleline-html-element-content-newline
+   83:26  warning  'class' should be on a new line                                                vue/max-attributes-per-line
+   84:35  warning  'to' should be on a new line                                                   vue/max-attributes-per-line
+   84:53  warning  'class' should be on a new line                                                vue/max-attributes-per-line
+   93:25  warning  'class' should be on a new line                                                vue/max-attributes-per-line
+   93:47  error    Expected 1 line break after opening tag (`<div>`), but no line breaks found    vue/singleline-html-element-content-newline
+   93:58  error    Expected 1 line break before closing tag (`</div>`), but no line breaks found  vue/singleline-html-element-content-newline
+   95:27  warning  'class' should be on a new line                                                vue/max-attributes-per-line
+   95:49  error    Expected 1 line break after opening tag (`<div>`), but no line breaks found    vue/singleline-html-element-content-newline
+   95:59  error    Expected 1 line break before closing tag (`</div>`), but no line breaks found  vue/singleline-html-element-content-newline
+   97:47  warning  'class' should be on a new line                                                vue/max-attributes-per-line
+   99:35  warning  'to' should be on a new line                                                   vue/max-attributes-per-line
+   99:53  warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  104:19  warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  111:34  warning  'v-if' should be on a new line                                                 vue/max-attributes-per-line
+  111:34  warning  Attribute "v-if" should go before "class"                                      vue/attributes-order
+  120:39  error    Expected 1 line break after opening tag (`<p>`), but no line breaks found      vue/singleline-html-element-content-newline
+  120:81  error    Expected 1 line break before closing tag (`</p>`), but no line breaks found    vue/singleline-html-element-content-newline
+  123:41  warning  ':class' should be on a new line                                               vue/max-attributes-per-line
+  130:13  warning  Attribute "class" should go before "@click"                                    vue/attributes-order
+  131:13  warning  Attribute ":disabled" should go before "@click"                                vue/attributes-order
+  132:13  warning  Attribute ":class" should go before "@click"                                   vue/attributes-order
+  134:57  error    Missing trailing comma                                                         vue/comma-dangle
+  365:9   error    Newline required at end of file but not found                                  @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/pages/statistics-table.vue
+   31:42  error    Expected a comma                                                                     @stylistic/member-delimiter-style
+   74:29  error    Expected parentheses around arrow function argument having a body with curly braces  @stylistic/arrow-parens
+  167:17  error    Unexpected any. Specify a different type                                             @typescript-eslint/no-explicit-any
+  188:30  error    Expected 1 line break after opening tag (`<h1>`), but no line breaks found           vue/singleline-html-element-content-newline
+  188:40  error    Expected 1 line break before closing tag (`</h1>`), but no line breaks found         vue/singleline-html-element-content-newline
+  189:24  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  194:25  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  198:28  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  202:17  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  205:35  error    Expected 1 line break after opening tag (`<h3>`), but no line breaks found           vue/singleline-html-element-content-newline
+  205:42  error    Expected 1 line break before closing tag (`</h3>`), but no line breaks found         vue/singleline-html-element-content-newline
+  210:45  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  211:37  error    Expected 1 line break after opening tag (`<option>`), but no line breaks found       vue/singleline-html-element-content-newline
+  211:48  error    Expected 1 line break before closing tag (`</option>`), but no line breaks found     vue/singleline-html-element-content-newline
+  212:49  warning  ':key' should be on a new line                                                       vue/max-attributes-per-line
+  212:65  warning  ':value' should be on a new line                                                     vue/max-attributes-per-line
+  221:46  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  222:37  error    Expected 1 line break after opening tag (`<option>`), but no line breaks found       vue/singleline-html-element-content-newline
+  222:50  error    Expected 1 line break before closing tag (`</option>`), but no line breaks found     vue/singleline-html-element-content-newline
+  223:55  warning  ':key' should be on a new line                                                       vue/max-attributes-per-line
+  223:75  warning  ':value' should be on a new line                                                     vue/max-attributes-per-line
+  238:15  warning  Disallow self-closing on HTML void elements (<input/>)                               vue/html-self-closing
+  245:15  warning  Disallow self-closing on HTML void elements (<input/>)                               vue/html-self-closing
+  258:15  warning  Disallow self-closing on HTML void elements (<input/>)                               vue/html-self-closing
+  265:15  warning  Disallow self-closing on HTML void elements (<input/>)                               vue/html-self-closing
+  278:15  warning  Disallow self-closing on HTML void elements (<input/>)                               vue/html-self-closing
+  285:15  warning  Disallow self-closing on HTML void elements (<input/>)                               vue/html-self-closing
+  291:43  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  291:43  warning  Attribute "class" should go before "@click"                                          vue/attributes-order
+  317:47  warning  ':key' should be on a new line                                                       vue/max-attributes-per-line
+  317:62  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  317:79  warning  '@click' should be on a new line                                                     vue/max-attributes-per-line
+  318:38  error    Expected 1 line break after opening tag (`<td>`), but no line breaks found           vue/singleline-html-element-content-newline
+  318:70  error    Expected 1 line break before closing tag (`</td>`), but no line breaks found         vue/singleline-html-element-content-newline
+  320:44  warning  ':class' should be on a new line                                                     vue/max-attributes-per-line
+  324:38  error    Expected 1 line break after opening tag (`<td>`), but no line breaks found           vue/singleline-html-element-content-newline
+  324:54  error    Expected 1 line break before closing tag (`</td>`), but no line breaks found         vue/singleline-html-element-content-newline
+  325:37  error    Expected 1 line break after opening tag (`<td>`), but no line breaks found           vue/singleline-html-element-content-newline
+  325:70  error    Expected 1 line break before closing tag (`</td>`), but no line breaks found         vue/singleline-html-element-content-newline
+  326:37  error    Expected 1 line break after opening tag (`<td>`), but no line breaks found           vue/singleline-html-element-content-newline
+  326:68  error    Expected 1 line break before closing tag (`</td>`), but no line breaks found         vue/singleline-html-element-content-newline
+  327:37  error    Expected 1 line break after opening tag (`<td>`), but no line breaks found           vue/singleline-html-element-content-newline
+  327:74  error    Expected 1 line break before closing tag (`</td>`), but no line breaks found         vue/singleline-html-element-content-newline
+  330:31  warning  'class' should be on a new line                                                      vue/max-attributes-per-line
+  350:56  warning  Require self-closing on HTML elements (<div>)                                        vue/html-self-closing
+  354:52  warning  Require self-closing on HTML elements (<div>)                                        vue/html-self-closing
+  358:54  warning  Require self-closing on HTML elements (<div>)                                        vue/html-self-closing
+  362:54  warning  Require self-closing on HTML elements (<div>)                                        vue/html-self-closing
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/pages/statistics.vue
+   90:1    error    Trailing spaces not allowed                                                    @stylistic/no-trailing-spaces
+  126:17   error    Unexpected any. Specify a different type                                       @typescript-eslint/no-explicit-any
+  147:30   error    Expected 1 line break after opening tag (`<h1>`), but no line breaks found     vue/singleline-html-element-content-newline
+  147:51   error    Expected 1 line break before closing tag (`</h1>`), but no line breaks found   vue/singleline-html-element-content-newline
+  148:24   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  153:25   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  157:28   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  161:17   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  164:39   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  164:39   warning  Attribute "class" should go before "@click"                                    vue/attributes-order
+  165:51   warning  'width' should be on a new line                                                vue/max-attributes-per-line
+  165:62   warning  'height' should be on a new line                                               vue/max-attributes-per-line
+  165:74   warning  'viewBox' should be on a new line                                              vue/max-attributes-per-line
+  165:94   warning  'fill' should be on a new line                                                 vue/max-attributes-per-line
+  165:106  warning  'stroke' should be on a new line                                               vue/max-attributes-per-line
+  165:128  warning  'stroke-width' should be on a new line                                         vue/max-attributes-per-line
+  166:48   warning  Require self-closing on SVG elements (<polyline>)                              vue/html-self-closing
+  169:32   error    Expected 1 line break after opening tag (`<h2>`), but no line breaks found     vue/singleline-html-element-content-newline
+  169:47   error    Expected 1 line break before closing tag (`</h2>`), but no line breaks found   vue/singleline-html-element-content-newline
+  170:35   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  170:35   warning  Attribute "class" should go before "@click"                                    vue/attributes-order
+  171:51   warning  'width' should be on a new line                                                vue/max-attributes-per-line
+  171:62   warning  'height' should be on a new line                                               vue/max-attributes-per-line
+  171:74   warning  'viewBox' should be on a new line                                              vue/max-attributes-per-line
+  171:94   warning  'fill' should be on a new line                                                 vue/max-attributes-per-line
+  171:106  warning  'stroke' should be on a new line                                               vue/max-attributes-per-line
+  171:128  warning  'stroke-width' should be on a new line                                         vue/max-attributes-per-line
+  172:47   warning  Require self-closing on SVG elements (<polyline>)                              vue/html-self-closing
+  182:40   error    Expected 1 line break after opening tag (`<th>`), but no line breaks found     vue/singleline-html-element-content-newline
+  182:46   error    Expected 1 line break before closing tag (`</th>`), but no line breaks found   vue/singleline-html-element-content-newline
+  183:18   error    Trailing spaces not allowed                                                    @stylistic/no-trailing-spaces
+  184:40   error    Trailing spaces not allowed                                                    @stylistic/no-trailing-spaces
+  189:39   error    Expected 1 line break after opening tag (`<div>`), but no line breaks found    vue/singleline-html-element-content-newline
+  189:61   error    Expected 1 line break before closing tag (`</div>`), but no line breaks found  vue/singleline-html-element-content-newline
+  190:41   error    Expected 1 line break after opening tag (`<div>`), but no line breaks found    vue/singleline-html-element-content-newline
+  190:60   error    Expected 1 line break before closing tag (`</div>`), but no line breaks found  vue/singleline-html-element-content-newline
+  195:43   warning  ':key' should be on a new line                                                 vue/max-attributes-per-line
+  195:59   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  197:41   error    Expected 1 line break after opening tag (`<div>`), but no line breaks found    vue/singleline-html-element-content-newline
+  197:57   error    Expected 1 line break before closing tag (`</div>`), but no line breaks found  vue/singleline-html-element-content-newline
+  199:18   error    Trailing spaces not allowed                                                    @stylistic/no-trailing-spaces
+  200:40   error    Trailing spaces not allowed                                                    @stylistic/no-trailing-spaces
+  220:32   warning  'class' should be on a new line                                                vue/max-attributes-per-line
+  231:54   warning  Require self-closing on HTML elements (<div>)                                  vue/html-self-closing
+  235:50   warning  Require self-closing on HTML elements (<div>)                                  vue/html-self-closing
+  239:52   warning  Require self-closing on HTML elements (<div>)                                  vue/html-self-closing
+  243:52   warning  Require self-closing on HTML elements (<div>)                                  vue/html-self-closing
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/tailwind.config.js
+  22:8  error  Missing trailing comma  @stylistic/comma-dangle
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/types/shop.ts
+  48:2  error  Newline required at end of file but not found  @stylistic/eol-last
+
+/Users/rokaskamarauskas/Documents/UzDuok/UzDuok/frontend/types/task.ts
+  44:2  error  Newline required at end of file but not found  @stylistic/eol-last
+
+✖ 341 problems (142 errors, 199 warnings)
+  111 errors and 148 warnings potentially fixable with the `--fix` option.
+

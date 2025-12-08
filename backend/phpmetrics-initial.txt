@@ -1,0 +1,63 @@
+..............................Executing system analyzes...
+
+[2KExecuting composer analyzes, requesting https://packagist.org...
+
+[2KPHP Deprecated:  Creation of dynamic property Hal\Violation\Class_\Blob::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/Blob.php on line 28
+
+Deprecated: Creation of dynamic property Hal\Violation\Class_\Blob::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/Blob.php on line 28
+PHP Deprecated:  Creation of dynamic property Hal\Violation\Class_\ProbablyBugged::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/ProbablyBugged.php on line 28
+
+Deprecated: Creation of dynamic property Hal\Violation\Class_\ProbablyBugged::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/ProbablyBugged.php on line 28
+PHP Deprecated:  Creation of dynamic property Hal\Violation\Class_\TooLong::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/TooLong.php on line 28
+
+Deprecated: Creation of dynamic property Hal\Violation\Class_\TooLong::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/TooLong.php on line 28
+PHP Deprecated:  Creation of dynamic property Hal\Violation\Class_\TooDependent::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/TooDependent.php on line 28
+
+Deprecated: Creation of dynamic property Hal\Violation\Class_\TooDependent::$metric is deprecated in /Users/rokaskamarauskas/Documents/UzDuok/UzDuok/backend/vendor/phpmetrics/phpmetrics/src/Hal/Violation/Class_/TooDependent.php on line 28
+LOC
+    Lines of code                               1329
+    Logical lines of code                       792
+    Comment lines of code                       537
+    Average volume                              172.25
+    Average comment weight                      40.84
+    Average intelligent content                 40.84
+    Logical lines of code by class              27
+    Logical lines of code by method             7
+Object oriented programming
+    Classes                                     29
+    Interface                                   0
+    Methods                                     119
+    Methods by class                            4.1
+    Lack of cohesion of methods                 2.41
+
+Coupling
+    Average afferent coupling                   1.38
+    Average efferent coupling                   3.31
+    Average instability                         0.69
+    Depth of Inheritance Tree                   1.8
+
+Package
+    Packages                                    24
+    Average classes per package                 1.21
+    Average distance                            0.19
+    Average incoming class dependencies         1.46
+    Average outgoing class dependencies         3.75
+    Average incoming package dependencies       1.46
+    Average outgoing package dependencies       3.21
+Complexity
+    Average Cyclomatic complexity by class      2.28
+    Average Weighted method count by class      5.38
+    Average Relative system complexity          51.32
+    Average Difficulty                          3.13
+
+Bugs
+    Average bugs by class                       0.06
+    Average defects by class (Kan)              0.22
+Violations
+    Critical                                    0
+    Error                                       1
+    Warning                                     4
+    Information                                 0
+
+
+[32mDone[0m
