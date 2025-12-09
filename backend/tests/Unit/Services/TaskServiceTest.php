@@ -19,29 +19,10 @@ class TaskServiceTest extends TestCase
 {
     use RefreshDatabase;
 
-    private TaskService $taskService;
-    private TaskRepository $taskRepository;
-    private PointService $pointService;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        // Create mock dependencies
-        $this->taskRepository = Mockery::mock(TaskRepository::class);
-        $this->pointService = Mockery::mock(PointService::class);
-
-        // Create service instance with mocks
-        $this->taskService = new TaskService(
-            $this->taskRepository,
-            $this->pointService
-        );
-    }
-
     protected function tearDown(): void
     {
-        Mockery::close();
         parent::tearDown();
+        Mockery::close();
     }
 
     /**
@@ -50,17 +31,26 @@ class TaskServiceTest extends TestCase
     public function test_updateStatus_returns_false_when_update_fails(): void
     {
         // Arrange
-        $task = Mockery::mock(Task::class);
-        $task->status = TaskStatus::IN_PROGRESS->value;
+        $childRole = Role::factory()->child()->create();
+        $user = User::factory()->create(['role_id' => $childRole->id]);
+        $task = Task::factory()->create([
+            'user_id' => $user->id,
+            'status' => TaskStatus::IN_PROGRESS->value,
+            'price' => 10,
+        ]);
 
-        $this->taskRepository
+        $mockRepository = Mockery::mock(TaskRepository::class);
+        $mockRepository
             ->shouldReceive('updateStatus')
             ->once()
             ->with($task, TaskStatus::COMPLETED->value)
             ->andReturn(false);
 
+        $mockPointService = Mockery::mock(PointService::class);
+        $service = new TaskService($mockRepository, $mockPointService);
+
         // Act
-        $result = $this->taskService->updateStatus($task, TaskStatus::COMPLETED->value);
+        $result = $service->updateStatus($task, TaskStatus::COMPLETED->value);
 
         // Assert
         $this->assertFalse($result);
@@ -72,7 +62,7 @@ class TaskServiceTest extends TestCase
     public function test_updateStatus_succeeds_but_user_is_not_child(): void
     {
         // Arrange: Create real models
-        $parentRole = Role::factory()->create(['slug' => 'parent']);
+        $parentRole = Role::factory()->parent()->create();
         $user = User::factory()->create(['role_id' => $parentRole->id, 'points' => 0]);
         $task = Task::factory()->create([
             'user_id' => $user->id,
@@ -96,7 +86,7 @@ class TaskServiceTest extends TestCase
         // Assert
         $this->assertTrue($result);
         $task->refresh();
-        $this->assertEquals(TaskStatus::COMPLETED->value, $task->status);
+        $this->assertEquals(TaskStatus::COMPLETED, $task->status);
     }
 
     /**
@@ -105,7 +95,7 @@ class TaskServiceTest extends TestCase
     public function test_updateStatus_child_user_completes_task_adds_points(): void
     {
         // Arrange: Create child user
-        $childRole = Role::factory()->create(['slug' => 'child']);
+        $childRole = Role::factory()->child()->create();
         $user = User::factory()->create(['role_id' => $childRole->id, 'points' => 0]);
         $task = Task::factory()->create([
             'user_id' => $user->id,
@@ -135,7 +125,7 @@ class TaskServiceTest extends TestCase
         // Assert
         $this->assertTrue($result);
         $task->refresh();
-        $this->assertEquals(TaskStatus::COMPLETED->value, $task->status);
+        $this->assertEquals(TaskStatus::COMPLETED, $task->status);
     }
 
     /**
@@ -144,7 +134,7 @@ class TaskServiceTest extends TestCase
     public function test_updateStatus_child_user_cancels_task_subtracts_points(): void
     {
         // Arrange: Create child user
-        $childRole = Role::factory()->create(['slug' => 'child']);
+        $childRole = Role::factory()->child()->create();
         $user = User::factory()->create(['role_id' => $childRole->id, 'points' => 50]);
         $task = Task::factory()->create([
             'user_id' => $user->id,
@@ -174,7 +164,7 @@ class TaskServiceTest extends TestCase
         // Assert
         $this->assertTrue($result);
         $task->refresh();
-        $this->assertEquals(TaskStatus::CANCELLED->value, $task->status);
+        $this->assertEquals(TaskStatus::CANCELLED, $task->status);
     }
 
     /**
@@ -184,7 +174,7 @@ class TaskServiceTest extends TestCase
     public function test_updateStatus_child_user_other_status_no_points_operation(): void
     {
         // Arrange: Create child user
-        $childRole = Role::factory()->create(['slug' => 'child']);
+        $childRole = Role::factory()->child()->create();
         $user = User::factory()->create(['role_id' => $childRole->id, 'points' => 0]);
         $task = Task::factory()->create([
             'user_id' => $user->id,
@@ -215,34 +205,31 @@ class TaskServiceTest extends TestCase
     public function test_store_creates_task_with_in_progress_status(): void
     {
         // Arrange
+        $childRole = Role::factory()->child()->create();
+        $user = User::factory()->create(['role_id' => $childRole->id]);
+
         $data = [
             'title' => 'Test Task',
             'description' => 'Test Description',
             'start_date' => '2025-12-07',
             'end_date' => '2025-12-08',
-            'user_id' => 1,
+            'user_id' => $user->id,
             'price' => 10,
             'selected_weekdays' => [0, 1],
             'weeks_count' => 2,
         ];
 
-        $expectedData = $data;
-        $expectedData['status'] = TaskStatus::IN_PROGRESS->value;
-        unset($expectedData['selected_weekdays'], $expectedData['weeks_count']);
-
-        $mockTask = Mockery::mock(Task::class);
-
-        $this->taskRepository
-            ->shouldReceive('store')
-            ->once()
-            ->with($expectedData)
-            ->andReturn($mockTask);
+        $realRepository = new TaskRepository();
+        $mockPointService = Mockery::mock(PointService::class);
+        $service = new TaskService($realRepository, $mockPointService);
 
         // Act
-        $result = $this->taskService->store($data);
+        $result = $service->store($data);
 
         // Assert
-        $this->assertSame($mockTask, $result);
+        $this->assertInstanceOf(Task::class, $result);
+        $this->assertEquals(TaskStatus::IN_PROGRESS, $result->status);
+        $this->assertEquals('Test Task', $result->title);
     }
 
     /**
@@ -251,24 +238,25 @@ class TaskServiceTest extends TestCase
     public function test_createTask_calls_store_for_non_periodic_task(): void
     {
         // Arrange
+        $childRole = Role::factory()->child()->create();
+        $user = User::factory()->create(['role_id' => $childRole->id]);
+
         $data = [
             'title' => 'Test Task',
-            'user_id' => 1,
+            'user_id' => $user->id,
             'price' => 10,
         ];
 
-        $mockTask = Mockery::mock(Task::class);
-
-        $this->taskRepository
-            ->shouldReceive('store')
-            ->once()
-            ->andReturn($mockTask);
+        $realRepository = new TaskRepository();
+        $mockPointService = Mockery::mock(PointService::class);
+        $service = new TaskService($realRepository, $mockPointService);
 
         // Act
-        $result = $this->taskService->createTask($data);
+        $result = $service->createTask($data);
 
         // Assert
-        $this->assertSame($mockTask, $result);
+        $this->assertInstanceOf(Task::class, $result);
+        $this->assertEquals('Test Task', $result->title);
     }
 
     /**
@@ -277,7 +265,7 @@ class TaskServiceTest extends TestCase
     public function test_createPeriodicTasks_creates_multiple_tasks(): void
     {
         // Arrange
-        $childRole = Role::factory()->create(['slug' => 'child']);
+        $childRole = Role::factory()->child()->create();
         $user = User::factory()->create(['role_id' => $childRole->id]);
 
         $data = [
@@ -306,7 +294,7 @@ class TaskServiceTest extends TestCase
         // Verify all tasks are created with correct dates
         foreach ($result as $task) {
             $this->assertInstanceOf(Task::class, $task);
-            $this->assertEquals(TaskStatus::IN_PROGRESS->value, $task->status);
+            $this->assertEquals(TaskStatus::IN_PROGRESS, $task->status);
             $this->assertEquals('Periodic Task', $task->title);
         }
     }
