@@ -185,10 +185,17 @@ onMounted(() => {
 <template>
   <div class="page-container">
     <div class="page-header">
-      <h1 class="page-title">Statistika</h1>
-      <NuxtLink to="/" class="back-link">
-        ← Grįžti į užduotis
-      </NuxtLink>
+      <div class="header-left">
+        <h1 class="page-title">Statistika</h1>
+      </div>
+      <div class="header-right">
+        <NuxtLink to="/points-history" class="header-link">
+          Taškų istorija
+        </NuxtLink>
+        <NuxtLink to="/" class="back-link">
+          ← Grįžti į užduotis
+        </NuxtLink>
+      </div>
     </div>
 
     <div v-if="loading" class="loading-state">
@@ -381,6 +388,32 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: #10b981;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.header-link:hover {
+  background: #059669;
 }
 
 .page-title {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Points\PointTransactionController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\Tasks\TaskController;
 use App\Http\Controllers\Users\UserController;
@@ -26,6 +27,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/children', [UserController::class, 'getChildren']);
 
     // Shop routes
-    Route::apiResource('shop', ShopController::class);
+    Route::apiResource('shop', ShopController::class)->parameters(['shop' => 'shopItem']);
     Route::post('/shop/{shopItem}/purchase', [ShopController::class, 'purchase']);
+
+    // Point transactions routes
+    Route::get('/point-transactions', [PointTransactionController::class, 'index']);
+    Route::get('/point-transactions/reasons', [PointTransactionController::class, 'reasons']);
 });
