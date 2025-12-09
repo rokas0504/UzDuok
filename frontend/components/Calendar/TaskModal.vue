@@ -31,6 +31,24 @@ const formData = ref<TaskFormData>({
   weeks_count: 1,
 })
 
+async function returnTask() {
+  if (!props.task) return;
+
+  loading.value = true;
+
+  try {
+    await $fetch(`/api/tasks/${props.task.id}/return`, {
+      method: 'POST'
+    });
+
+    emit('save'); // kad atsinaujintų sąrašas
+  } catch (e: any) {
+    error.value = e?.data?.message || 'Nepavyko grąžinti užduoties.';
+  } finally {
+    loading.value = false;
+  }
+}
+
 // Sync end_date with start_date when is_repeated is checked
 watch(() => formData.value.is_repeated, (isRepeated) => {
   if (isRepeated) {
@@ -190,6 +208,11 @@ async function deleteTask() {
 const showApproveDecline = computed(() => {
   return isParent.value && props.task?.status === 'pending'
 })
+
+const showReturnButton = computed(() => {
+  return isParent.value;
+});
+
 </script>
 
 <template>
@@ -413,6 +436,16 @@ const showApproveDecline = computed(() => {
               class="button button-success"
             >
               {{ loading ? 'Patvirtinama...' : 'Patvirtinti' }}
+
+              <button
+              v-if="showReturnButton"
+              class="button button-warning"
+              :disabled="loading"
+              @click="returnTask"
+              >
+              {{ loading ? "Grąžinama..." : "Gražinti" }}
+            </button>
+
             </button>
           </div>
         </div>

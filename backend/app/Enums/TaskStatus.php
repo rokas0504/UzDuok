@@ -8,6 +8,7 @@ enum TaskStatus: string
     case IN_PROGRESS = 'in_progress'; //Vaikas paaprovina, tevas gali atsaukti/paaprovinti/grazinti
     case COMPLETED = 'completed';
     case CANCELLED = 'cancelled';
+    case RETURNED = 'returned';
 
     /**
      * Get all status values as an array.

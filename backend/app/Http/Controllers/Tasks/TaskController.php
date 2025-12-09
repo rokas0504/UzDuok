@@ -121,4 +121,15 @@ class TaskController extends Controller
             'task' => $task->fresh(),
         ]);
     }
+
+    public function returnTask(string $id)
+    {
+        $task = $this->taskService->updateStatus($id, \App\Enums\TaskStatus::RETURNED);
+
+        return response()->json([
+            'message' => 'Task returned to child for correction.',
+            'task' => $task,
+        ]);
+    }
+
 }
