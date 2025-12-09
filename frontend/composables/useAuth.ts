@@ -4,7 +4,7 @@ export const useAuth = () => {
   let sanctumAuth
   try {
     sanctumAuth = useSanctumAuth()
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error initializing Sanctum auth:', error)
     // Return a fallback auth object
     return {
@@ -25,61 +25,51 @@ export const useAuth = () => {
         return null
       }
       // Extract nested user object if it exists (API returns { user: { ... } })
-      const userData = (rawUser as any).user || rawUser
+      const userData = (rawUser as Record<string, unknown>).user || rawUser
       return userData as User
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error getting user:', error)
       return null
     }
   })
 
-  // Typed login function
+  // Typed login function - removed useless try-catch
   const login = async (credentials: LoginCredentials) => {
-    try {
-      await sanctumAuth.login(credentials as unknown as Record<string, unknown>)
-    } catch (error) {
-      throw error
-    }
+    await sanctumAuth.login(credentials as unknown as Record<string, unknown>)
   }
 
-  // Typed register function
+  // Typed register function - removed dead code (config), useless try-catch
   const register = async (data: RegisterData) => {
+    const client = useSanctumClient()
+
+    // First, get CSRF token
+    await client('/sanctum/csrf-cookie', {
+      credentials: 'include',
+    })
+
+    // Then make the registration request with credentials
+    const response = await client('/api/auth/register', {
+      method: 'POST',
+      body: data,
+      credentials: 'include',
+    })
+
+    // Refresh user data to update auth state
     try {
-      const config = useRuntimeConfig()
-      const client = useSanctumClient()
-
-      // First, get CSRF token
-      await client('/sanctum/csrf-cookie', {
-        credentials: 'include',
-      })
-
-      // Then make the registration request with credentials
-      // The backend automatically logs in the user
-      const response = await client('/api/auth/register', {
-        method: 'POST',
-        body: data,
-        credentials: 'include',
-      })
-
-      // Refresh user data to update auth state
-      try {
-        await refreshUser()
-      } catch (refreshError: any) {
-        // If refresh fails, still continue - user is registered
-        console.warn('Failed to refresh user after registration:', refreshError)
-      }
-
-      return response
-    } catch (error) {
-      throw error
+      await refreshUser()
+    } catch (refreshError: unknown) {
+      // If refresh fails, still continue - user is registered
+      console.warn('Failed to refresh user after registration:', refreshError)
     }
+
+    return response
   }
 
   // Typed logout function
   const logout = async () => {
     try {
       await sanctumAuth.logout()
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Log the error but don't throw - we want to logout client-side even if server fails
       console.error('Logout error:', error)
       // Clear client-side auth state even if server request fails
@@ -91,9 +81,10 @@ export const useAuth = () => {
   const refreshUser = async () => {
     try {
       await sanctumAuth.refreshIdentity()
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Silently handle 401 errors (user not authenticated)
-      if (error?.response?.status === 401 || error?.statusCode === 401) {
+      const err = error as { response?: { status: number }; statusCode?: number }
+      if (err?.response?.status === 401 || err?.statusCode === 401) {
         return
       }
       // Log other errors for debugging

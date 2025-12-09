@@ -1,0 +1,17 @@
+/var/www/html/app/Http/Controllers/Auth/AuthController.php:76                StaticAccess          Avoid using static access to class '\Illuminate\Support\Facades\Log' in method 'logout'.
+/var/www/html/app/Http/Controllers/Points/PointTransactionController.php:17  CyclomaticComplexity  The method index() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10.
+/var/www/html/app/Http/Controllers/Tasks/TaskController.php:31               ElseExpression        The method index uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+/var/www/html/app/Http/Requests/Auth/RegisterRequest.php:30                  StaticAccess          Avoid using static access to class '\Illuminate\Validation\Rules\Password' in method 'rules'.
+/var/www/html/app/Providers/AppServiceProvider.php:23                        StaticAccess          Avoid using static access to class '\Illuminate\Validation\Rules\Password' in method 'boot'.
+/var/www/html/app/Repositories/Repository.php:12                             TooManyPublicMethods  The class Repository has 11 public methods. Consider refactoring Repository to keep number of public methods under 10.
+/var/www/html/app/Services/Points/PointService.php:26                        StaticAccess          Avoid using static access to class '\Illuminate\Support\Facades\DB' in method 'addPointsForTaskCompletion'.
+/var/www/html/app/Services/Points/PointService.php:33                        StaticAccess          Avoid using static access to class '\App\Models\Points\PointTransaction' in method 'addPointsForTaskCompletion'.
+/var/www/html/app/Services/Points/PointService.php:54                        StaticAccess          Avoid using static access to class '\Illuminate\Support\Facades\DB' in method 'subtractPointsForTaskCancellation'.
+/var/www/html/app/Services/Points/PointService.php:61                        StaticAccess          Avoid using static access to class '\App\Models\Points\PointTransaction' in method 'subtractPointsForTaskCancellation'.
+/var/www/html/app/Services/Points/PointService.php:84                        StaticAccess          Avoid using static access to class '\Illuminate\Support\Facades\DB' in method 'purchaseShopItem'.
+/var/www/html/app/Services/Points/PointService.php:157                       StaticAccess          Avoid using static access to class '\App\Models\Shop\Purchase' in method 'createPurchaseRecords'.
+/var/www/html/app/Services/Points/PointService.php:164                       StaticAccess          Avoid using static access to class '\App\Models\Points\PointTransaction' in method 'createPurchaseRecords'.
+/var/www/html/app/Services/Tasks/TaskService.php:72                          StaticAccess          Avoid using static access to class '\Carbon\Carbon' in method 'createPeriodicTasks'.
+/var/www/html/app/Services/Users/UserService.php:34                          StaticAccess          Avoid using static access to class '\Illuminate\Support\Facades\Hash' in method 'register'.
+/var/www/html/app/Services/Users/UserService.php:57                          StaticAccess          Avoid using static access to class '\Illuminate\Support\Facades\Hash' in method 'login'.
+/var/www/html/app/Services/Users/UserService.php:58                          StaticAccess          Avoid using static access to class '\Illuminate\Validation\ValidationException' in method 'login'.

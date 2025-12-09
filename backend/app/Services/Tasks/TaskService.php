@@ -57,46 +57,89 @@ class TaskService extends Service
 
     /**
      * Create multiple tasks based on selected weekdays and number of weeks.
+     * 
+     * Refactored applying:
+     * - SRP: Separated date generation from task creation
+     * - Extract Method: generateTaskDates() handles date logic
+     * - GRASP Pure Fabrication: Date calculation isolated
      *
      * @param array $data
      * @return array Array of created tasks
      */
     private function createPeriodicTasks(array $data): array
     {
-        $selectedWeekdays = $data['selected_weekdays']; // 0 = Monday, 6 = Sunday
-        $weeksCount = $data['weeks_count'];
-        $startDate = Carbon::parse($data['start_date']);
+        $taskDates = $this->generateTaskDates(
+            Carbon::parse($data['start_date']),
+            $data['selected_weekdays'],
+            $data['weeks_count']
+        );
 
-        // Remove periodic-specific fields from task data
-        unset($data['selected_weekdays'], $data['weeks_count']);
+        $baseTaskData = $this->prepareBaseTaskData($data);
 
-        // Set status for all tasks
-        $data['status'] = TaskStatus::IN_PROGRESS->value;
+        return $this->createTasksForDates($baseTaskData, $taskDates);
+    }
 
-        $tasks = [];
+    /**
+     * Generate all valid task dates based on weekdays and weeks count.
+     * (SRP: Single responsibility - only date generation)
+     *
+     * @param Carbon $startDate
+     * @param array $selectedWeekdays 0 = Monday, 6 = Sunday
+     * @param int $weeksCount
+     * @return array<Carbon>
+     */
+    private function generateTaskDates(Carbon $startDate, array $selectedWeekdays, int $weeksCount): array
+    {
+        $dates = [];
+        $weekStart = $startDate->copy()->startOfWeek(Carbon::MONDAY);
 
-        // For each week
         for ($week = 0; $week < $weeksCount; $week++) {
-            // For each selected weekday
+            $currentWeekStart = $weekStart->copy()->addWeeks($week);
+            
             foreach ($selectedWeekdays as $weekday) {
-                // Get the start of the week (Monday) and add the week offset
-                $weekStart = $startDate->copy()->startOfWeek(Carbon::MONDAY)->addWeeks($week);
-
-                // Get the specific day of that week
-                $taskDate = $weekStart->copy()->addDays($weekday);
-
-                // Only create tasks for dates on or after the start date
+                $taskDate = $currentWeekStart->copy()->addDays($weekday);
+                
                 if ($taskDate->gte($startDate)) {
-                    $taskData = $data;
-                    $taskData['start_date'] = $taskDate->format('Y-m-d');
-                    $taskData['end_date'] = $taskDate->format('Y-m-d');
-
-                    $tasks[] = $this->repository->store($taskData);
+                    $dates[] = $taskDate;
                 }
             }
         }
 
-        return $tasks;
+        return $dates;
+    }
+
+    /**
+     * Prepare base task data by removing periodic fields and setting status.
+     * (SRP: Single responsibility - only data preparation)
+     *
+     * @param array $data
+     * @return array
+     */
+    private function prepareBaseTaskData(array $data): array
+    {
+        unset($data['selected_weekdays'], $data['weeks_count']);
+        $data['status'] = TaskStatus::IN_PROGRESS->value;
+
+        return $data;
+    }
+
+    /**
+     * Create tasks for each provided date.
+     * (SRP: Single responsibility - only task creation)
+     *
+     * @param array $baseTaskData
+     * @param array<Carbon> $dates
+     * @return array<Model>
+     */
+    private function createTasksForDates(array $baseTaskData, array $dates): array
+    {
+        return array_map(function (Carbon $date) use ($baseTaskData) {
+            $taskData = $baseTaskData;
+            $taskData['start_date'] = $date->format('Y-m-d');
+            $taskData['end_date'] = $date->format('Y-m-d');
+
+            return $this->repository->store($taskData);
+        }, $dates);
     }
 
     /**

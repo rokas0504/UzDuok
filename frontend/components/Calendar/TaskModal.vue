@@ -1,6 +1,21 @@
 <script setup lang="ts">
-import type { Task, TaskFormData } from '~/types/task'
+import type { Task, TaskFormData, TaskStatus } from '~/types/task'
 import type { User } from '~/types/auth'
+
+/**
+ * TaskModal.vue - Refactored
+ * 
+ * Applied principles:
+ * - DRY: Extracted updateTaskStatus() to eliminate code duplication
+ * - Type Safety: Replaced all `any` types with proper interfaces
+ * - Clean Code: Added proper error typing
+ */
+
+/** HTTP error type for API responses */
+interface ApiError {
+  data?: { message?: string }
+  message?: string
+}
 
 const props = defineProps<{
   task?: Task | null
@@ -85,8 +100,9 @@ async function fetchChildren() {
     if (!props.task && children.value.length > 0 && !formData.value.user_id) {
       formData.value.user_id = children.value[0].id
     }
-  } catch (err: any) {
-    console.error('Error fetching children:', err)
+  } catch (err: unknown) {
+    const apiError = err as ApiError
+    console.error('Error fetching children:', apiError.message || err)
   } finally {
     loadingChildren.value = false
   }
@@ -108,63 +124,41 @@ async function handleSubmit() {
       await useCreateTask(formData.value)
     }
     emit('save')
-  } catch (err: any) {
-    error.value = err.data?.message || 'Klaida išsaugant užduotį'
-    console.error('Error saving task:', err)
+  } catch (err: unknown) {
+    const apiError = err as ApiError
+    error.value = apiError.data?.message || 'Klaida išsaugant užduotį'
+    console.error('Error saving task:', apiError.message || err)
   } finally {
     loading.value = false
   }
 }
 
-async function markAsPending() {
+/**
+ * Generic status update function (DRY principle)
+ * Replaces: markAsPending, approveTask, declineTask
+ */
+async function updateStatus(status: TaskStatus, errorMessage: string): Promise<void> {
   if (!props.task) return
 
   loading.value = true
   error.value = null
 
   try {
-    await useUpdateTaskStatus(props.task.id, 'pending')
+    await useUpdateTaskStatus(props.task.id, status)
     emit('save')
-  } catch (err: any) {
-    error.value = err.data?.message || 'Klaida atnaujinant užduotį'
-    console.error('Error updating task status:', err)
-  } finally {
-    loading.value = false
-  }
-}
-async function approveTask() {
-  if (!props.task) return
-
-  loading.value = true
-  error.value = null
-
-  try {
-    await useUpdateTaskStatus(props.task.id, 'completed')
-    emit('save')
-  } catch (err: any) {
-    error.value = err.data?.message || 'Klaida patvirtinant užduotį'
-    console.error('Error approving task:', err)
+  } catch (err: unknown) {
+    const apiError = err as ApiError
+    error.value = apiError.data?.message || errorMessage
+    console.error(`Error updating task to ${status}:`, apiError.message || err)
   } finally {
     loading.value = false
   }
 }
 
-async function declineTask() {
-  if (!props.task) return
-
-  loading.value = true
-  error.value = null
-
-  try {
-    await useUpdateTaskStatus(props.task.id, 'cancelled')
-    emit('save')
-  } catch (err: any) {
-    error.value = err.data?.message || 'Klaida atmetant užduotį'
-    console.error('Error declining task:', err)
-  } finally {
-    loading.value = false
-  }
-}
+// Status update wrappers (maintain API compatibility)
+const markAsPending = () => updateStatus('pending', 'Klaida atnaujinant užduotį')
+const approveTask = () => updateStatus('completed', 'Klaida patvirtinant užduotį')
+const declineTask = () => updateStatus('cancelled', 'Klaida atmetant užduotį')
 
 async function deleteTask() {
   if (!props.task) return
@@ -179,9 +173,10 @@ async function deleteTask() {
   try {
     await useDeleteTask(props.task.id)
     emit('save')
-  } catch (err: any) {
-    error.value = err.data?.message || 'Klaida trinant užduotį'
-    console.error('Error deleting task:', err)
+  } catch (err: unknown) {
+    const apiError = err as ApiError
+    error.value = apiError.data?.message || 'Klaida trinant užduotį'
+    console.error('Error deleting task:', apiError.message || err)
   } finally {
     loading.value = false
   }

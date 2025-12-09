@@ -47,12 +47,12 @@ abstract class Controller extends BaseController
             'success' => false
         ];
 
+        // Early return pattern - eliminates else clause
         if (is_array($message)) {
-            $response = array_merge($response, $message);
-        } else {
-            $response['message'] = $message;
+            return response()->json(array_merge($response, $message), 422);
         }
 
+        $response['message'] = $message;
         return response()->json($response, 422);
     }
 
@@ -67,14 +67,16 @@ abstract class Controller extends BaseController
             'success' => true
         ];
 
-        if (!empty($dataToReturn)) {
-            if (is_array($dataToReturn)) {
-                $success = array_merge($success, $dataToReturn);
-            } else {
-                $success['message'] = $dataToReturn;
-            }
+        if (empty($dataToReturn)) {
+            return response()->json($success);
         }
 
+        // Early return pattern - eliminates else clause
+        if (is_array($dataToReturn)) {
+            return response()->json(array_merge($success, $dataToReturn));
+        }
+
+        $success['message'] = $dataToReturn;
         return response()->json($success);
     }
 

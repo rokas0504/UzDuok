@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-12-07 08:39:01        , with PHPMetrics v2.9.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2025-12-08 21:11:56        , with PHPMetrics v2.9.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -247,222 +247,6 @@
 
     var relations = [
     {
-        "name": "\\App\\Providers\\AppServiceProvider",
-        "size": 3000,
-        "relations": [
-            "\\Illuminate\\Support\\ServiceProvider",
-            "\\Illuminate\\Validation\\Rules\\Password"
-        ]
-    },
-    {
-        "name": "\\Illuminate\\Support\\ServiceProvider",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Validation\\Rules\\Password",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Repositories\\Tasks\\TaskRepository",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Repositories\\Repository",
-        "size": 3000,
-        "relations": [
-            "\\this",
-            "\\Illuminate\\Database\\Eloquent\\Model",
-            "\\Illuminate\\Database\\Eloquent\\Collection",
-            "\\Illuminate\\Pagination\\LengthAwarePaginator"
-        ]
-    },
-    {
-        "name": "\\App\\Models\\Tasks\\Task",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Database\\Eloquent\\Collection",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Repositories\\Shop\\ShopItemRepository",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Models\\Shop\\ShopItem",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Repositories\\Users\\UserRepository",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Models\\Users\\User",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\this",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Models\\Roles\\Role",
-        "size": 3000,
-        "relations": [
-            "\\Illuminate\\Database\\Eloquent\\Model",
-            "\\Illuminate\\Database\\Eloquent\\Relations\\HasMany"
-        ]
-    },
-    {
-        "name": "\\Illuminate\\Database\\Eloquent\\Model",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Pagination\\LengthAwarePaginator",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Models\\Shop\\Purchase",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Database\\Eloquent\\Relations\\HasMany",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Foundation\\Auth\\User",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Models\\Points\\PointTransaction",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Middleware\\CheckRole",
-        "size": 3000,
-        "relations": [
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Illuminate\\Http\\Request",
-            "\\Closure"
-        ]
-    },
-    {
-        "name": "\\Symfony\\Component\\HttpFoundation\\Response",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Http\\Request",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Closure",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Requests\\Tasks\\StoreTaskRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Foundation\\Http\\FormRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Requests\\Tasks\\UpdateTaskRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Requests\\Auth\\RegisterRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Requests\\Auth\\LoginRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Requests\\Shop\\StoreShopItemRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Requests\\Shop\\UpdateShopItemRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Requests\\Shop\\PurchaseShopItemRequest",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Http\\Controllers\\Tasks\\TaskController",
-        "size": 3000,
-        "relations": [
-            "\\App\\Http\\Controllers\\Controller",
-            "\\App\\Services\\Tasks\\TaskService",
-            "\\Illuminate\\Http\\JsonResponse",
-            "\\Illuminate\\Http\\Request",
-            "\\App\\Http\\Requests\\Tasks\\StoreTaskRequest",
-            "\\App\\Models\\Tasks\\Task",
-            "\\App\\Http\\Requests\\Tasks\\UpdateTaskRequest"
-        ]
-    },
-    {
-        "name": "\\App\\Http\\Controllers\\Controller",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Services\\Tasks\\TaskService",
-        "size": 3000,
-        "relations": [
-            "\\App\\Services\\Service",
-            "\\App\\Repositories\\Tasks\\TaskRepository",
-            "\\App\\Services\\Points\\PointService",
-            "\\Illuminate\\Database\\Eloquent\\Model",
-            "\\Carbon\\Carbon",
-            "\\Illuminate\\Database\\Eloquent\\Collection",
-            "\\App\\Models\\Tasks\\Task"
-        ]
-    },
-    {
-        "name": "\\Illuminate\\Http\\JsonResponse",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Routing\\Controller",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\App\\Http\\Controllers\\Auth\\AuthController",
         "size": 3000,
         "relations": [
@@ -474,6 +258,11 @@
             "\\Illuminate\\Http\\Request",
             "\\Illuminate\\Support\\Facades\\Log"
         ]
+    },
+    {
+        "name": "\\App\\Http\\Controllers\\Controller",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Services\\Users\\UserService",
@@ -488,7 +277,64 @@
         ]
     },
     {
+        "name": "\\Illuminate\\Http\\JsonResponse",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Http\\Requests\\Auth\\RegisterRequest",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Foundation\\Http\\FormRequest",
+            "\\Illuminate\\Validation\\Rules\\Password"
+        ]
+    },
+    {
+        "name": "\\App\\Http\\Requests\\Auth\\LoginRequest",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Foundation\\Http\\FormRequest"
+        ]
+    },
+    {
+        "name": "\\Illuminate\\Http\\Request",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\Illuminate\\Support\\Facades\\Log",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Routing\\Controller",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Http\\Controllers\\Points\\PointTransactionController",
+        "size": 3000,
+        "relations": [
+            "\\App\\Http\\Controllers\\Controller",
+            "\\Illuminate\\Http\\JsonResponse",
+            "\\Illuminate\\Http\\Request",
+            "\\App\\Models\\Roles\\Role",
+            "\\App\\Models\\Users\\User",
+            "\\App\\Models\\Points\\PointTransaction"
+        ]
+    },
+    {
+        "name": "\\App\\Models\\Roles\\Role",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Models\\Users\\User",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Models\\Points\\PointTransaction",
         "size": 3000,
         "relations": []
     },
@@ -518,6 +364,77 @@
         ]
     },
     {
+        "name": "\\App\\Http\\Requests\\Shop\\StoreShopItemRequest",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Foundation\\Http\\FormRequest"
+        ]
+    },
+    {
+        "name": "\\App\\Models\\Shop\\ShopItem",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Http\\Requests\\Shop\\UpdateShopItemRequest",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Foundation\\Http\\FormRequest"
+        ]
+    },
+    {
+        "name": "\\App\\Http\\Requests\\Shop\\PurchaseShopItemRequest",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Foundation\\Http\\FormRequest"
+        ]
+    },
+    {
+        "name": "\\App\\Http\\Controllers\\Tasks\\TaskController",
+        "size": 3000,
+        "relations": [
+            "\\App\\Http\\Controllers\\Controller",
+            "\\App\\Services\\Tasks\\TaskService",
+            "\\Illuminate\\Http\\JsonResponse",
+            "\\Illuminate\\Http\\Request",
+            "\\App\\Http\\Requests\\Tasks\\StoreTaskRequest",
+            "\\App\\Models\\Tasks\\Task",
+            "\\App\\Http\\Requests\\Tasks\\UpdateTaskRequest"
+        ]
+    },
+    {
+        "name": "\\App\\Services\\Tasks\\TaskService",
+        "size": 3000,
+        "relations": [
+            "\\App\\Services\\Service",
+            "\\App\\Repositories\\Tasks\\TaskRepository",
+            "\\App\\Services\\Points\\PointService",
+            "\\Illuminate\\Database\\Eloquent\\Model",
+            "\\Carbon\\Carbon",
+            "\\Illuminate\\Database\\Eloquent\\Collection",
+            "\\App\\Models\\Tasks\\Task"
+        ]
+    },
+    {
+        "name": "\\App\\Http\\Requests\\Tasks\\StoreTaskRequest",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Foundation\\Http\\FormRequest"
+        ]
+    },
+    {
+        "name": "\\App\\Models\\Tasks\\Task",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Http\\Requests\\Tasks\\UpdateTaskRequest",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Foundation\\Http\\FormRequest"
+        ]
+    },
+    {
         "name": "\\App\\Http\\Controllers\\Users\\UserController",
         "size": 3000,
         "relations": [
@@ -527,22 +444,126 @@
         ]
     },
     {
-        "name": "\\App\\Services\\Service",
+        "name": "\\App\\Http\\Middleware\\CheckRole",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Illuminate\\Http\\Request",
+            "\\Closure"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\Response",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Closure",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Foundation\\Http\\FormRequest",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Validation\\Rules\\Password",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Database\\Eloquent\\Model",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Models\\Shop\\Purchase",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Foundation\\Auth\\User",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Providers\\AppServiceProvider",
+        "size": 3000,
+        "relations": [
+            "\\Illuminate\\Support\\ServiceProvider",
+            "\\Illuminate\\Validation\\Rules\\Password"
+        ]
+    },
+    {
+        "name": "\\Illuminate\\Support\\ServiceProvider",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repositories\\Repository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\this",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Database\\Eloquent\\Collection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Pagination\\LengthAwarePaginator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repositories\\Shop\\ShopItemRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repositories\\Tasks\\TaskRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repositories\\Users\\UserRepository",
         "size": 3000,
         "relations": []
     },
     {
         "name": "\\App\\Services\\Points\\PointService",
         "size": 3000,
-        "relations": [
-            "\\App\\Models\\Points\\PointTransaction",
-            "\\App\\Models\\Users\\User",
-            "\\App\\Models\\Tasks\\Task",
-            "\\Illuminate\\Support\\Facades\\DB",
-            "\\App\\Models\\Shop\\ShopItem",
-            "\\Exception",
-            "\\App\\Models\\Shop\\Purchase"
-        ]
+        "relations": []
+    },
+    {
+        "name": "\\Illuminate\\Support\\Facades\\DB",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Exception",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Services\\Service",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\Carbon\\Carbon",
@@ -556,16 +577,6 @@
     },
     {
         "name": "\\Illuminate\\Validation\\ValidationException",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Illuminate\\Support\\Facades\\DB",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Exception",
         "size": 3000,
         "relations": []
     }

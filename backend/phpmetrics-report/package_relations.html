@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-12-07 08:39:01        , with PHPMetrics v2.9.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2025-12-08 21:11:57        , with PHPMetrics v2.9.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -247,208 +247,6 @@
 
     var relations = [
     {
-        "name": "App\\Providers",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Support",
-            "Illuminate\\Validation\\Rules"
-        ]
-    },
-    {
-        "name": "Illuminate\\Support",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "Illuminate\\Validation\\Rules",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "App\\Repositories\\Tasks",
-        "size": 3000,
-        "relations": [
-            "App\\Repositories",
-            "App\\Models\\Tasks",
-            "Illuminate\\Database\\Eloquent"
-        ]
-    },
-    {
-        "name": "App\\Repositories",
-        "size": 3000,
-        "relations": [
-            "global",
-            "Illuminate\\Database\\Eloquent",
-            "Illuminate\\Pagination"
-        ]
-    },
-    {
-        "name": "App\\Models\\Tasks",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Database\\Eloquent",
-            "Illuminate\\Database\\Eloquent\\Relations"
-        ]
-    },
-    {
-        "name": "Illuminate\\Database\\Eloquent",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "App\\Repositories\\Shop",
-        "size": 3000,
-        "relations": [
-            "App\\Repositories",
-            "App\\Models\\Shop",
-            "Illuminate\\Database\\Eloquent"
-        ]
-    },
-    {
-        "name": "App\\Models\\Shop",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Database\\Eloquent",
-            "Illuminate\\Database\\Eloquent\\Relations"
-        ]
-    },
-    {
-        "name": "App\\Repositories\\Users",
-        "size": 3000,
-        "relations": [
-            "App\\Repositories",
-            "App\\Models\\Users",
-            "global",
-            "App\\Models\\Roles"
-        ]
-    },
-    {
-        "name": "App\\Models\\Users",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Foundation\\Auth",
-            "Illuminate\\Database\\Eloquent\\Relations"
-        ]
-    },
-    {
-        "name": "global",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "App\\Models\\Roles",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Database\\Eloquent",
-            "Illuminate\\Database\\Eloquent\\Relations"
-        ]
-    },
-    {
-        "name": "Illuminate\\Pagination",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "Illuminate\\Database\\Eloquent\\Relations",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "Illuminate\\Foundation\\Auth",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "App\\Models\\Points",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Database\\Eloquent",
-            "Illuminate\\Database\\Eloquent\\Relations"
-        ]
-    },
-    {
-        "name": "App\\Http\\Middleware",
-        "size": 3000,
-        "relations": [
-            "Symfony\\Component\\HttpFoundation",
-            "Illuminate\\Http",
-            "global"
-        ]
-    },
-    {
-        "name": "Symfony\\Component\\HttpFoundation",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "Illuminate\\Http",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "App\\Http\\Requests\\Tasks",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Foundation\\Http"
-        ]
-    },
-    {
-        "name": "Illuminate\\Foundation\\Http",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "App\\Http\\Requests\\Auth",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Foundation\\Http",
-            "Illuminate\\Validation\\Rules"
-        ]
-    },
-    {
-        "name": "App\\Http\\Requests\\Shop",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Foundation\\Http"
-        ]
-    },
-    {
-        "name": "App\\Http\\Controllers\\Tasks",
-        "size": 3000,
-        "relations": [
-            "App\\Http\\Controllers",
-            "App\\Services\\Tasks",
-            "Illuminate\\Http",
-            "App\\Http\\Requests\\Tasks",
-            "App\\Models\\Tasks"
-        ]
-    },
-    {
-        "name": "App\\Http\\Controllers",
-        "size": 3000,
-        "relations": [
-            "Illuminate\\Routing",
-            "Illuminate\\Http"
-        ]
-    },
-    {
-        "name": "App\\Services\\Tasks",
-        "size": 3000,
-        "relations": [
-            "App\\Services",
-            "App\\Repositories\\Tasks",
-            "App\\Services\\Points",
-            "Illuminate\\Database\\Eloquent",
-            "Carbon",
-            "App\\Models\\Tasks"
-        ]
-    },
-    {
-        "name": "Illuminate\\Routing",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "App\\Http\\Controllers\\Auth",
         "size": 3000,
         "relations": [
@@ -457,6 +255,14 @@
             "Illuminate\\Http",
             "App\\Http\\Requests\\Auth",
             "Illuminate\\Support\\Facades"
+        ]
+    },
+    {
+        "name": "App\\Http\\Controllers",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Routing",
+            "Illuminate\\Http"
         ]
     },
     {
@@ -472,9 +278,62 @@
         ]
     },
     {
+        "name": "Illuminate\\Http",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "App\\Http\\Requests\\Auth",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Foundation\\Http",
+            "Illuminate\\Validation\\Rules"
+        ]
+    },
+    {
         "name": "Illuminate\\Support\\Facades",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "Illuminate\\Routing",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "App\\Http\\Controllers\\Points",
+        "size": 3000,
+        "relations": [
+            "App\\Http\\Controllers",
+            "Illuminate\\Http",
+            "App\\Models\\Roles",
+            "App\\Models\\Users",
+            "App\\Models\\Points"
+        ]
+    },
+    {
+        "name": "App\\Models\\Roles",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Database\\Eloquent",
+            "Illuminate\\Database\\Eloquent\\Relations"
+        ]
+    },
+    {
+        "name": "App\\Models\\Users",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Foundation\\Auth",
+            "Illuminate\\Database\\Eloquent\\Relations"
+        ]
+    },
+    {
+        "name": "App\\Models\\Points",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Database\\Eloquent",
+            "Illuminate\\Database\\Eloquent\\Relations"
+        ]
     },
     {
         "name": "App\\Http\\Controllers\\Shop",
@@ -499,6 +358,59 @@
         ]
     },
     {
+        "name": "App\\Http\\Requests\\Shop",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Foundation\\Http"
+        ]
+    },
+    {
+        "name": "App\\Models\\Shop",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Database\\Eloquent",
+            "Illuminate\\Database\\Eloquent\\Relations"
+        ]
+    },
+    {
+        "name": "App\\Http\\Controllers\\Tasks",
+        "size": 3000,
+        "relations": [
+            "App\\Http\\Controllers",
+            "App\\Services\\Tasks",
+            "Illuminate\\Http",
+            "App\\Http\\Requests\\Tasks",
+            "App\\Models\\Tasks"
+        ]
+    },
+    {
+        "name": "App\\Services\\Tasks",
+        "size": 3000,
+        "relations": [
+            "App\\Services",
+            "App\\Repositories\\Tasks",
+            "App\\Services\\Points",
+            "Illuminate\\Database\\Eloquent",
+            "Carbon",
+            "App\\Models\\Tasks"
+        ]
+    },
+    {
+        "name": "App\\Http\\Requests\\Tasks",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Foundation\\Http"
+        ]
+    },
+    {
+        "name": "App\\Models\\Tasks",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Database\\Eloquent",
+            "Illuminate\\Database\\Eloquent\\Relations"
+        ]
+    },
+    {
         "name": "App\\Http\\Controllers\\Users",
         "size": 3000,
         "relations": [
@@ -508,11 +420,102 @@
         ]
     },
     {
-        "name": "App\\Services",
+        "name": "App\\Http\\Middleware",
         "size": 3000,
         "relations": [
+            "Symfony\\Component\\HttpFoundation",
+            "Illuminate\\Http",
+            "global"
+        ]
+    },
+    {
+        "name": "Symfony\\Component\\HttpFoundation",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "global",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "Illuminate\\Foundation\\Http",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "Illuminate\\Validation\\Rules",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "Illuminate\\Database\\Eloquent",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "Illuminate\\Database\\Eloquent\\Relations",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "Illuminate\\Foundation\\Auth",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "App\\Providers",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Support",
+            "Illuminate\\Validation\\Rules"
+        ]
+    },
+    {
+        "name": "Illuminate\\Support",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "App\\Repositories",
+        "size": 3000,
+        "relations": [
+            "global",
             "Illuminate\\Database\\Eloquent",
             "Illuminate\\Pagination"
+        ]
+    },
+    {
+        "name": "Illuminate\\Pagination",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "App\\Repositories\\Shop",
+        "size": 3000,
+        "relations": [
+            "App\\Repositories",
+            "App\\Models\\Shop",
+            "Illuminate\\Database\\Eloquent"
+        ]
+    },
+    {
+        "name": "App\\Repositories\\Tasks",
+        "size": 3000,
+        "relations": [
+            "App\\Repositories",
+            "App\\Models\\Tasks",
+            "Illuminate\\Database\\Eloquent"
+        ]
+    },
+    {
+        "name": "App\\Repositories\\Users",
+        "size": 3000,
+        "relations": [
+            "App\\Repositories",
+            "App\\Models\\Users",
+            "global",
+            "App\\Models\\Roles"
         ]
     },
     {
@@ -525,6 +528,14 @@
             "Illuminate\\Support\\Facades",
             "App\\Models\\Shop",
             "global"
+        ]
+    },
+    {
+        "name": "App\\Services",
+        "size": 3000,
+        "relations": [
+            "Illuminate\\Database\\Eloquent",
+            "Illuminate\\Pagination"
         ]
     },
     {

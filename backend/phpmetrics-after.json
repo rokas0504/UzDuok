@@ -1,5 +1,5 @@
-var classes = [
-    {
+{
+    "App\\Http\\Controllers\\Auth\\AuthController": {
         "name": "App\\Http\\Controllers\\Auth\\AuthController",
         "interface": false,
         "abstract": false,
@@ -99,9 +99,43 @@ var classes = [
         "afferentCoupling": 0,
         "efferentCoupling": 7,
         "instability": 1,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Controllers\\Auth\\": {
+        "name": "App\\Http\\Controllers\\Auth\\",
+        "classes": [
+            "App\\Http\\Controllers\\Auth\\AuthController"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Http\\Controllers\\Controller",
+            "App\\Services\\Users\\UserService",
+            "Illuminate\\Http\\JsonResponse",
+            "App\\Http\\Requests\\Auth\\RegisterRequest",
+            "App\\Http\\Requests\\Auth\\LoginRequest",
+            "Illuminate\\Http\\Request",
+            "Illuminate\\Support\\Facades\\Log"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Http\\Controllers\\",
+            "App\\Services\\Users\\",
+            "Illuminate\\Http\\",
+            "App\\Http\\Requests\\Auth\\",
+            "Illuminate\\Support\\Facades\\"
+        ],
+        "abstraction": 0,
+        "instability": 1,
+        "dependent_instabilities": {
+            "App\\Http\\Controllers\\": 0.2857142857142857,
+            "App\\Services\\Users\\": 0.75,
+            "App\\Http\\Requests\\Auth\\": 0.6666666666666666
+        },
+        "distance": 0,
+        "normalized_distance": 0,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Controllers\\Controller": {
         "name": "App\\Http\\Controllers\\Controller",
         "interface": false,
         "abstract": true,
@@ -220,9 +254,45 @@ var classes = [
         "afferentCoupling": 5,
         "efferentCoupling": 2,
         "instability": 0.29,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Controllers\\": {
+        "name": "App\\Http\\Controllers\\",
+        "classes": [
+            "App\\Http\\Controllers\\Controller"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Auth\\AuthController",
+            "App\\Http\\Controllers\\Points\\PointTransactionController",
+            "App\\Http\\Controllers\\Shop\\ShopController",
+            "App\\Http\\Controllers\\Tasks\\TaskController",
+            "App\\Http\\Controllers\\Users\\UserController"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Auth\\",
+            "App\\Http\\Controllers\\Points\\",
+            "App\\Http\\Controllers\\Shop\\",
+            "App\\Http\\Controllers\\Tasks\\",
+            "App\\Http\\Controllers\\Users\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Routing\\Controller",
+            "Illuminate\\Http\\JsonResponse"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Routing\\",
+            "Illuminate\\Http\\"
+        ],
+        "abstraction": 1,
+        "instability": 0.2857142857142857,
+        "dependent_instabilities": [],
+        "distance": 0.20203050891044205,
+        "normalized_distance": 0.2857142857142856,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Controllers\\Points\\PointTransactionController": {
         "name": "App\\Http\\Controllers\\Points\\PointTransactionController",
         "interface": false,
         "abstract": false,
@@ -297,9 +367,43 @@ var classes = [
         "afferentCoupling": 0,
         "efferentCoupling": 6,
         "instability": 1,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Controllers\\Points\\": {
+        "name": "App\\Http\\Controllers\\Points\\",
+        "classes": [
+            "App\\Http\\Controllers\\Points\\PointTransactionController"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Http\\Controllers\\Controller",
+            "Illuminate\\Http\\JsonResponse",
+            "Illuminate\\Http\\Request",
+            "App\\Models\\Roles\\Role",
+            "App\\Models\\Users\\User",
+            "App\\Models\\Points\\PointTransaction"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Http\\Controllers\\",
+            "Illuminate\\Http\\",
+            "App\\Models\\Roles\\",
+            "App\\Models\\Users\\",
+            "App\\Models\\Points\\"
+        ],
+        "abstraction": 0,
+        "instability": 1,
+        "dependent_instabilities": {
+            "App\\Http\\Controllers\\": 0.2857142857142857,
+            "App\\Models\\Roles\\": 0.5,
+            "App\\Models\\Users\\": 0.375,
+            "App\\Models\\Points\\": 0.5
+        },
+        "distance": 0,
+        "normalized_distance": 0,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Controllers\\Shop\\ShopController": {
         "name": "App\\Http\\Controllers\\Shop\\ShopController",
         "interface": false,
         "abstract": false,
@@ -418,9 +522,45 @@ var classes = [
         "afferentCoupling": 0,
         "efferentCoupling": 8,
         "instability": 1,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Controllers\\Shop\\": {
+        "name": "App\\Http\\Controllers\\Shop\\",
+        "classes": [
+            "App\\Http\\Controllers\\Shop\\ShopController"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Http\\Controllers\\Controller",
+            "App\\Services\\Shop\\ShopService",
+            "Illuminate\\Http\\JsonResponse",
+            "App\\Http\\Requests\\Shop\\StoreShopItemRequest",
+            "App\\Models\\Shop\\ShopItem",
+            "App\\Http\\Requests\\Shop\\UpdateShopItemRequest",
+            "Illuminate\\Http\\Request",
+            "App\\Http\\Requests\\Shop\\PurchaseShopItemRequest"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Http\\Controllers\\",
+            "App\\Services\\Shop\\",
+            "Illuminate\\Http\\",
+            "App\\Http\\Requests\\Shop\\",
+            "App\\Models\\Shop\\"
+        ],
+        "abstraction": 0,
+        "instability": 1,
+        "dependent_instabilities": {
+            "App\\Http\\Controllers\\": 0.2857142857142857,
+            "App\\Services\\Shop\\": 0.8333333333333334,
+            "App\\Http\\Requests\\Shop\\": 0.5,
+            "App\\Models\\Shop\\": 0.42857142857142855
+        },
+        "distance": 0,
+        "normalized_distance": 0,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Controllers\\Tasks\\TaskController": {
         "name": "App\\Http\\Controllers\\Tasks\\TaskController",
         "interface": false,
         "abstract": false,
@@ -540,9 +680,44 @@ var classes = [
         "afferentCoupling": 0,
         "efferentCoupling": 7,
         "instability": 1,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Controllers\\Tasks\\": {
+        "name": "App\\Http\\Controllers\\Tasks\\",
+        "classes": [
+            "App\\Http\\Controllers\\Tasks\\TaskController"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Http\\Controllers\\Controller",
+            "App\\Services\\Tasks\\TaskService",
+            "Illuminate\\Http\\JsonResponse",
+            "Illuminate\\Http\\Request",
+            "App\\Http\\Requests\\Tasks\\StoreTaskRequest",
+            "App\\Models\\Tasks\\Task",
+            "App\\Http\\Requests\\Tasks\\UpdateTaskRequest"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Http\\Controllers\\",
+            "App\\Services\\Tasks\\",
+            "Illuminate\\Http\\",
+            "App\\Http\\Requests\\Tasks\\",
+            "App\\Models\\Tasks\\"
+        ],
+        "abstraction": 0,
+        "instability": 1,
+        "dependent_instabilities": {
+            "App\\Http\\Controllers\\": 0.2857142857142857,
+            "App\\Services\\Tasks\\": 0.875,
+            "App\\Http\\Requests\\Tasks\\": 0.5,
+            "App\\Models\\Tasks\\": 0.3333333333333333
+        },
+        "distance": 0,
+        "normalized_distance": 0,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Controllers\\Users\\UserController": {
         "name": "App\\Http\\Controllers\\Users\\UserController",
         "interface": false,
         "abstract": false,
@@ -613,9 +788,36 @@ var classes = [
         "afferentCoupling": 0,
         "efferentCoupling": 3,
         "instability": 1,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Controllers\\Users\\": {
+        "name": "App\\Http\\Controllers\\Users\\",
+        "classes": [
+            "App\\Http\\Controllers\\Users\\UserController"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Http\\Controllers\\Controller",
+            "App\\Services\\Users\\UserService",
+            "Illuminate\\Http\\JsonResponse"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Http\\Controllers\\",
+            "App\\Services\\Users\\",
+            "Illuminate\\Http\\"
+        ],
+        "abstraction": 0,
+        "instability": 1,
+        "dependent_instabilities": {
+            "App\\Http\\Controllers\\": 0.2857142857142857,
+            "App\\Services\\Users\\": 0.75
+        },
+        "distance": 0,
+        "normalized_distance": 0,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Middleware\\CheckRole": {
         "name": "App\\Http\\Middleware\\CheckRole",
         "interface": false,
         "abstract": false,
@@ -677,9 +879,33 @@ var classes = [
         "afferentCoupling": 0,
         "efferentCoupling": 3,
         "instability": 1,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Middleware\\": {
+        "name": "App\\Http\\Middleware\\",
+        "classes": [
+            "App\\Http\\Middleware\\CheckRole"
+        ],
+        "outgoing_class_dependencies": [
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Illuminate\\Http\\Request",
+            "Closure"
+        ],
+        "outgoing_package_dependencies": [
+            "Symfony\\Component\\HttpFoundation\\",
+            "Illuminate\\Http\\",
+            "\\"
+        ],
+        "abstraction": 0,
+        "instability": 1,
+        "dependent_instabilities": [],
+        "distance": 0,
+        "normalized_distance": 0,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Requests\\Auth\\LoginRequest": {
         "name": "App\\Http\\Requests\\Auth\\LoginRequest",
         "interface": false,
         "abstract": false,
@@ -748,9 +974,38 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Requests\\Auth\\": {
+        "name": "App\\Http\\Requests\\Auth\\",
+        "classes": [
+            "App\\Http\\Requests\\Auth\\LoginRequest",
+            "App\\Http\\Requests\\Auth\\RegisterRequest"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Auth\\AuthController"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Auth\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Foundation\\Http\\FormRequest",
+            "Illuminate\\Validation\\Rules\\Password"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Foundation\\Http\\",
+            "Illuminate\\Validation\\Rules\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.6666666666666666,
+        "dependent_instabilities": [],
+        "distance": 0.23570226039551584,
+        "normalized_distance": 0.33333333333333337,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Requests\\Auth\\RegisterRequest": {
         "name": "App\\Http\\Requests\\Auth\\RegisterRequest",
         "interface": false,
         "abstract": false,
@@ -827,9 +1082,10 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 2,
         "instability": 0.67,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Requests\\Shop\\PurchaseShopItemRequest": {
         "name": "App\\Http\\Requests\\Shop\\PurchaseShopItemRequest",
         "interface": false,
         "abstract": false,
@@ -905,9 +1161,37 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Requests\\Shop\\": {
+        "name": "App\\Http\\Requests\\Shop\\",
+        "classes": [
+            "App\\Http\\Requests\\Shop\\PurchaseShopItemRequest",
+            "App\\Http\\Requests\\Shop\\StoreShopItemRequest",
+            "App\\Http\\Requests\\Shop\\UpdateShopItemRequest"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Shop\\ShopController"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Shop\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Foundation\\Http\\FormRequest"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Foundation\\Http\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.5,
+        "dependent_instabilities": [],
+        "distance": 0.35355339059327373,
+        "normalized_distance": 0.5,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Requests\\Shop\\StoreShopItemRequest": {
         "name": "App\\Http\\Requests\\Shop\\StoreShopItemRequest",
         "interface": false,
         "abstract": false,
@@ -976,9 +1260,10 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Requests\\Shop\\UpdateShopItemRequest": {
         "name": "App\\Http\\Requests\\Shop\\UpdateShopItemRequest",
         "interface": false,
         "abstract": false,
@@ -1047,9 +1332,10 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Requests\\Tasks\\StoreTaskRequest": {
         "name": "App\\Http\\Requests\\Tasks\\StoreTaskRequest",
         "interface": false,
         "abstract": false,
@@ -1125,9 +1411,36 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Http\\Requests\\Tasks\\": {
+        "name": "App\\Http\\Requests\\Tasks\\",
+        "classes": [
+            "App\\Http\\Requests\\Tasks\\StoreTaskRequest",
+            "App\\Http\\Requests\\Tasks\\UpdateTaskRequest"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Tasks\\TaskController"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Tasks\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Foundation\\Http\\FormRequest"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Foundation\\Http\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.5,
+        "dependent_instabilities": [],
+        "distance": 0.35355339059327373,
+        "normalized_distance": 0.5,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Http\\Requests\\Tasks\\UpdateTaskRequest": {
         "name": "App\\Http\\Requests\\Tasks\\UpdateTaskRequest",
         "interface": false,
         "abstract": false,
@@ -1196,9 +1509,10 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Models\\Points\\PointTransaction": {
         "name": "App\\Models\\Points\\PointTransaction",
         "interface": false,
         "abstract": false,
@@ -1284,9 +1598,39 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 2,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Models\\Points\\": {
+        "name": "App\\Models\\Points\\",
+        "classes": [
+            "App\\Models\\Points\\PointTransaction"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Points\\PointTransactionController",
+            "App\\Services\\Points\\PointService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Points\\",
+            "App\\Services\\Points\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Database\\Eloquent\\Model",
+            "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Database\\Eloquent\\",
+            "Illuminate\\Database\\Eloquent\\Relations\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.5,
+        "dependent_instabilities": [],
+        "distance": 0.35355339059327373,
+        "normalized_distance": 0.5,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Models\\Roles\\Role": {
         "name": "App\\Models\\Roles\\Role",
         "interface": false,
         "abstract": false,
@@ -1349,9 +1693,39 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 2,
         "instability": 0.5,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Models\\Roles\\": {
+        "name": "App\\Models\\Roles\\",
+        "classes": [
+            "App\\Models\\Roles\\Role"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Points\\PointTransactionController",
+            "App\\Repositories\\Users\\UserRepository"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Points\\",
+            "App\\Repositories\\Users\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Database\\Eloquent\\Model",
+            "Illuminate\\Database\\Eloquent\\Relations\\HasMany"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Database\\Eloquent\\",
+            "Illuminate\\Database\\Eloquent\\Relations\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.5,
+        "dependent_instabilities": [],
+        "distance": 0.35355339059327373,
+        "normalized_distance": 0.5,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Models\\Shop\\Purchase": {
         "name": "App\\Models\\Shop\\Purchase",
         "interface": false,
         "abstract": false,
@@ -1429,9 +1803,45 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 2,
         "instability": 0.67,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Models\\Shop\\": {
+        "name": "App\\Models\\Shop\\",
+        "classes": [
+            "App\\Models\\Shop\\Purchase",
+            "App\\Models\\Shop\\ShopItem"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Shop\\ShopController",
+            "App\\Repositories\\Shop\\ShopItemRepository",
+            "App\\Services\\Points\\PointService",
+            "App\\Services\\Shop\\ShopService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Shop\\",
+            "App\\Repositories\\Shop\\",
+            "App\\Services\\Points\\",
+            "App\\Services\\Shop\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Database\\Eloquent\\Model",
+            "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+            "Illuminate\\Database\\Eloquent\\Relations\\HasMany"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Database\\Eloquent\\",
+            "Illuminate\\Database\\Eloquent\\Relations\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.42857142857142855,
+        "dependent_instabilities": [],
+        "distance": 0.40406101782088427,
+        "normalized_distance": 0.5714285714285714,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Models\\Shop\\ShopItem": {
         "name": "App\\Models\\Shop\\ShopItem",
         "interface": false,
         "abstract": false,
@@ -1509,9 +1919,10 @@ var classes = [
         "afferentCoupling": 4,
         "efferentCoupling": 3,
         "instability": 0.43,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Models\\Tasks\\Task": {
         "name": "App\\Models\\Tasks\\Task",
         "interface": false,
         "abstract": false,
@@ -1581,9 +1992,43 @@ var classes = [
         "afferentCoupling": 4,
         "efferentCoupling": 2,
         "instability": 0.33,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Models\\Tasks\\": {
+        "name": "App\\Models\\Tasks\\",
+        "classes": [
+            "App\\Models\\Tasks\\Task"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Tasks\\TaskController",
+            "App\\Repositories\\Tasks\\TaskRepository",
+            "App\\Services\\Points\\PointService",
+            "App\\Services\\Tasks\\TaskService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Tasks\\",
+            "App\\Repositories\\Tasks\\",
+            "App\\Services\\Points\\",
+            "App\\Services\\Tasks\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Database\\Eloquent\\Model",
+            "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Database\\Eloquent\\",
+            "Illuminate\\Database\\Eloquent\\Relations\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.3333333333333333,
+        "dependent_instabilities": [],
+        "distance": 0.4714045207910317,
+        "normalized_distance": 0.6666666666666667,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Models\\Users\\User": {
         "name": "App\\Models\\Users\\User",
         "interface": false,
         "abstract": false,
@@ -1682,9 +2127,46 @@ var classes = [
         "afferentCoupling": 5,
         "efferentCoupling": 3,
         "instability": 0.38,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Models\\Users\\": {
+        "name": "App\\Models\\Users\\",
+        "classes": [
+            "App\\Models\\Users\\User"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Points\\PointTransactionController",
+            "App\\Repositories\\Users\\UserRepository",
+            "App\\Services\\Points\\PointService",
+            "App\\Services\\Shop\\ShopService",
+            "App\\Services\\Users\\UserService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Points\\",
+            "App\\Repositories\\Users\\",
+            "App\\Services\\Points\\",
+            "App\\Services\\Shop\\",
+            "App\\Services\\Users\\"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Foundation\\Auth\\User",
+            "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+            "Illuminate\\Database\\Eloquent\\Relations\\HasMany"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Foundation\\Auth\\",
+            "Illuminate\\Database\\Eloquent\\Relations\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.375,
+        "dependent_instabilities": [],
+        "distance": 0.44194173824159216,
+        "normalized_distance": 0.625,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Providers\\AppServiceProvider": {
         "name": "App\\Providers\\AppServiceProvider",
         "interface": false,
         "abstract": false,
@@ -1755,9 +2237,31 @@ var classes = [
         "afferentCoupling": 0,
         "efferentCoupling": 2,
         "instability": 1,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Providers\\": {
+        "name": "App\\Providers\\",
+        "classes": [
+            "App\\Providers\\AppServiceProvider"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Support\\ServiceProvider",
+            "Illuminate\\Validation\\Rules\\Password"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Support\\",
+            "Illuminate\\Validation\\Rules\\"
+        ],
+        "abstraction": 0,
+        "instability": 1,
+        "dependent_instabilities": [],
+        "distance": 0,
+        "normalized_distance": 0,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Repositories\\Repository": {
         "name": "App\\Repositories\\Repository",
         "interface": false,
         "abstract": false,
@@ -1912,9 +2416,44 @@ var classes = [
         "afferentCoupling": 3,
         "efferentCoupling": 4,
         "instability": 0.57,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Repositories\\": {
+        "name": "App\\Repositories\\",
+        "classes": [
+            "App\\Repositories\\Repository"
+        ],
+        "outgoing_class_dependencies": [
+            "this",
+            "Illuminate\\Database\\Eloquent\\Model",
+            "Illuminate\\Database\\Eloquent\\Collection",
+            "Illuminate\\Pagination\\LengthAwarePaginator"
+        ],
+        "outgoing_package_dependencies": [
+            "\\",
+            "Illuminate\\Database\\Eloquent\\",
+            "Illuminate\\Pagination\\"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Repositories\\Shop\\ShopItemRepository",
+            "App\\Repositories\\Tasks\\TaskRepository",
+            "App\\Repositories\\Users\\UserRepository"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Repositories\\Shop\\",
+            "App\\Repositories\\Tasks\\",
+            "App\\Repositories\\Users\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.5714285714285714,
+        "dependent_instabilities": [],
+        "distance": 0.30304576336566325,
+        "normalized_distance": 0.4285714285714286,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Repositories\\Shop\\ShopItemRepository": {
         "name": "App\\Repositories\\Shop\\ShopItemRepository",
         "interface": false,
         "abstract": false,
@@ -1985,9 +2524,42 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 3,
         "instability": 0.75,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Repositories\\Shop\\": {
+        "name": "App\\Repositories\\Shop\\",
+        "classes": [
+            "App\\Repositories\\Shop\\ShopItemRepository"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Repositories\\Repository",
+            "App\\Models\\Shop\\ShopItem",
+            "Illuminate\\Database\\Eloquent\\Collection"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Repositories\\",
+            "App\\Models\\Shop\\",
+            "Illuminate\\Database\\Eloquent\\"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Services\\Shop\\ShopService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Services\\Shop\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.75,
+        "dependent_instabilities": {
+            "App\\Repositories\\": 0.5714285714285714,
+            "App\\Models\\Shop\\": 0.42857142857142855
+        },
+        "distance": 0.17677669529663687,
+        "normalized_distance": 0.25,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Repositories\\Tasks\\TaskRepository": {
         "name": "App\\Repositories\\Tasks\\TaskRepository",
         "interface": false,
         "abstract": false,
@@ -2074,9 +2646,42 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 3,
         "instability": 0.75,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Repositories\\Tasks\\": {
+        "name": "App\\Repositories\\Tasks\\",
+        "classes": [
+            "App\\Repositories\\Tasks\\TaskRepository"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Repositories\\Repository",
+            "App\\Models\\Tasks\\Task",
+            "Illuminate\\Database\\Eloquent\\Collection"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Repositories\\",
+            "App\\Models\\Tasks\\",
+            "Illuminate\\Database\\Eloquent\\"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Services\\Tasks\\TaskService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Services\\Tasks\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.75,
+        "dependent_instabilities": {
+            "App\\Repositories\\": 0.5714285714285714,
+            "App\\Models\\Tasks\\": 0.3333333333333333
+        },
+        "distance": 0.17677669529663687,
+        "normalized_distance": 0.25,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Repositories\\Users\\UserRepository": {
         "name": "App\\Repositories\\Users\\UserRepository",
         "interface": false,
         "abstract": false,
@@ -2173,9 +2778,45 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 4,
         "instability": 0.8,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Repositories\\Users\\": {
+        "name": "App\\Repositories\\Users\\",
+        "classes": [
+            "App\\Repositories\\Users\\UserRepository"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Repositories\\Repository",
+            "App\\Models\\Users\\User",
+            "this",
+            "App\\Models\\Roles\\Role"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Repositories\\",
+            "App\\Models\\Users\\",
+            "\\",
+            "App\\Models\\Roles\\"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Services\\Users\\UserService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Services\\Users\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.8,
+        "dependent_instabilities": {
+            "App\\Repositories\\": 0.5714285714285714,
+            "App\\Models\\Users\\": 0.375,
+            "App\\Models\\Roles\\": 0.5
+        },
+        "distance": 0.14142135623730948,
+        "normalized_distance": 0.19999999999999996,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Services\\Points\\PointService": {
         "name": "App\\Services\\Points\\PointService",
         "interface": false,
         "abstract": false,
@@ -2291,9 +2932,53 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 7,
         "instability": 0.78,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Services\\Points\\": {
+        "name": "App\\Services\\Points\\",
+        "classes": [
+            "App\\Services\\Points\\PointService"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Models\\Points\\PointTransaction",
+            "App\\Models\\Users\\User",
+            "App\\Models\\Tasks\\Task",
+            "Illuminate\\Support\\Facades\\DB",
+            "App\\Models\\Shop\\ShopItem",
+            "Exception",
+            "App\\Models\\Shop\\Purchase"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Models\\Points\\",
+            "App\\Models\\Users\\",
+            "App\\Models\\Tasks\\",
+            "Illuminate\\Support\\Facades\\",
+            "App\\Models\\Shop\\",
+            "\\"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Services\\Shop\\ShopService",
+            "App\\Services\\Tasks\\TaskService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Services\\Shop\\",
+            "App\\Services\\Tasks\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.7777777777777778,
+        "dependent_instabilities": {
+            "App\\Models\\Points\\": 0.5,
+            "App\\Models\\Users\\": 0.375,
+            "App\\Models\\Tasks\\": 0.3333333333333333,
+            "App\\Models\\Shop\\": 0.42857142857142855
+        },
+        "distance": 0.15713484026367722,
+        "normalized_distance": 0.2222222222222222,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Services\\Service": {
         "name": "App\\Services\\Service",
         "interface": false,
         "abstract": false,
@@ -2409,9 +3094,40 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 3,
         "instability": 0.6,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Services\\": {
+        "name": "App\\Services\\",
+        "classes": [
+            "App\\Services\\Service"
+        ],
+        "outgoing_class_dependencies": [
+            "Illuminate\\Database\\Eloquent\\Model",
+            "Illuminate\\Database\\Eloquent\\Collection",
+            "Illuminate\\Pagination\\LengthAwarePaginator"
+        ],
+        "outgoing_package_dependencies": [
+            "Illuminate\\Database\\Eloquent\\",
+            "Illuminate\\Pagination\\"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Services\\Tasks\\TaskService",
+            "App\\Services\\Users\\UserService"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Services\\Tasks\\",
+            "App\\Services\\Users\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.6,
+        "dependent_instabilities": [],
+        "distance": 0.282842712474619,
+        "normalized_distance": 0.4,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Services\\Shop\\ShopService": {
         "name": "App\\Services\\Shop\\ShopService",
         "interface": false,
         "abstract": false,
@@ -2513,9 +3229,48 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 5,
         "instability": 0.83,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Services\\Shop\\": {
+        "name": "App\\Services\\Shop\\",
+        "classes": [
+            "App\\Services\\Shop\\ShopService"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Shop\\ShopController"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Shop\\"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Repositories\\Shop\\ShopItemRepository",
+            "App\\Services\\Points\\PointService",
+            "Illuminate\\Database\\Eloquent\\Collection",
+            "App\\Models\\Shop\\ShopItem",
+            "App\\Models\\Users\\User"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Repositories\\Shop\\",
+            "App\\Services\\Points\\",
+            "Illuminate\\Database\\Eloquent\\",
+            "App\\Models\\Shop\\",
+            "App\\Models\\Users\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.8333333333333334,
+        "dependent_instabilities": {
+            "App\\Repositories\\Shop\\": 0.75,
+            "App\\Services\\Points\\": 0.7777777777777778,
+            "App\\Models\\Shop\\": 0.42857142857142855,
+            "App\\Models\\Users\\": 0.375
+        },
+        "distance": 0.11785113019775789,
+        "normalized_distance": 0.16666666666666663,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Services\\Tasks\\TaskService": {
         "name": "App\\Services\\Tasks\\TaskService",
         "interface": false,
         "abstract": false,
@@ -2656,9 +3411,51 @@ var classes = [
         "afferentCoupling": 1,
         "efferentCoupling": 7,
         "instability": 0.88,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
     },
-    {
+    "App\\Services\\Tasks\\": {
+        "name": "App\\Services\\Tasks\\",
+        "classes": [
+            "App\\Services\\Tasks\\TaskService"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Tasks\\TaskController"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Tasks\\"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Services\\Service",
+            "App\\Repositories\\Tasks\\TaskRepository",
+            "App\\Services\\Points\\PointService",
+            "Illuminate\\Database\\Eloquent\\Model",
+            "Carbon\\Carbon",
+            "Illuminate\\Database\\Eloquent\\Collection",
+            "App\\Models\\Tasks\\Task"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Services\\",
+            "App\\Repositories\\Tasks\\",
+            "App\\Services\\Points\\",
+            "Illuminate\\Database\\Eloquent\\",
+            "Carbon\\",
+            "App\\Models\\Tasks\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.875,
+        "dependent_instabilities": {
+            "App\\Services\\": 0.6,
+            "App\\Repositories\\Tasks\\": 0.75,
+            "App\\Services\\Points\\": 0.7777777777777778,
+            "App\\Models\\Tasks\\": 0.3333333333333333
+        },
+        "distance": 0.08838834764831843,
+        "normalized_distance": 0.125,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "App\\Services\\Users\\UserService": {
         "name": "App\\Services\\Users\\UserService",
         "interface": false,
         "abstract": false,
@@ -2753,6 +3550,66 @@ var classes = [
         "afferentCoupling": 2,
         "efferentCoupling": 6,
         "instability": 0.75,
-        "violations": {}
+        "violations": {},
+        "_type": "Hal\\Metric\\ClassMetric"
+    },
+    "App\\Services\\Users\\": {
+        "name": "App\\Services\\Users\\",
+        "classes": [
+            "App\\Services\\Users\\UserService"
+        ],
+        "incoming_class_dependencies": [
+            "App\\Http\\Controllers\\Auth\\AuthController",
+            "App\\Http\\Controllers\\Users\\UserController"
+        ],
+        "incoming_package_dependencies": [
+            "App\\Http\\Controllers\\Auth\\",
+            "App\\Http\\Controllers\\Users\\"
+        ],
+        "outgoing_class_dependencies": [
+            "App\\Services\\Service",
+            "App\\Repositories\\Users\\UserRepository",
+            "App\\Models\\Users\\User",
+            "Illuminate\\Support\\Facades\\Hash",
+            "Illuminate\\Validation\\ValidationException",
+            "Illuminate\\Database\\Eloquent\\Collection"
+        ],
+        "outgoing_package_dependencies": [
+            "App\\Services\\",
+            "App\\Repositories\\Users\\",
+            "App\\Models\\Users\\",
+            "Illuminate\\Support\\Facades\\",
+            "Illuminate\\Validation\\",
+            "Illuminate\\Database\\Eloquent\\"
+        ],
+        "abstraction": 0,
+        "instability": 0.75,
+        "dependent_instabilities": {
+            "App\\Services\\": 0.6,
+            "App\\Repositories\\Users\\": 0.8,
+            "App\\Models\\Users\\": 0.375
+        },
+        "distance": 0.17677669529663687,
+        "normalized_distance": 0.25,
+        "violations": {},
+        "_type": "Hal\\Metric\\PackageMetric"
+    },
+    "tree": {
+        "name": "tree",
+        "depthOfInheritanceTree": 1.8,
+        "violations": {},
+        "_type": "Hal\\Metric\\ProjectMetric"
+    },
+    "composer": {
+        "name": "composer",
+        "packages": [],
+        "packages-installed": [],
+        "violations": {},
+        "_type": "Hal\\Metric\\ProjectMetric"
+    },
+    "searches": {
+        "name": "searches",
+        "violations": {},
+        "_type": "Hal\\Metric\\SearchMetric"
     }
-]
+}

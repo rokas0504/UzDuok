@@ -71,10 +71,9 @@ class UserService extends Service
     /**
      * Log out the authenticated user.
      *
-     * @param User $user
      * @return void
      */
-    public function logout(User $user): void
+    public function logout(): void
     {
         auth()->guard('web')->logout();
 
