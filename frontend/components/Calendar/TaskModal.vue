@@ -16,6 +16,7 @@ const { isParent, isChild } = useUserRole()
 const isEditing = computed(() => !!props.task)
 const isViewOnly = computed(() => isChild.value)
 
+const isReturning = ref(false)
 const children = ref<User[]>([])
 const loadingChildren = ref(false)
 
@@ -30,24 +31,6 @@ const formData = ref<TaskFormData>({
   selected_weekdays: [],
   weeks_count: 1,
 })
-
-async function returnTask() {
-  if (!props.task) return;
-
-  loading.value = true;
-
-  try {
-    await $fetch(`/api/tasks/${props.task.id}/return`, {
-      method: 'POST'
-    });
-
-    emit('save'); // kad atsinaujintų sąrašas
-  } catch (e: any) {
-    error.value = e?.data?.message || 'Nepavyko grąžinti užduoties.';
-  } finally {
-    loading.value = false;
-  }
-}
 
 // Sync end_date with start_date when is_repeated is checked
 watch(() => formData.value.is_repeated, (isRepeated) => {
@@ -121,7 +104,11 @@ async function handleSubmit() {
 
   try {
     if (isEditing.value && props.task) {
-      await useUpdateTask(props.task.id, formData.value)
+      const body: any = { ...formData.value }
+        if (isReturning.value) {
+          body.status = 'in_progress'
+          }
+      await useUpdateTask(props.task.id, body)
     } else {
       await useCreateTask(formData.value)
     }
@@ -183,6 +170,15 @@ async function declineTask() {
     loading.value = false
   }
 }
+
+async function returnTask() {
+  if (!props.task) return
+
+  isReturning.value = true
+  await handleSubmit()
+}
+
+
 
 async function deleteTask() {
   if (!props.task) return
@@ -431,21 +427,21 @@ const showReturnButton = computed(() => {
             <button
               v-if="showApproveDecline"
               type="button"
+              @click="returnTask"
+              :disabled="loading"
+              class="button button-secondary"
+            >
+              {{ loading ? 'Gražinama...' : 'Gražinti' }}
+            </button>
+
+            <button
+              v-if="showApproveDecline"
+              type="button"
               @click="approveTask"
               :disabled="loading"
               class="button button-success"
             >
               {{ loading ? 'Patvirtinama...' : 'Patvirtinti' }}
-
-              <button
-              v-if="showReturnButton"
-              class="button button-warning"
-              :disabled="loading"
-              @click="returnTask"
-              >
-              {{ loading ? "Grąžinama..." : "Gražinti" }}
-            </button>
-
             </button>
           </div>
         </div>
@@ -472,7 +468,7 @@ const showReturnButton = computed(() => {
 .modal-content {
   background: white;
   border-radius: 16px;
-  max-width: 600px;
+  max-width: 780px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;

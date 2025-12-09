@@ -148,8 +148,6 @@ class TaskService extends Service
                 elseif ($newStatus === TaskStatus::CANCELLED) {
                     $this->pointService->subtractPointsForTaskCancellation($user, $task);
                 }
-                elseif ($newStatus === TaskStatus::RETURNED) {
-                }
             }
         }
 

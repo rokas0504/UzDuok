@@ -26,6 +26,7 @@ class UpdateTaskRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'price' => ['sometimes', 'required', 'numeric', 'min:0'],
             'is_repeated' => ['sometimes', 'required', 'boolean'],
+            'status' => ['sometimes', 'string'],
             'start_date' => ['sometimes', 'required', 'date'],
             'end_date' => ['sometimes', 'required', 'date', 'after_or_equal:start_date'],
             'user_id' => ['sometimes', 'required', 'integer', 'exists:users,id'],
