@@ -1,11 +1,11 @@
-import type { PointTransactionsResponse, PointTransactionFilters } from '~/types/points'
+import type { PointTransactionsResponse, PointTransactionFilters, DeductPointsResponse } from '~/types/points'
 
 export const useFetchPointTransactions = (filters: PointTransactionFilters) => {
   const { $api } = useNuxtApp()
-  
+
   // Build query params
   const params = new URLSearchParams()
-  
+
   if (filters.child_id) {
     params.append('child_id', filters.child_id.toString())
   }
@@ -18,11 +18,24 @@ export const useFetchPointTransactions = (filters: PointTransactionFilters) => {
   if (filters.end_date) {
     params.append('end_date', filters.end_date)
   }
-  
+
   const queryString = params.toString()
   const url = queryString ? `/api/point-transactions?${queryString}` : '/api/point-transactions'
-  
+
   return $api<PointTransactionsResponse>(url, {
     method: 'GET',
+  })
+}
+
+export const useDeductPoints = (childId: number, points: number, reason: string) => {
+  const { $api } = useNuxtApp()
+
+  return $api<DeductPointsResponse>('/api/point-transactions/deduct', {
+    method: 'POST',
+    body: {
+      child_id: childId,
+      points,
+      reason,
+    },
   })
 }

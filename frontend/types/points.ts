@@ -27,3 +27,13 @@ export interface PointTransactionFilters {
   start_date?: string
   end_date?: string
 }
+
+export interface DeductPointsRequest {
+  child_id: number
+  points: number
+  reason: string
+}
+
+export interface DeductPointsResponse {
+  message: string
+}

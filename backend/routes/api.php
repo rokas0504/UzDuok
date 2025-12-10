@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // Point transactions routes
     Route::get('/point-transactions', [PointTransactionController::class, 'index']);
     Route::get('/point-transactions/reasons', [PointTransactionController::class, 'reasons']);
+    Route::post('/point-transactions/deduct', [PointTransactionController::class, 'deductPoints']);
     // return route
     Route::post('/tasks/{id}/return', [TaskController::class, 'returnTask']);
 });

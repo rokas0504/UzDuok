@@ -6,7 +6,8 @@ definePageMeta({
   middleware: ['auth'],
 })
 
-const { isParent } = useUserRole()
+const { isParent, isChild } = useUserRole()
+const { user } = useAuth()
 
 const transactions = ref<PointTransaction[]>([])
 const children = ref<User[]>([])
@@ -111,13 +112,15 @@ function clearFilters() {
   endDate.value = today.toISOString().split('T')[0]
 }
 
-// Redirect if not parent
+// Initialize based on role
 onMounted(async () => {
-  if (!isParent.value) {
-    navigateTo('/')
-    return
-  }
   await fetchChildren()
+
+  // If child, auto-select themselves
+  if (isChild.value && user.value) {
+    selectedChild.value = user.value.id
+  }
+
   await fetchTransactions()
 })
 </script>
@@ -144,8 +147,8 @@ onMounted(async () => {
       <div class="filters-container">
         <h3 class="filters-title">Filtrai</h3>
         <div class="filters-grid">
-          <!-- Child filter -->
-          <div class="filter-group">
+          <!-- Child filter (only for parents) -->
+          <div v-if="isParent" class="filter-group">
             <label class="filter-label">Vaikas</label>
             <select v-model="selectedChild" class="filter-select">
               <option :value="null">Visi vaikai</option>

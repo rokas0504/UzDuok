@@ -20,6 +20,10 @@ const currentWeekStart = ref(getMonday(new Date()))
 const isModalOpen = ref(false)
 const selectedTask = ref<Task | null>(null)
 
+// Deduct points modal state
+const isDeductModalOpen = ref(false)
+const selectedChild = ref<User | null>(null)
+
 // Get Monday of the current week
 function getMonday(date: Date): Date {
   const d = new Date(date)
@@ -112,6 +116,22 @@ function handleSaveTask() {
   fetchData()
 }
 
+function openDeductModal(child: User) {
+  selectedChild.value = child
+  isDeductModalOpen.value = true
+}
+
+function closeDeductModal() {
+  isDeductModalOpen.value = false
+  selectedChild.value = null
+}
+
+function handleDeductSuccess() {
+  alert('Taškai sėkmingai numinusuoti')
+  closeDeductModal()
+  fetchData()
+}
+
 // Fetch data
 async function fetchData() {
   loading.value = true
@@ -193,8 +213,11 @@ onMounted(() => {
           </thead>
           <tbody>
             <tr v-for="child in children" :key="child.id" class="child-row">
-              <td class="child-name-cell">
-                <div class="child-name">{{ child.name }}</div>
+              <td class="child-name-cell" @click="openDeductModal(child)">
+                <div class="child-name">
+                  {{ child.name }}
+                  <span class="child-points-badge">{{ child.points }} tšk</span>
+                </div>
               </td>
               <td 
                 v-for="day in weekDays" 
@@ -253,6 +276,14 @@ onMounted(() => {
       :initial-date="selectedTask?.start_date"
       @close="closeModal"
       @save="handleSaveTask"
+    />
+
+    <!-- Deduct Points Modal -->
+    <DeductPointsModal
+      v-if="isDeductModalOpen && selectedChild"
+      :child="selectedChild"
+      @close="closeDeductModal"
+      @success="handleDeductSuccess"
     />
   </div>
 </template>
@@ -405,11 +436,31 @@ onMounted(() => {
 .child-name-cell {
   text-align: left;
   background: #fafafa;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.child-name-cell:hover {
+  background: #f3f4f6;
 }
 
 .child-name {
   font-weight: 600;
   color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.child-points-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
 }
 
 .tasks-cell {
