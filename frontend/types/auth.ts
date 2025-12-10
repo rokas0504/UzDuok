@@ -3,7 +3,7 @@ export interface User {
   name: string
   email: string
   role: string
-  points: string
+  points: string // or number
   email_verified_at?: string | null
 }
 

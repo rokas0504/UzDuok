@@ -23,9 +23,9 @@ class TaskController extends Controller
     {
         $user = $request->user();
         $user->load('role');
-        //TODO need to add a check for deadline and if deadline> we change status canceled US-014
 
-        // Parents see all tasks, children only see tasks assigned to them
+        $this->taskService->cancelExpiredTasks();
+
         if ($user->isParent()) {
             $tasks = $this->taskService->getList();
         } else {

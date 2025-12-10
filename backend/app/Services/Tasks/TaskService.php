@@ -153,4 +153,17 @@ class TaskService extends Service
 
         return $result;
     }
+
+    public function cancelExpiredTasks(): void
+    {
+        $expiredTasks = $this->taskRepository->getExpiredInProgressTasks();
+
+        foreach ($expiredTasks as $task) {
+            $task->update(['status' => TaskStatus::CANCELLED->value]);
+
+            if ($task->user && $task->user->isChild()) {
+                $this->pointService->subtractPointsForTaskCancellation($task->user, $task);
+            }
+        }
+    }
 }
