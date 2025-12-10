@@ -40,7 +40,7 @@ onMounted(() => {
         <NuxtLink v-if="isParent" to="/statistics" class="stats-link">
           Žiūrėti pagal vaikus
         </NuxtLink>
-        <NuxtLink v-if="isParent" to="/statistics-table" class="stats-link">
+        <NuxtLink to="/statistics-table" class="stats-link">
           Statistika
         </NuxtLink>
         <NuxtLink v-if="isParent" to="/register" class="stats-link">

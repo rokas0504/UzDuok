@@ -3,14 +3,19 @@
 namespace App\Http\Controllers\Points;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Points\DeductPointsRequest;
 use App\Models\Points\PointTransaction;
 use App\Models\Roles\Role;
 use App\Models\Users\User;
+use App\Services\Points\PointService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PointTransactionController extends Controller
 {
+    public function __construct(
+        private readonly PointService $pointService
+    ) {}
     /**
      * Get point transactions with filters.
      */
@@ -18,13 +23,6 @@ class PointTransactionController extends Controller
     {
         $user = $request->user();
         $user->load('role');
-
-        // Only parents can view point transactions
-        if (!$user->isParent()) {
-            return response()->json([
-                'message' => 'Tik tėvai gali peržiūrėti taškų istoriją',
-            ], 403);
-        }
 
         // Get all children IDs (users with 'child' role)
         $childRole = Role::where('slug', 'child')->first();
@@ -73,5 +71,39 @@ class PointTransactionController extends Controller
                 'shop_purchase',
             ],
         ]);
+    }
+
+    /**
+     * Manually deduct points from a child.
+     * Only parents can deduct points.
+     */
+    public function deductPoints(DeductPointsRequest $request): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $child = User::findOrFail($validated['child_id']);
+        $child->load('role');
+
+        if (!$child->isChild()) {
+            return response()->json([
+                'message' => 'Nurodytas vartotojas nėra vaikas',
+            ], 400);
+        }
+
+        try {
+            $this->pointService->deductPoints(
+                $child,
+                $validated['points'],
+                $validated['reason']
+            );
+
+            return response()->json([
+                'message' => 'Taškai sėkmingai numinusuoti',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], 400);
+        }
     }
 }
