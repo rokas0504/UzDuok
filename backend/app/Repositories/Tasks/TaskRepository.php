@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Tasks;
 
+use App\Enums\TaskStatus;
 use App\Models\Tasks\Task;
 use App\Repositories\Repository;
 use Illuminate\Database\Eloquent\Collection;
@@ -57,5 +58,16 @@ class TaskRepository extends Repository
     public function updateStatus(Task $task, string $status): bool
     {
         return $task->update(['status' => $status]);
+    }
+    
+    public function getExpiredInProgressTasks(): Collection
+    {
+        $this->initializeQuery();
+
+        return $this->query
+            ->where('status', TaskStatus::IN_PROGRESS->value)
+            ->where('end_date', '<', now())
+            ->with(['user.role'])
+            ->get();
     }
 }

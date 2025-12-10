@@ -24,10 +24,8 @@ class TaskController extends Controller
         $user = $request->user();
         $user->load('role');
 
-        // Check and update expired tasks to canceled status with points deduction
         $this->taskService->cancelExpiredTasks();
 
-        // Parents see all tasks, children only see tasks assigned to them
         if ($user->isParent()) {
             $tasks = $this->taskService->getList();
         } else {

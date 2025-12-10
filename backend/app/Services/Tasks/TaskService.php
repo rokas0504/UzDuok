@@ -154,23 +154,13 @@ class TaskService extends Service
         return $result;
     }
 
-    /**
-     * Cancel tasks that have passed their deadline and are still pending.
-     * Subtracts points from users for canceled tasks.
-     */
     public function cancelExpiredTasks(): void
     {
-        // Get expired tasks that are still in progress
-        $expiredTasks = Task::where('status', TaskStatus::IN_PROGRESS->value)
-            ->where('end_date', '<', now())
-            ->with(['user.role'])
-            ->get();
+        $expiredTasks = $this->taskRepository->getExpiredInProgressTasks();
 
         foreach ($expiredTasks as $task) {
-            // Update status to cancelled
             $task->update(['status' => TaskStatus::CANCELLED->value]);
-            
-            // Subtract points if task is assigned to a child
+
             if ($task->user && $task->user->isChild()) {
                 $this->pointService->subtractPointsForTaskCancellation($task->user, $task);
             }
