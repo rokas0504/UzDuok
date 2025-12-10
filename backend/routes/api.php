@@ -29,8 +29,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Shop routes
     Route::apiResource('shop', ShopController::class)->parameters(['shop' => 'shopItem']);
     Route::post('/shop/{shopItem}/purchase', [ShopController::class, 'purchase']);
-
-    // Point transactions routes
+        // Point transactions routes
     Route::get('/point-transactions', [PointTransactionController::class, 'index']);
     Route::get('/point-transactions/reasons', [PointTransactionController::class, 'reasons']);
+    // return route
+    Route::post('/tasks/{id}/return', [TaskController::class, 'returnTask']);
 });

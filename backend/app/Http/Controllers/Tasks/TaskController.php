@@ -75,6 +75,15 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task): JsonResponse
     {
+        if ($request->has('status')) {
+            $user = $request->user();
+            $user->load('role');
+            if (!$user->isParent()) {
+                return response()->json([
+                    'message' => 'Only parents can change task status',
+                ], 403);
+            }
+        }
         $this->taskService->update($task, $request->validated());
 
         return response()->json([
