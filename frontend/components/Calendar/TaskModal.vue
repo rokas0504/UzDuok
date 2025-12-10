@@ -16,6 +16,7 @@ const { isParent, isChild } = useUserRole()
 const isEditing = computed(() => !!props.task)
 const isViewOnly = computed(() => isChild.value)
 
+const isReturning = ref(false)
 const children = ref<User[]>([])
 const loadingChildren = ref(false)
 
@@ -103,7 +104,11 @@ async function handleSubmit() {
 
   try {
     if (isEditing.value && props.task) {
-      await useUpdateTask(props.task.id, formData.value)
+      const body: any = { ...formData.value }
+        if (isReturning.value) {
+          body.status = 'in_progress'
+          }
+      await useUpdateTask(props.task.id, body)
     } else {
       await useCreateTask(formData.value)
     }
@@ -166,6 +171,15 @@ async function declineTask() {
   }
 }
 
+async function returnTask() {
+  if (!props.task) return
+
+  isReturning.value = true
+  await handleSubmit()
+}
+
+
+
 async function deleteTask() {
   if (!props.task) return
 
@@ -190,6 +204,11 @@ async function deleteTask() {
 const showApproveDecline = computed(() => {
   return isParent.value && props.task?.status === 'pending'
 })
+
+const showReturnButton = computed(() => {
+  return isParent.value;
+});
+
 </script>
 
 <template>
@@ -408,6 +427,16 @@ const showApproveDecline = computed(() => {
             <button
               v-if="showApproveDecline"
               type="button"
+              @click="returnTask"
+              :disabled="loading"
+              class="button button-secondary"
+            >
+              {{ loading ? 'Gražinama...' : 'Gražinti' }}
+            </button>
+
+            <button
+              v-if="showApproveDecline"
+              type="button"
               @click="approveTask"
               :disabled="loading"
               class="button button-success"
@@ -439,7 +468,7 @@ const showApproveDecline = computed(() => {
 .modal-content {
   background: white;
   border-radius: 16px;
-  max-width: 600px;
+  max-width: 780px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
